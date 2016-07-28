@@ -25,11 +25,11 @@ GDP <- fnGDP()
 TEJ <- readDB(fil = "DB2.xlsx", attr_sht = "TEJ_attr", xls_sht = "TEJ")
 TEJ0 <- DBfilter(x = TEJ,filt = 'filtered')
 TEJ01 <- DBfilter(x = TEJ,filt = 'dropped')
-TEJ1 <- NAto0(x ='TEJ0',col=c('OERD','OEPRO','Land','LandR','RELATIN','RELATOUT','CTP_IFRS_CFI','CTP_IFRS_CFO','CTP_IFRS_CFF','CTP_GAAP'))
+TEJ1 <- NAto0(x ='TEJ0',col=c('OERD','OEPRO','Land','LandR','CTP_IFRS_CFI','CTP_IFRS_CFO','CTP_IFRS_CFF','CTP_GAAP'))
 TEJ2 <- control_var(x=TEJ1)
 TEJ3 <- exp_var_STR(x=TEJ2)
 TEJ4 <- dep_var(TEJ3,k=5)
-TEJ5 <- STR(TEJ4,k=5,na.rm = TRUE) # TEJ4 removed NAs
+TEJ5 <- STR(TEJ4,na.rm = TRUE) # TEJ4 removed NAs
 #TEJ3 <- NAto0(x ='TEJ3',col=c('STR_RD_mean','STR_EMP_mean','STR_MB_mean','STR_MARKET_mean','STR_PPE_mean'))
 TEJ6 <- STRrank(TEJ5)
 TEJ7 <- fnHHI_na.rm(TEJ6,k=5)

@@ -6,7 +6,7 @@ setwd("D:\\Documents\\Dropbox\\MyEssay\\Rcoding\\")
 
 # load in all functions
 source('functions.R',encoding='utf-8')
-
+source('test.R',encoding='utf-8')
 # watch R version
 sessionInfo() 
 # setting locale # please mind that locale should be "Chinese Traditional"

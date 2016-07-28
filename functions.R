@@ -87,134 +87,30 @@ dep_var <- function(x=TEJ2,k=5){
                   ETR = as.numeric(BTE5yrsum) / as.numeric(PTEBX5yrsum),
                   CETR = as.numeric(CTP5yrsum) / as.numeric(PTEBX5yrsum))
   return(as.data.table(DB[order(DB$company,DB$year),]))} # add up 5 years moving sum
-STR <- function(x=TEJ4,k=5,na.rm=TRUE) {
+STR <- function(x=TEJ4) {
   x <- x[order(x$company,x$year),]
   rollmn <- function(x) rollapplyr(x, width, function(x) mean(x , na.rm = TRUE), fill=NA)
-  
-  width <- list(numeric(0),-1,-(1:2),-(1:3),-(1:4),-(1:5),-(1:5),-(1:5),-(1:5),-(1:5),-(1:5),-(1:5),-(1:5),-(1:5),-(1:5))
-  DB15 <- transform(x[,.SD[.N == 15],by=list(company,year)],
-                    STR_RD_mean = ave(STR_RD, company, FUN=rollmn),
-                    STR_EMP_mean = ave(STR_EMP, company, FUN=rollmn),
-                    STR_MB_mean = ave(STR_MB, company, FUN=rollmn),
-                    STR_MARKET_mean = ave(STR_MARKET, company, FUN=rollmn),
-                    STR_PPE_mean = ave(STR_PPE, company, FUN=rollmn))
-  
-  width <- list(numeric(0),-1,-(1:2),-(1:3),-(1:4),-(1:5),-(1:5),-(1:5),-(1:5),-(1:5),-(1:5),-(1:5),-(1:5),-(1:5))
-  DB14 <- transform(x[,.SD[.N == 14],by=list(company,year)],
-                    STR_RD_mean = ave(STR_RD, company, FUN=rollmn),
-                    STR_EMP_mean = ave(STR_EMP, company, FUN=rollmn),
-                    STR_MB_mean = ave(STR_MB, company, FUN=rollmn),
-                    STR_MARKET_mean = ave(STR_MARKET, company, FUN=rollmn),
-                    STR_PPE_mean = ave(STR_PPE, company, FUN=rollmn))
-  
-  width <- list(numeric(0),-1,-(1:2),-(1:3),-(1:4),-(1:5),-(1:5),-(1:5),-(1:5),-(1:5),-(1:5),-(1:5),-(1:5))
-  DB13 <- transform(x[,.SD[.N == 13],by=list(company,year)],
-                    STR_RD_mean = ave(STR_RD, company, FUN=rollmn),
-                    STR_EMP_mean = ave(STR_EMP, company, FUN=rollmn),
-                    STR_MB_mean = ave(STR_MB, company, FUN=rollmn),
-                    STR_MARKET_mean = ave(STR_MARKET, company, FUN=rollmn),
-                    STR_PPE_mean = ave(STR_PPE, company, FUN=rollmn))
-  
-  width <- list(numeric(0),-1,-(1:2),-(1:3),-(1:4),-(1:5),-(1:5),-(1:5),-(1:5),-(1:5),-(1:5),-(1:5))
-  DB12 <- transform(x[,.SD[.N == 12],by=list(company,year)],
-                    STR_RD_mean = ave(STR_RD, company, FUN=rollmn),
-                    STR_EMP_mean = ave(STR_EMP, company, FUN=rollmn),
-                    STR_MB_mean = ave(STR_MB, company, FUN=rollmn),
-                    STR_MARKET_mean = ave(STR_MARKET, company, FUN=rollmn),
-                    STR_PPE_mean = ave(STR_PPE, company, FUN=rollmn))
-  
-  width <- list(numeric(0),-1,-(1:2),-(1:3),-(1:4),-(1:5),-(1:5),-(1:5),-(1:5),-(1:5),-(1:5))
-  DB11 <- transform(x[,.SD[.N == 11],by=list(company,year)],
-                    STR_RD_mean = ave(STR_RD, company, FUN=rollmn),
-                    STR_EMP_mean = ave(STR_EMP, company, FUN=rollmn),
-                    STR_MB_mean = ave(STR_MB, company, FUN=rollmn),
-                    STR_MARKET_mean = ave(STR_MARKET, company, FUN=rollmn),
-                    STR_PPE_mean = ave(STR_PPE, company, FUN=rollmn))
-  
-  width <- list(numeric(0),-1,-(1:2),-(1:3),-(1:4),-(1:5),-(1:5),-(1:5),-(1:5),-(1:5))
-  DB10 <- transform(x[,.SD[.N == 10],by=list(company,year)],
-                    STR_RD_mean = ave(STR_RD, company, FUN=rollmn),
-                    STR_EMP_mean = ave(STR_EMP, company, FUN=rollmn),
-                    STR_MB_mean = ave(STR_MB, company, FUN=rollmn),
-                    STR_MARKET_mean = ave(STR_MARKET, company, FUN=rollmn),
-                    STR_PPE_mean = ave(STR_PPE, company, FUN=rollmn))
-  
-  width <- list(numeric(0),-1,-(1:2),-(1:3),-(1:4),-(1:5),-(1:5),-(1:5),-(1:5))
-  DB09 <- transform(x[,.SD[.N == 9],by=list(company,year)],
-                    STR_RD_mean = ave(STR_RD, company, FUN=rollmn),
-                    STR_EMP_mean = ave(STR_EMP, company, FUN=rollmn),
-                    STR_MB_mean = ave(STR_MB, company, FUN=rollmn),
-                    STR_MARKET_mean = ave(STR_MARKET, company, FUN=rollmn),
-                    STR_PPE_mean = ave(STR_PPE, company, FUN=rollmn))
-  
-  width <- list(numeric(0),-1,-(1:2),-(1:3),-(1:4),-(1:5),-(1:5),-(1:5))
-  DB08 <- transform(x[,.SD[.N == 8],by=list(company,year)],
-                    STR_RD_mean = ave(STR_RD, company, FUN=rollmn),
-                    STR_EMP_mean = ave(STR_EMP, company, FUN=rollmn),
-                    STR_MB_mean = ave(STR_MB, company, FUN=rollmn),
-                    STR_MARKET_mean = ave(STR_MARKET, company, FUN=rollmn),
-                    STR_PPE_mean = ave(STR_PPE, company, FUN=rollmn))
-  
-  width <- list(numeric(0),-1,-(1:2),-(1:3),-(1:4),-(1:5),-(1:5))
-  DB07 <- transform(x[,.SD[.N == 7],by=list(company,year)],
-                    STR_RD_mean = ave(STR_RD, company, FUN=rollmn),
-                    STR_EMP_mean = ave(STR_EMP, company, FUN=rollmn),
-                    STR_MB_mean = ave(STR_MB, company, FUN=rollmn),
-                    STR_MARKET_mean = ave(STR_MARKET, company, FUN=rollmn),
-                    STR_PPE_mean = ave(STR_PPE, company, FUN=rollmn))
-  
-  width <- list(numeric(0),-1,-(1:2),-(1:3),-(1:4),-(1:5))
-  DB06 <- transform(x[,.SD[.N == 6],by=list(company,year)],
-                    STR_RD_mean = ave(STR_RD, company, FUN=rollmn),
-                    STR_EMP_mean = ave(STR_EMP, company, FUN=rollmn),
-                    STR_MB_mean = ave(STR_MB, company, FUN=rollmn),
-                    STR_MARKET_mean = ave(STR_MARKET, company, FUN=rollmn),
-                    STR_PPE_mean = ave(STR_PPE, company, FUN=rollmn))
-  
-  width <- list(numeric(0),-1,-(1:2),-(1:3),-(1:4))
-  DB05 <- transform(x[,.SD[.N == 5],by=list(company,year)],
-                    STR_RD_mean = ave(STR_RD, company, FUN=rollmn),
-                    STR_EMP_mean = ave(STR_EMP, company, FUN=rollmn),
-                    STR_MB_mean = ave(STR_MB, company, FUN=rollmn),
-                    STR_MARKET_mean = ave(STR_MARKET, company, FUN=rollmn),
-                    STR_PPE_mean = ave(STR_PPE, company, FUN=rollmn))
-  
-  width <- list(numeric(0),-1,-(1:2),-(1:3))
-  DB04 <- transform(x[,.SD[.N == 4],by=list(company,year)],
-                    STR_RD_mean = ave(STR_RD, company, FUN=rollmn),
-                    STR_EMP_mean = ave(STR_EMP, company, FUN=rollmn),
-                    STR_MB_mean = ave(STR_MB, company, FUN=rollmn),
-                    STR_MARKET_mean = ave(STR_MARKET, company, FUN=rollmn),
-                    STR_PPE_mean = ave(STR_PPE, company, FUN=rollmn))
-  
-  width <- list(numeric(0),-1,-(1:2))
-  DB03 <- transform(x[,.SD[.N == 3],by=list(company,year)],
-                    STR_RD_mean = ave(STR_RD, company, FUN=rollmn),
-                    STR_EMP_mean = ave(STR_EMP, company, FUN=rollmn),
-                    STR_MB_mean = ave(STR_MB, company, FUN=rollmn),
-                    STR_MARKET_mean = ave(STR_MARKET, company, FUN=rollmn),
-                    STR_PPE_mean = ave(STR_PPE, company, FUN=rollmn))
-  
-  width <- list(numeric(0),-1)
-  DB02 <- transform(x[,.SD[.N == 2],by=list(company,year)],
-                    STR_RD_mean = ave(STR_RD, company, FUN=rollmn),
-                    STR_EMP_mean = ave(STR_EMP, company, FUN=rollmn),
-                    STR_MB_mean = ave(STR_MB, company, FUN=rollmn),
-                    STR_MARKET_mean = ave(STR_MARKET, company, FUN=rollmn),
-                    STR_PPE_mean = ave(STR_PPE, company, FUN=rollmn))
-  
-  width <- list(numeric(0))
-  DB01 <- transform(x[,.SD[.N == 1],by=list(company,year)],
-                    STR_RD_mean = NA,
-                    STR_EMP_mean = NA,
-                    STR_MB_mean = NA,
-                    STR_MARKET_mean = NA,
-                    STR_PPE_mean = NA)				   
-  
-  DB <- rbind(DB01,DB02,DB03,DB04,DB05,DB06,DB07,DB08,DB09,DB10,DB11,DB12,DB13,DB14,DB15)
+  wide <- function(x) seq.int(from=-1,to=-min(x,5))
+  mkdt <- captureOutput(
+    for(i in 1:15){
+      cat('DB',i,' <- x[,.SD[.N == ',i,'],by=list(company,year)]',sep="",fill=TRUE)
+      #width <- lapply(1:i,wide)
+      if(i>5){cat("width <- list(numeric(0),-1,-(1:2),-(1:3),-(1:4)",rep(',-(1:5)',i-5),')',sep="",fill=TRUE)}
+      if(i==5){cat("width <- list(numeric(0),-1,-(1:2),-(1:3),-(1:4)",')',sep="",fill=TRUE)}
+      if(i==4){cat("width <- list(numeric(0),-1,-(1:2),-(1:3)",')',sep="",fill=TRUE)}
+      if(i==3){cat("width <- list(numeric(0),-1,-(1:2)",')',sep="",fill=TRUE)}
+      if(i==2){cat("width <- list(numeric(0),-1",')',sep="",fill=TRUE)}
+      if(i==1){cat("width <- list(numeric(0)",')',sep="",fill=TRUE)}
+      cat('DB',i,'[,`:=`(STR_RD_mean = ave(STR_RD, company, FUN=rollmn),',sep="",fill=TRUE)
+      cat('STR_EMP_mean = ave(STR_EMP, company, FUN=rollmn),STR_MB_mean = ave(STR_MB, company, FUN=rollmn),STR_MARKET_mean = ave(STR_MARKET, company, FUN=rollmn),STR_PPE_mean = ave(STR_PPE, company, FUN=rollmn))]',sep="",fill=TRUE)
+    }
+  )
+  eval(base::parse(text=mkdt))
+  DB <- rbind(DB1,DB2,DB3,DB4,DB5,DB6,DB7,DB8,DB9,DB10,DB11,DB12,DB13,DB14,DB15)
   DBA <- as.data.table(DB[order(DB$company,DB$year),])
   return(DBA)
-}
+  }
+
 STRrank <- function(x=TEJ3){
   prank<-function(x) {ifelse(is.na(x),NA,rank(x,ties.method = 'min')/sum(!is.na(x)))} # STRATEGY ranktile.
   rankscore <- function(x) ifelse(x>=0 & x<=0.2,1,ifelse(x>0.2 & x<=0.4,2,ifelse(x>0.4 & x<=0.6,3,ifelse(x>0.6 & x<=0.8,4,ifelse(x>0.8 & x<=1,5,NA)))))

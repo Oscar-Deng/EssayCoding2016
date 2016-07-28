@@ -161,10 +161,12 @@
   <code>source('functions.R',encoding='utf-8')</code></p>
   
   <p>#安裝所有未安裝之套件 <br>
-  <code>Install.pack()</code> </p>
+  <code>Install.pack()</code>  <br>
+  <a href="#Install.pack">Install.pack</a> 說明</p>
   
   <p>#讀入所有需要之套件 <br>
-  <code>Load.pack()</code> </p>
+  <code>Load.pack()</code>  <br>
+  <a href="#load.pack">Load.pack</a> 說明</p>
   
   <p>#擷取工作路徑，用於之後輸出資料庫 <br>
   <code>wd &lt;- getwd()</code> </p>
@@ -175,16 +177,16 @@
 <p>1.讀入自TEJ下載的<a href="https://github.com/Oscar-Deng/EssayCoding2016/blob/master/DB2.xlsx">excel檔</a>，並命名為<code>TEJ</code>資料集。</p>
 
 <blockquote>
-  <p><code>TEJ &lt;- readDB(fil = "DB2.xlsx", attr_sht = "TEJ_attr", xls_sht = "TEJ")</code></p>
+  <p><code>TEJ &lt;- readDB(fil = "DB2.xlsx", attr_sht = "TEJ_attr", xls_sht = "TEJ")</code> <br>
+  <a href="#readdb">readDB</a> 說明</p>
 </blockquote>
 
 <p>2.篩選資料集TEJ，並命為<code>TEJ0</code>，同時將篩選掉的資料集另命為<code>TEJ01</code>。</p>
 
 <blockquote>
   <p><code>TEJ0 &lt;- DBfilter(x = TEJ,filt = 'filtered')</code> <br>
-  <code>TEJ01 &lt;- DBfilter(x = TEJ,filt = 'dropped')</code></p>
-  
-  <p><code>DBfilter</code>函數請見 <a href="#DBfilter%20%E7%AF%A9%E9%81%B8%E8%B3%87%E6%96%99%E9%9B%86"><strong><code>DBfilter</code></strong>節</a></p>
+  <code>TEJ01 &lt;- DBfilter(x = TEJ,filt = 'dropped')</code> <br>
+  <a href="#dbfilter">DBfilter</a> 說明</p>
 </blockquote>
 
 <p>3.缺漏值補0。</p>
@@ -344,47 +346,50 @@
 
 <h4 id="所有自定義函數說明如下">所有自定義函數說明如下</h4>
 
-
-
-<h5 id="installpack-檢查並安裝所有未安裝的套件">Install.pack 檢查並安裝所有<strong>未安裝</strong>的套件</h5>
+<h5 id="installpack"><strong>Install.pack</strong></h5>
 
 <blockquote>
-  <p><code>Install.pack&lt;-function(list=c("readxl","xlsx","data.table","plyr","dplyr","knitr", "gridExtra","ggplot2","zoo","R.oo","R.utils","psych","robustHD")){ <br>
+  <p># 檢查並安裝所有<strong>未安裝</strong>的套件 <br>
+  <code>Install.pack&lt;-function(list=c("readxl","xlsx","data.table","plyr","dplyr","knitr", "gridExtra","ggplot2","zoo","R.oo","R.utils","psych","robustHD")){ <br>
     list.of.packages &lt;- list <br>
     new.packages &lt;- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])] <br>
     if(length(new.packages)){install.packages(new.packages)}else{update.packages(list.of.packages)} <br>
-  }</code> <br>
-  # list列出所有用到的套件： <br>
-   - readxl：讀入excel檔 <br>
-   - xlsx：讀寫excel檔 <br>
-   - data.table：資料集套件 <br>
-   - plyr：文字處理套件 <br>
-   - dplyr：文字處理套件 <br>
-   - knitr：文字處理套件 <br>
-   - gridExtra：表格處理套件 <br>
-   - ggplot2：繪圖套件 <br>
-   - R.oo：物件導向編程套件 <br>
-   - zoo：時序套件 <br>
-   - R.utils：雜項編程套件 <br>
-   - psych：心理學研究套件，使用其中的統計分析函數 <br>
-   - robustHD：統計分析套件</p>
+  }</code></p>
 </blockquote>
 
-
-
-<h5 id="loadpack-讀入所有使用到的套件">Load.pack 讀入所有使用到的套件</h5>
+<p># list列出所有用到的套件：</p>
 
 <blockquote>
-  <p><code>Load.pack &lt;- function(lst=list("readxl","xlsx","data.table","plyr","dplyr","knitr", "gridExtra","ggplot2","zoo","R.oo","R.utils","psych","robustHD")){ <br>
+  <ul>
+  <li>readxl：讀入excel檔</li>
+  <li>xlsx：讀寫excel檔</li>
+  <li>data.table：資料集套件</li>
+  <li>plyr：文字處理套件</li>
+  <li>dplyr：文字處理套件</li>
+  <li>knitr：文字處理套件</li>
+  <li>gridExtra：表格處理套件</li>
+  <li>ggplot2：繪圖套件</li>
+  <li>R.oo：物件導向編程套件</li>
+  <li>zoo：時序套件</li>
+  <li>R.utils：雜項編程套件</li>
+  <li>psych：心理學研究套件，使用其中的統計分析函數</li>
+  <li>robustHD：統計分析套件</li>
+  </ul>
+</blockquote>
+
+<h5 id="loadpack"><strong>Load.pack</strong></h5>
+
+<blockquote>
+  <p># 讀入所有使用到的套件 <br>
+  <code>Load.pack &lt;- function(lst=list("readxl","xlsx","data.table","plyr","dplyr","knitr", "gridExtra","ggplot2","zoo","R.oo","R.utils","psych","robustHD")){ <br>
     lapply(lst, require, character.only = TRUE)}</code></p>
 </blockquote>
 
-
-
-<h5 id="readdb-讀入excel檔並重新命名欄位">readDB 讀入excel檔，並重新命名欄位</h5>
+<h5 id="readdb"><strong>readDB</strong></h5>
 
 <blockquote>
-  <p><code>readDB &lt;- function(fil = "DB2.xlsx", attr_sht = "TEJ_attr", xls_sht = "TEJ"){</code></p>
+  <p># 讀入excel檔，並重新命名欄位  <br>
+  <code>readDB &lt;- function(fil = "DB2.xlsx", attr_sht = "TEJ_attr", xls_sht = "TEJ"){</code></p>
   
   <p># 讀入檔案：DB2.xlsx，工作表：TEJ_attr，有新舊欄位名稱及欄位屬性 <br>
   <code>DBattr &lt;- read_excel(fil, sheet=attr_sht, col_names = TRUE)</code> <br>
@@ -395,12 +400,11 @@
   <code>}</code></p>
 </blockquote>
 
-
-
-<h5 id="dbfilter-篩選資料集">DBfilter 篩選資料集</h5>
+<h5 id="dbfilter"><strong>DBfilter</strong></h5>
 
 <blockquote>
-  <p><code>DBfilter &lt;- function(x = TEJ,filt='filtered'){</code></p>
+  <p># 篩選資料集 <br>
+  <code>DBfilter &lt;- function(x = TEJ,filt='filtered'){</code></p>
   
   <p># 原始資料─<code>DB0</code>： <br>
   <code>DB0 &lt;- as.data.table(x)[,.SD[.N &gt; 0],by=list(TSE_code,year(date))]</code> <br>
@@ -430,12 +434,10 @@
   <code>}</code> </p>
 </blockquote>
 
-
-
-<h5 id="nato0-補na為0">NAto0 補NA為0</h5>
+<h5 id="nato0"><strong>NAto0</strong></h5>
 
 <blockquote>
-  <p># 將要補0的欄位放入col，如：<code>col=c('OERD','OEPRO','Land','LandR','RELATIN'))</code> <br>
+  <p># 補NA為0 ─ 將欲補0的欄位放入col，如：<code>col=c('OERD','OEPRO','Land','LandR','RELATIN'))</code> <br>
   <code>NAto0 &lt;- function(x = 'TEJ0',col=c(NA)){</code> <br>
   <code>x1 &lt;- captureOutput(</code> <br>
   <code>for(y in col){cat(x,'$',y,'[is.na(',x,'$',y,')] &lt;- 0',sep="",fill = TRUE)})</code> <br>
@@ -443,8 +445,6 @@
   <code>xx &lt;- c(x1,x2)</code> <br>
   <code>eval(base::parse(text=xx))}</code></p>
 </blockquote>
-
-
 
 <h5 id="installpack">Install.pack</h5>
 

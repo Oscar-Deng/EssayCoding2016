@@ -36,7 +36,7 @@ DBfilter <- function(x = TEJ,filt='filtered'){
   DB4 <- DB3[!(duplicated(DB3) | duplicated(DB3, fromLast = TRUE)),]
   base::ifelse(filt=='filtered', return(DB2), base::ifelse(filt=='dropped', return(DB4), print("please assign filter type")))
 } # 篩選後的:filt=filtered, #篩選刪掉的filt=dropped
-NAto0 <- function(x = 'TEJ0',col=c(NA)){
+NAto0 <- function(x = 'TEJ01',col=c(NA)){
   x1 <- captureOutput(
     for(y in col){cat(x,'$',y,'[is.na(',x,'$',y,')] <- 0',sep="",fill = TRUE)})
   x2 <- captureOutput(cat('return(',paste(x),')',sep=""))

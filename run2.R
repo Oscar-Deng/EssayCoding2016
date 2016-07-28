@@ -7,12 +7,12 @@ setwd("D:\\Documents\\Dropbox\\MyEssay\\Rcoding\\")
 # load in all functions
 source('functions.R',encoding='utf-8')
 
-# watch R version
-sessionInfo() 
-# setting locale # please mind that locale should be "Chinese Traditional"
-Sys.getlocale(category = "LC_ALL")
-## if not please set locale to:
-Sys.setlocale("LC_ALL",locale='cht')
+##watch R version
+#sessionInfo() 
+
+#Sys.getlocale(category = "LC_ALL")
+
+#Sys.setlocale("LC_ALL",locale='cht')
 
 ## other trouble shooting please read:
 # https://github.com/dspim/R/wiki/R-&-RStudio-Troubleshooting-Guide
@@ -21,11 +21,10 @@ Sys.setlocale("LC_ALL",locale='cht')
 Install.pack()
 Load.pack()
 wd <- getwd()
-
 TEJ <- readDB(fil = "DB2.xlsx", attr_sht = "TEJ_attr", xls_sht = "TEJ")
-TEJ0 <- DBfilter(x = TEJ,filt = 'filtered')
-TEJ01 <- DBfilter(x = TEJ,filt = 'dropped')
-TEJ1 <- NAto0(x ='TEJ0',col=c('OERD','OEPRO','Land','LandR','CTP_IFRS_CFI','CTP_IFRS_CFO','CTP_IFRS_CFF','CTP_GAAP'))
+TEJ01 <- DBfilter(x = TEJ,filt = 'filtered')
+TEJ02 <- DBfilter(x = TEJ,filt = 'dropped')
+TEJ1 <- NAto0(x ='TEJ01',col=c('OERD','OEPRO','Land','LandR','CTP_IFRS_CFI','CTP_IFRS_CFO','CTP_IFRS_CFF','CTP_GAAP'))
 TEJ2 <- control_var(x=TEJ1)
 TEJ3 <- exp_var_STR(x=TEJ2)
 TEJ4 <- dep_var(TEJ3,k=5)
@@ -44,8 +43,12 @@ TEJ92 <- catchDB(x=TEJ82)
 TEJ101 <- fnGDP(x=TEJ91,file="DB2.xlsx",col_sht="GDP_colnames",DB_sht="GDP")
 TEJ102 <- fnGDP(x=TEJ92,file="DB2.xlsx",col_sht="GDP_colnames",DB_sht="GDP")
 print("Finished running 'run2.R' !")
-View(TEJ101)
-View(TEJ102)
+#View(TEJ101)
+#View(TEJ102)
+
+source('output.R',encoding='utf-8')
+#source('tables.R',encoding='utf-8')
+
 # ----
 # replace TSE_code to TEJ_code1 ### code beneath havn't finished!!!!!!!!!
 # GIANT & MERIDA are deleted< sort by TSE_code>, do we have to use TEJ_code1 or TEJ_code2 to classify?

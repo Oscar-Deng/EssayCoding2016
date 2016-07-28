@@ -4,16 +4,13 @@ rm(list=ls())
 
 # functions!!!
 # install all packages and load.
-Install.pack <- function(list = c("readxl","xlsx","data.table","plyr","dplyr","knitr",
-                                  "gridExtra","ggplot2","zoo","R.oo","R.utils","psych",
-                                  "robustHD")){
+Install.pack <- function(list = c("readxl","xlsx","data.table","plyr","dplyr","knitr","gridExtra","ggplot2","zoo","R.oo","R.utils","psych","robustHD")){
   list.of.packages <- list
   new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
-  if(length(new.packages)){install.packages(new.packages)}else{update.packages(list.of.packages)}
+  if(length(new.packages)){install.packages(new.packages)}
+  else{update.packages(list.of.packages)}
 }
-Load.pack <- function(lst=list("readxl","xlsx","data.table","plyr","dplyr","knitr",
-                               "gridExtra","ggplot2","zoo","R.oo","R.utils","psych",
-                               "robustHD")){lapply(lst, require, character.only = TRUE)}
+Load.pack <- function(lst=list("readxl","xlsx","data.table","plyr","dplyr","knitr","gridExtra","ggplot2","zoo","R.oo","R.utils","psych","robustHD")){lapply(lst, require, character.only = TRUE)}
 
 readDB <- function(fil = "DB2.xlsx", attr_sht = "TEJ_attr", xls_sht = "TEJ"){
   DBattr <- read_excel(fil, sheet=attr_sht, col_names = TRUE)
@@ -87,29 +84,25 @@ dep_var <- function(x=TEJ2,k=5){
                   ETR = as.numeric(BTE5yrsum) / as.numeric(PTEBX5yrsum),
                   CETR = as.numeric(CTP5yrsum) / as.numeric(PTEBX5yrsum))
   return(as.data.table(DB[order(DB$company,DB$year),]))} # add up 5 years moving sum
-STR <- function(x=TEJ4,k=5,na.rm=TRUE) {
+STR <- function(x=TEJ4) {
   x <- x[order(x$company,x$year),]
-  rollmn <- function(x) rollapplyr(x, width, function(x) mean(x , na.rm = TRUE), fill=NA)
-  wide <- function(x) seq.int(from=-1,to=-min(x,5))
-  mkdt <- captureOutput(
-    for(i in 1:15){
-      cat('DB',i,' <- x[,.SD[.N == ',i,'],by=list(company,year)]',sep="",fill=TRUE)
-      #width <- lapply(1:i,wide)
+  rollmn <- function(x) rollapplyr(x, width, function(x) mean(x, na.rm = TRUE), fill=NA)
+  mkdt <- capture.output(for(i in 1:15){
+      cat('DB',i,"<- x[,.SD[.N==",i,"],by=list(company,year)]",sep="",fill=TRUE)
       if(i>5){cat("width <- list(numeric(0),-1,-(1:2),-(1:3),-(1:4)",rep(',-(1:5)',i-5),')',sep="",fill=TRUE)}
       if(i==5){cat("width <- list(numeric(0),-1,-(1:2),-(1:3),-(1:4)",')',sep="",fill=TRUE)}
       if(i==4){cat("width <- list(numeric(0),-1,-(1:2),-(1:3)",')',sep="",fill=TRUE)}
       if(i==3){cat("width <- list(numeric(0),-1,-(1:2)",')',sep="",fill=TRUE)}
       if(i==2){cat("width <- list(numeric(0),-1",')',sep="",fill=TRUE)}
-      if(i==1){cat("width <- list(numeric(0)",')',sep="",fill=TRUE)}
-      cat('DB',i,'[,`:=`(STR_RD_mean = ave(STR_RD, company, FUN=rollmn),',sep="",fill=TRUE)
-      cat('STR_EMP_mean = ave(STR_EMP, company, FUN=rollmn),STR_MB_mean = ave(STR_MB, company, FUN=rollmn),STR_MARKET_mean = ave(STR_MARKET, company, FUN=rollmn),STR_PPE_mean = ave(STR_PPE, company, FUN=rollmn))]',sep="",fill=TRUE)
-    }
-  )
+      if(i==1){cat("width <- numeric(0)",sep="",fill=TRUE)}
+      cat('DB',i,'<-transform(DB',i,sep="",fill=TRUE)
+      cat(",STR_RD_mean = ave(STR_RD, company, FUN=rollmn),STR_EMP_mean = ave(STR_EMP, company, FUN=rollmn),STR_MB_mean = ave(STR_MB, company, FUN=rollmn),STR_MARKET_mean = ave(STR_MARKET, company, FUN=rollmn),STR_PPE_mean = ave(STR_PPE, company, FUN=rollmn))",sep="",fill=TRUE)
+    })
   eval(base::parse(text=mkdt))
   DB <- rbind(DB1,DB2,DB3,DB4,DB5,DB6,DB7,DB8,DB9,DB10,DB11,DB12,DB13,DB14,DB15)
   DBA <- as.data.table(DB[order(DB$company,DB$year),])
   return(DBA)
-  }
+}
 
 STRrank <- function(x=TEJ3){
   prank<-function(x) {ifelse(is.na(x),NA,rank(x,ties.method = 'min')/sum(!is.na(x)))} # STRATEGY ranktile.
@@ -127,7 +120,8 @@ STRrank <- function(x=TEJ3){
                    MARKET = rankscore(STR_MARKET_mean_rank),
                    PPE = rankscore(STR_PPE_mean_rank))
   DB2$STR <- as.numeric(DB2$RD) + as.numeric(DB2$EMP) + as.numeric(DB2$MB) + as.numeric(DB2$MARKET) + as.numeric(DB2$PPE)
-  return(DB2)} # rank score function
+  return(DB2)
+  } # rank score function
 fnGDP <- function(file="DB2.xlsx",col_sht="GDP_colnames",DB_sht="GDP"){
   # GDP : ln(realGDP)
   GDP_colname <- read_excel(file, sheet=col_sht)
@@ -184,18 +178,20 @@ winsamp2 <- function(x = 'TEJ7', col, prob=0.01){
     for(y in col){cat(x,'$',y,' <- winsorized.sample(x=',x,'$',y,',prob = ',prob,')',sep="",fill = TRUE)})
   eval(base::parse(text=DD))} 
 
-Install.pack()
-Load.pack()
-wd <- getwd()
-GDP <- fnGDP()
+#Install.pack()
+#Load.pack()
+#wd <- getwd()
+#GDP <- fnGDP()
 TEJ <- readDB(fil = "DB2.xlsx", attr_sht = "TEJ_attr", xls_sht = "TEJ")
+
 TEJ0 <- DBfilter(x = TEJ,filt = 'filtered')
 TEJ01 <- DBfilter(x = TEJ,filt = 'dropped')
+TEJ0 <- TEJ0[1:1000,]
 TEJ1 <- NAto0(x ='TEJ0',col=c('OERD','OEPRO','Land','LandR','CTP_IFRS_CFI','CTP_IFRS_CFO','CTP_IFRS_CFF','CTP_GAAP'))
 TEJ2 <- control_var(x=TEJ1)
 TEJ3 <- exp_var_STR(x=TEJ2)
 TEJ4 <- dep_var(TEJ3,k=5)
-
+TEJ5 <- STR(TEJ4)
 
 
 

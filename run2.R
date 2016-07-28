@@ -6,7 +6,7 @@ setwd("D:\\Documents\\Dropbox\\MyEssay\\Rcoding\\")
 
 # load in all functions
 source('functions.R',encoding='utf-8')
-source('test.R',encoding='utf-8')
+#source('test.R',encoding='utf-8')
 # watch R version
 sessionInfo() 
 # setting locale # please mind that locale should be "Chinese Traditional"
@@ -41,14 +41,10 @@ TEJ82 <- winsamp2(x='TEJ82',col = c('ETR','CETR','ROA','SIZE','LEV','INTANG'
                   ,prob = 0.01)
 TEJ91 <- catchDB(x=TEJ81)
 TEJ92 <- catchDB(x=TEJ82)
-View(TEJ9)
+View(TEJ92)
 # ----
 # replace TSE_code to TEJ_code1 ### code beneath havn't finished!!!!!!!!!
 # GIANT & MERIDA are deleted< sort by TSE_code>, do we have to use TEJ_code1 or TEJ_code2 to classify?
 # ----
-
-# HHI prepare
-#TEJ$HHI
-#TEJ$HHI_Q
 
 

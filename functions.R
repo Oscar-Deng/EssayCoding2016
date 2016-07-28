@@ -190,16 +190,19 @@ winsorized.sample <- function (x, prob = 0) { # remove NA
   DT3<-DT2[order(DT2$idx,DT2$x),]
   x2<-DT3$x
   return(x2)}
-winsamp1 <- function(x = 'TEJ7', col=c('ETR','CETR','ROA','SIZE','LEV','INTANG','QUICK','EQINC','OUTINSTI','RELATIN','RELATOUT')
+winsamp1 <- function(x = 'TEJ81', col=c('ETR','CETR','ROA','SIZE','LEV','INTANG','QUICK','EQINC','OUTINSTI','RELATIN','RELATOUT')
                      , prob=0.01, na.rm=TRUE){
   x1 <- captureOutput(cat('DB1<-',x,sep="",fill=TRUE))
   x2 <- captureOutput(for(y in col){cat('DB1$',y,' <- winsor(',x,'$',y,',trim = ',prob,',na.rm = ',na.rm,')',sep="",fill = TRUE)})
   eval(base::parse(text=x1))
   eval(base::parse(text=x2))
   return(DB1)}
-winsamp2 <- function(x = 'TEJ7', col, prob=0.01){
-  DD <- captureOutput(
-    for(y in col){cat(x,'$',y,' <- winsorized.sample(x=',x,'$',y,',prob = ',prob,')',sep="",fill = TRUE)})
-  eval(base::parse(text=DD))} 
+winsamp2 <- function(x = 'TEJ82', col=c('ETR','CETR','ROA','SIZE','LEV','INTANG','QUICK','EQINC','OUTINSTI','RELATIN','RELATOUT')
+                     , prob=0.01){
+  x1 <- captureOutput(cat('DB1<-',x,sep="",fill=TRUE))
+  x2 <- captureOutput(for(y in col){cat('DB1$',y,' <- winsorized.sample(',x,'$',y,',prob = ',prob,')',sep="",fill = TRUE)})
+  eval(base::parse(text=x1))
+  eval(base::parse(text=x2))
+  return(DB1)}
 
 

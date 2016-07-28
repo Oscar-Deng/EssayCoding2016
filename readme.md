@@ -192,9 +192,10 @@
 <p>3.缺漏值補0。</p>
 
 <blockquote>
-  <p># 補0欄位有：</p>
-  
-  <p><code>TEJ1&lt;-NAto0(x='TEJ0',col=c('OERD','OEPRO','Land', 'LandR',RELATIN','RELATOUT','CTP_IFRS_CFI', 'CTP_IFRS_CFO','CTP_IFRS_CFF','CTP_GAAP'))</code></p>
+  <p># 補0欄位： <br>
+  <code>TEJ1&lt;-NAto0(x='TEJ0',col=c('OERD','OEPRO','Land',</code> <br>
+  <code>'LandR',RELATIN','RELATOUT','CTP_IFRS_CFI','CTP_IFRS_CFO','CTP_IFRS_CFF','CTP_GAAP'))</code> <br>
+  <a href="#nato0">NAto0</a> 說明</p>
 </blockquote>
 
 <p>4.產生控制變數。</p>

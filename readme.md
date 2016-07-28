@@ -162,11 +162,11 @@
   
   <p>#安裝所有未安裝之套件 <br>
   <code>Install.pack()</code>  <br>
-  <a href="#Install.pack">Install.pack</a> 說明</p>
+  <a href="#installpack">Install.pack</a> 說明</p>
   
   <p>#讀入所有需要之套件 <br>
   <code>Load.pack()</code>  <br>
-  <a href="#load.pack">Load.pack</a> 說明</p>
+  <a href="#loadpack">Load.pack</a> 說明</p>
   
   <p>#擷取工作路徑，用於之後輸出資料庫 <br>
   <code>wd &lt;- getwd()</code> </p>

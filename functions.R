@@ -90,23 +90,28 @@ dep_var <- function(x=TEJ2,k=5){
 STR <- function(x=TEJ4) {
   x <- x[order(x$company,x$year),]
   rollmn <- function(x) rollapplyr(x, width, function(x) mean(x, na.rm = TRUE), fill=NA)
-  mkdt <- captureOutput(
-    for(i in 1:15){
-      cat('DB',i,"<- x[,.SD[.N==",i,"],by=list(company,year)]",sep="",fill=TRUE)
-      #width <- lapply(1:i,wide)
-      if(i>5){cat("width <- list(numeric(0),-1,-(1:2),-(1:3),-(1:4)",rep(',-(1:5)',i-5),')',sep="",fill=TRUE)}
-      if(i==5){cat("width <- list(numeric(0),-1,-(1:2),-(1:3),-(1:4)",')',sep="",fill=TRUE)}
-      if(i==4){cat("width <- list(numeric(0),-1,-(1:2),-(1:3)",')',sep="",fill=TRUE)}
-      if(i==3){cat("width <- list(numeric(0),-1,-(1:2)",')',sep="",fill=TRUE)}
-      if(i==2){cat("width <- list(numeric(0),-1",')',sep="",fill=TRUE)}
-      if(i==1){cat("width <- list(numeric(0)",')',sep="",fill=TRUE)}
-      cat('DB',i,'<-transform(DB',i,sep="",fill=TRUE)
-      cat(",STR_EMP_mean = ave(STR_EMP, company, FUN=rollmn),STR_MB_mean = ave(STR_MB, company, FUN=rollmn),STR_MARKET_mean = ave(STR_MARKET, company, FUN=rollmn),STR_PPE_mean = ave(STR_PPE, company, FUN=rollmn))",sep="",fill=TRUE)
-    }
-  )
+  mkdt <- capture.output(for(i in 1:15){
+    cat('DB',i,"<- x[,.SD[.N==",i,"],by=company]",sep="",fill=TRUE)
+    if(i>5){cat("width <- list(numeric(0),-1,-(1:2),-(1:3),-(1:4)",rep(',-(1:5)',i-5),')',sep="",fill=TRUE)}
+    if(i==5){cat("width <- list(numeric(0),-1,-(1:2),-(1:3),-(1:4)",')',sep="",fill=TRUE)}
+    if(i==4){cat("width <- list(numeric(0),-1,-(1:2),-(1:3)",')',sep="",fill=TRUE)}
+    if(i==3){cat("width <- list(numeric(0),-1,-(1:2)",')',sep="",fill=TRUE)}
+    if(i==2){cat("width <- list(numeric(0),-1",')',sep="",fill=TRUE)}
+    if(i==1){cat("width <- numeric(0)",sep="",fill=TRUE)}
+    cat('DB',i,'<-transform(DB',i, 
+        #cat(
+        ",STR_RD_mean = ave(STR_RD, company, FUN=rollmn),STR_EMP_mean = ave(STR_EMP, company, FUN=rollmn),STR_MB_mean = ave(STR_MB, company, FUN=rollmn),STR_MARKET_mean = ave(STR_MARKET, company, FUN=rollmn),STR_PPE_mean = ave(STR_PPE, company, FUN=rollmn))",sep="",fill=TRUE)
+  })
   eval(base::parse(text=mkdt))
-  DB <- rbind(DB1,DB2,DB3,DB4,DB5,DB6,DB7,DB8,DB9,DB10,DB11,DB12,DB13,DB14,DB15)
-  DBA <- as.data.table(DB[order(DB$company,DB$year),])
+  DT <- rbind(DB1,DB2,DB3,DB4,DB5,DB6,DB7,DB8,DB9,DB10,DB11,DB12,DB13,DB14,DB15)
+  NAto0 <- function(x = 'DT',col=c('STR_RD_mean','STR_EMP_mean','STR_MB_mean','STR_MARKET_mean','STR_PPE_mean')){
+    x1 <- captureOutput(
+      for(y in col){cat(x,'$',y,'[is.nan(',x,'$',y,')] <- 0',sep="",fill = TRUE)})
+    x2 <- captureOutput(cat('return(',paste(x),')',sep=""))
+    xx <- c(x1,x2)
+    eval(base::parse(text=xx))} # replace NA with 0.
+  DT1 <- NAto0()
+  DBA <- as.data.table(DT1[order(DT1$company,DT1$year),])
   return(DBA)
 }
 
@@ -174,10 +179,13 @@ winsorized.sample <- function (x, prob = 0) { # remove NA
   DT3<-DT2[order(DT2$idx,DT2$x),]
   x2<-DT3$x
   return(x2)}
-winsamp1 <- function(x = 'TEJ7', col, prob=0.01, na.rm=TRUE){
-  x1 <- captureOutput(
-    for(y in col){cat(x,'$',y,' <- winsor(',x,'$',y,',trim = ',prob,',na.rm = ',na.rm,')',sep="",fill = TRUE)})
-  eval(base::parse(text=x1))} 
+winsamp1 <- function(x = 'TEJ7', col=c('ETR','CETR','ROA','SIZE','LEV','INTANG','QUICK','EQINC','OUTINSTI','RELATIN','RELATOUT')
+                     , prob=0.01, na.rm=TRUE){
+  x1 <- captureOutput(cat('DB1<-',x,sep="",fill=TRUE))
+  x2 <- captureOutput(for(y in col){cat('DB1$',y,' <- winsor(',x,'$',y,',trim = ',prob,',na.rm = ',na.rm,')',sep="",fill = TRUE)})
+  eval(base::parse(text=x1))
+  eval(base::parse(text=x2))
+  return(DB1)}
 winsamp2 <- function(x = 'TEJ7', col, prob=0.01){
   DD <- captureOutput(
     for(y in col){cat(x,'$',y,' <- winsorized.sample(x=',x,'$',y,',prob = ',prob,')',sep="",fill = TRUE)})

@@ -4,13 +4,16 @@ rm(list=ls())
 
 # functions!!!
 # install all packages and load.
-Install.pack <- function(list = c("readxl","xlsx","data.table","plyr","dplyr","knitr","gridExtra","ggplot2","zoo","R.oo","R.utils","psych","robustHD")){
+Install.pack <- function(list = c("readxl","xlsx","data.table","plyr","dplyr","knitr",
+                                  "gridExtra","ggplot2","zoo","R.oo","R.utils","psych",
+                                  "robustHD")){
   list.of.packages <- list
   new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
-  if(length(new.packages)){install.packages(new.packages)}
-  else{update.packages(list.of.packages)}
+  if(length(new.packages)){install.packages(new.packages)}else{update.packages(list.of.packages)}
 }
-Load.pack <- function(lst=list("readxl","xlsx","data.table","plyr","dplyr","knitr","gridExtra","ggplot2","zoo","R.oo","R.utils","psych","robustHD")){lapply(lst, require, character.only = TRUE)}
+Load.pack <- function(lst=list("readxl","xlsx","data.table","plyr","dplyr","knitr",
+                               "gridExtra","ggplot2","zoo","R.oo","R.utils","psych",
+                               "robustHD")){lapply(lst, require, character.only = TRUE)}
 
 readDB <- function(fil = "DB2.xlsx", attr_sht = "TEJ_attr", xls_sht = "TEJ"){
   DBattr <- read_excel(fil, sheet=attr_sht, col_names = TRUE)
@@ -25,8 +28,8 @@ DBfilter <- function(x = TEJ,filt='filtered'){
   DB2 <- DB1[!(DB1$TSE_code %in% c('M2800','M9900','M2331','W91')) & # M2800金融業 # M9900其他 # M2331其他電子 # W91存託憑證
                !(DB1$FAMILY %in% NA) & # most family with NA got lots of NAs in other columns
                !(DB1$PB %in% NA) & # important var, must not be NA
-#               !(DB1$TA %in% NA) & # denominator or main var as PPE, ROA, SIZE, LEV, INTANG, must not bo NA.
-#               !(DB1$NetSales %in% c(0,NA)) & # remove netsales = 0 ... Denominator of (RD,EMP,MARKET),HHI's main var,
+               #               !(DB1$TA %in% NA) & # denominator or main var as PPE, ROA, SIZE, LEV, INTANG, must not bo NA.
+               #               !(DB1$NetSales %in% c(0,NA)) & # remove netsales = 0 ... Denominator of (RD,EMP,MARKET),HHI's main var,
                !(DB1$employee %in% NA)]
   DB3 <- rbind(DB0,DB2)
   DB3 <- DB3[order(DB3$TSE_code,DB3$year),]
@@ -88,19 +91,27 @@ STR <- function(x=TEJ4) {
   x <- x[order(x$company,x$year),]
   rollmn <- function(x) rollapplyr(x, width, function(x) mean(x, na.rm = TRUE), fill=NA)
   mkdt <- capture.output(for(i in 1:15){
-      cat('DB',i,"<- x[,.SD[.N==",i,"],by=list(company,year)]",sep="",fill=TRUE)
-      if(i>5){cat("width <- list(numeric(0),-1,-(1:2),-(1:3),-(1:4)",rep(',-(1:5)',i-5),')',sep="",fill=TRUE)}
-      if(i==5){cat("width <- list(numeric(0),-1,-(1:2),-(1:3),-(1:4)",')',sep="",fill=TRUE)}
-      if(i==4){cat("width <- list(numeric(0),-1,-(1:2),-(1:3)",')',sep="",fill=TRUE)}
-      if(i==3){cat("width <- list(numeric(0),-1,-(1:2)",')',sep="",fill=TRUE)}
-      if(i==2){cat("width <- list(numeric(0),-1",')',sep="",fill=TRUE)}
-      if(i==1){cat("width <- numeric(0)",sep="",fill=TRUE)}
-      cat('DB',i,'<-transform(DB',i,sep="",fill=TRUE)
-      cat(",STR_RD_mean = ave(STR_RD, company, FUN=rollmn),STR_EMP_mean = ave(STR_EMP, company, FUN=rollmn),STR_MB_mean = ave(STR_MB, company, FUN=rollmn),STR_MARKET_mean = ave(STR_MARKET, company, FUN=rollmn),STR_PPE_mean = ave(STR_PPE, company, FUN=rollmn))",sep="",fill=TRUE)
-    })
+    cat('DB',i,"<- x[,.SD[.N==",i,"],by=company]",sep="",fill=TRUE)
+    if(i>5){cat("width <- list(numeric(0),-1,-(1:2),-(1:3),-(1:4)",rep(',-(1:5)',i-5),')',sep="",fill=TRUE)}
+    if(i==5){cat("width <- list(numeric(0),-1,-(1:2),-(1:3),-(1:4)",')',sep="",fill=TRUE)}
+    if(i==4){cat("width <- list(numeric(0),-1,-(1:2),-(1:3)",')',sep="",fill=TRUE)}
+    if(i==3){cat("width <- list(numeric(0),-1,-(1:2)",')',sep="",fill=TRUE)}
+    if(i==2){cat("width <- list(numeric(0),-1",')',sep="",fill=TRUE)}
+    if(i==1){cat("width <- numeric(0)",sep="",fill=TRUE)}
+    cat('DB',i,'<-transform(DB',i, 
+        #cat(
+        ",STR_RD_mean = ave(STR_RD, company, FUN=rollmn),STR_EMP_mean = ave(STR_EMP, company, FUN=rollmn),STR_MB_mean = ave(STR_MB, company, FUN=rollmn),STR_MARKET_mean = ave(STR_MARKET, company, FUN=rollmn),STR_PPE_mean = ave(STR_PPE, company, FUN=rollmn))",sep="",fill=TRUE)
+  })
   eval(base::parse(text=mkdt))
-  DB <- rbind(DB1,DB2,DB3,DB4,DB5,DB6,DB7,DB8,DB9,DB10,DB11,DB12,DB13,DB14,DB15)
-  DBA <- as.data.table(DB[order(DB$company,DB$year),])
+  DT <- rbind(DB1,DB2,DB3,DB4,DB5,DB6,DB7,DB8,DB9,DB10,DB11,DB12,DB13,DB14,DB15)
+  NAto0 <- function(x = 'DT',col=c('STR_RD_mean','STR_EMP_mean','STR_MB_mean','STR_MARKET_mean','STR_PPE_mean')){
+    x1 <- captureOutput(
+      for(y in col){cat(x,'$',y,'[is.nan(',x,'$',y,')] <- 0',sep="",fill = TRUE)})
+    x2 <- captureOutput(cat('return(',paste(x),')',sep=""))
+    xx <- c(x1,x2)
+    eval(base::parse(text=xx))} # replace NA with 0.
+  DT1 <- NAto0()
+  DBA <- as.data.table(DT1[order(DT1$company,DT1$year),])
   return(DBA)
 }
 
@@ -120,8 +131,7 @@ STRrank <- function(x=TEJ3){
                    MARKET = rankscore(STR_MARKET_mean_rank),
                    PPE = rankscore(STR_PPE_mean_rank))
   DB2$STR <- as.numeric(DB2$RD) + as.numeric(DB2$EMP) + as.numeric(DB2$MB) + as.numeric(DB2$MARKET) + as.numeric(DB2$PPE)
-  return(DB2)
-  } # rank score function
+  return(DB2)} # rank score function
 fnGDP <- function(file="DB2.xlsx",col_sht="GDP_colnames",DB_sht="GDP"){
   # GDP : ln(realGDP)
   GDP_colname <- read_excel(file, sheet=col_sht)
@@ -152,8 +162,8 @@ fnHHI_na.rm <- function(x,k=5) {
 }
 catchDB <- function(x){
   y <- base::subset(x=x,select=c(company,market,TSE_code,TSE_name,year,
-                         ETR,CETR,STR,HHI,STR_HHI,
-                         ROA,SIZE,LEV,INTANG,QUICK,EQINC,OUTINSTI,RELATIN,RELATOUT,FAM_Dum
+                                 ETR,CETR,STR,HHI,STR_HHI,
+                                 ROA,SIZE,LEV,INTANG,QUICK,EQINC,OUTINSTI,RELATIN,RELATOUT,FAM_Dum
   ))
   return(y)}
 winsorized.sample <- function (x, prob = 0) { # remove NA
@@ -169,14 +179,21 @@ winsorized.sample <- function (x, prob = 0) { # remove NA
   DT3<-DT2[order(DT2$idx,DT2$x),]
   x2<-DT3$x
   return(x2)}
-winsamp1 <- function(x = 'TEJ7', col, prob=0.01, na.rm=TRUE){
-  x1 <- captureOutput(
-    for(y in col){cat(x,'$',y,' <- winsor(',x,'$',y,',trim = ',prob,',na.rm = ',na.rm,')',sep="",fill = TRUE)})
-  eval(base::parse(text=x1))} 
+winsamp1 <- function(x = 'TEJ7', col=c('ETR','CETR','ROA','SIZE','LEV','INTANG','QUICK','EQINC','OUTINSTI','RELATIN','RELATOUT')
+                     , prob=0.01, na.rm=TRUE){
+  x1 <- captureOutput(cat('DB1<-',x,sep="",fill=TRUE))
+  x2 <- captureOutput(for(y in col){cat('DB1$',y,' <- winsor(',x,'$',y,',trim = ',prob,',na.rm = ',na.rm,')',sep="",fill = TRUE)})
+  eval(base::parse(text=x1))
+  eval(base::parse(text=x2))
+  return(DB1)}
 winsamp2 <- function(x = 'TEJ7', col, prob=0.01){
   DD <- captureOutput(
     for(y in col){cat(x,'$',y,' <- winsorized.sample(x=',x,'$',y,',prob = ',prob,')',sep="",fill = TRUE)})
   eval(base::parse(text=DD))} 
+
+
+
+
 
 #Install.pack()
 #Load.pack()

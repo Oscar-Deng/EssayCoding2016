@@ -30,13 +30,12 @@ TEJ2 <- control_var(x=TEJ1)
 TEJ3 <- exp_var_STR(x=TEJ2)
 TEJ4 <- dep_var(TEJ3,k=5)
 TEJ5 <- STR(TEJ4) # TEJ4 removed NAs
-#TEJ3 <- NAto0(x ='TEJ3',col=c('STR_RD_mean','STR_EMP_mean','STR_MB_mean','STR_MARKET_mean','STR_PPE_mean'))
+
 TEJ6 <- STRrank(TEJ5)
 TEJ7 <- fnHHI_na.rm(TEJ6,k=5)
 TEJ81 <- TEJ7
-TEJ81 <- winsamp1(x = 'TEJ81', col = c('ETR','CETR','ROA','SIZE','LEV','INTANG'
-                                    ,'QUICK','EQINC','OUTINSTI','RELATIN','RELATOUT')
-                  , prob = 0.01, na.rm = TRUE)
+TEJ81 <- winsamp1(x='TEJ81',col=c('ETR','CETR','ROA','SIZE','LEV','INTANG','QUICK','EQINC','OUTINSTI','RELATIN','RELATOUT')
+                  ,prob=0.01,na.rm=TRUE)
 TEJ82 <- TEJ7
 TEJ82 <- winsamp2(x='TEJ82',col = c('ETR','CETR','ROA','SIZE','LEV','INTANG'
                                     ,'QUICK','EQINC','OUTINSTI','RELATIN','RELATOUT')

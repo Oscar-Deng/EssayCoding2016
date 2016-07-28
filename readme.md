@@ -89,7 +89,7 @@
 
 <blockquote>
   <ol>
-  <li>使用<kbd><strong>Ctrl+F </strong></kbd>搜尋<strong>Taiwan</strong>，並任選一鏡像下載點，或直接<a href="http://ftp.yzu.edu.tw/CRAN/">點此下載</a>。</li>
+  <li>使用<kbd>Ctrl+F</kbd>搜尋<strong>Taiwan</strong>，並任選一鏡像下載點，或直接<a href="http://ftp.yzu.edu.tw/CRAN/">點此下載</a>。</li>
   <li>請選擇適合自己電腦運行介面的版本，R提供Linux, Mac及Windows三種版本。</li>
   <li>R支援多國語言，從哪個鏡像下載不影響安裝。</li>
   <li>建議版本需<strong>3.3.0</strong>以後。</li>
@@ -108,14 +108,14 @@
 <p>安裝完成後，請確認Rstudio或RGui之語言及區域(language &amp; locale)設定正確：</p>
 
 <blockquote>
-  <p>查看環境設定 <br>
+  <p># 查看環境設定 <br>
   <code>sessionInfo()</code></p>
   
-  <p>查看語言/地區設定 <br>
+  <p># 查看語言/地區設定 <br>
   <code>Sys.getlocale(category = "LC_ALL")</code> <br>
-  <code>[1]"LC_COLLATE=Chinese (Traditional)_Taiwan.950;LC_MONETARY=Chinese (Traditional)_Taiwan.950;LC_NUMERIC=C;LC_TIME=Chinese (Traditional)_Taiwan.950" #  若上述回傳非顯示相同值，請輸入下方設定</code></p>
-  
-  <p><code>Sys.setlocale("LC_ALL",locale='cht')</code></p>
+  <code>[1]"LC_COLLATE=Chinese (Traditional)_Taiwan.950;LC_MONETARY=Chinese (Traditional)_Taiwan.950;LC_NUMERIC=C;LC_TIME=Chinese (Traditional)_Taiwan.950"</code> <br>
+  # 若上述回傳非顯示相同值，請輸入下方設定 <br>
+  <code>Sys.setlocale("LC_ALL",locale='cht')</code></p>
 </blockquote>
 
 <p>其他疑難排解，請見手冊： <br>
@@ -169,35 +169,70 @@
   <p>#擷取工作路徑，用於之後輸出資料庫 <br>
   <code>wd &lt;- getwd()</code> </p>
   
-  <p>#清除環境清單 <br>
-  <code>rm(list=ls())</code> </p>
+  <p>#… <br>
+  <code>...</code> </p>
 </blockquote>
 
 <h3 id="preparing-data"><strong>Preparing Data</strong></h3>
 
-<ol>
-<li><p>讀入自TEJ下載的<a href="https://github.com/Oscar-Deng/EssayCoding2016/blob/master/DB2.xlsx">excel檔</a>，並命名為<code>TEJ</code>資料集。</p>
+<p>1.讀入自TEJ下載的<a href="https://github.com/Oscar-Deng/EssayCoding2016/blob/master/DB2.xlsx">excel檔</a>，並命名為<code>TEJ</code>資料集。</p>
 
 <blockquote>
   <p><code>TEJ &lt;- readDB(fil = "DB2.xlsx", attr_sht = "TEJ_attr", xls_sht = "TEJ")</code></p>
-</blockquote></li>
-<li><p>篩選資料集TEJ，並命為<code>TEJ0</code>，同時將篩選掉的資料集另命為<code>TEJ01</code>。</p>
+</blockquote>
+
+<p>2.篩選資料集TEJ，並命為<code>TEJ0</code>，同時將篩選掉的資料集另命為<code>TEJ01</code>。</p>
 
 <blockquote>
   <p><code>TEJ0 &lt;- DBfilter(x = TEJ,filt = 'filtered')</code> <br>
   <code>TEJ01 &lt;- DBfilter(x = TEJ,filt = 'dropped')</code></p>
-</blockquote></li>
-<li><p>1</p></li>
-<li>1</li>
-<li>1</li>
-<li>1</li>
-<li>1</li>
-<li>1</li>
-<li>1</li>
-<li>1</li>
-<li>1</li>
-<li>1 </li>
-</ol>
+  
+  <p><code>DBfilter</code>函數請見<strong><code>DBfilter</code></strong>節</p>
+</blockquote>
+
+<p>3.缺漏值補0。</p>
+
+<blockquote>
+  <p># 補0欄位有：</p>
+  
+  <p><code>TEJ1&lt;-NAto0(x='TEJ0',col=c('OERD','OEPRO','Land', 'LandR',RELATIN','RELATOUT','CTP_IFRS_CFI', 'CTP_IFRS_CFO','CTP_IFRS_CFF','CTP_GAAP'))</code></p>
+</blockquote>
+
+<p>4.產生控制變數。</p>
+
+<blockquote>
+  <p>123</p>
+</blockquote>
+
+<p>5.產生解釋變數。</p>
+
+<blockquote>
+  <p>123</p>
+</blockquote>
+
+<p>6.產生依變數。</p>
+
+<blockquote>
+  <p>123</p>
+</blockquote>
+
+<p>7.產生<code>企業競爭策略</code> <strong>(STRATEGY)</strong>變數</p>
+
+<blockquote>
+  <p>123</p>
+</blockquote>
+
+<p>8.1</p>
+
+<blockquote>
+  <p>123</p>
+</blockquote>
+
+<p>9.1 </p>
+
+<blockquote>
+  <p>123</p>
+</blockquote>
 
 <p>(撰寫中…)</p>
 
@@ -304,9 +339,135 @@
   <p><code>解釋</code></p>
 </blockquote>
 
+
+
+<h3 id="functions"><strong>Functions</strong></h3>
+
+
+
+<h4 id="所有自定義函數說明如下">所有自定義函數說明如下</h4>
+
+
+
+<h5 id="installpack-檢查並安裝所有未安裝的套件">Install.pack 檢查並安裝所有<strong>未安裝</strong>的套件</h5>
+
+<blockquote>
+  <p><code>Install.pack&lt;-function(list=c("readxl","xlsx","data.table","plyr","dplyr","knitr", "gridExtra","ggplot2","zoo","R.oo","R.utils","psych","robustHD")){ <br>
+    list.of.packages &lt;- list <br>
+    new.packages &lt;- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])] <br>
+    if(length(new.packages)){install.packages(new.packages)}else{update.packages(list.of.packages)} <br>
+  }</code> <br>
+  # list列出所有用到的套件： <br>
+   - readxl：讀入excel檔 <br>
+   - xlsx：讀寫excel檔 <br>
+   - data.table：資料集套件 <br>
+   - plyr：文字處理套件 <br>
+   - dplyr：文字處理套件 <br>
+   - knitr：文字處理套件 <br>
+   - gridExtra：表格處理套件 <br>
+   - ggplot2：繪圖套件 <br>
+   - R.oo：物件導向編程套件 <br>
+   - zoo：時序套件 <br>
+   - R.utils：雜項編程套件 <br>
+   - psych：心理學研究套件，使用其中的統計分析函數 <br>
+   - robustHD：統計分析套件</p>
+</blockquote>
+
+<h5 id="loadpack-讀入所有使用到的套件">Load.pack 讀入所有使用到的套件</h5>
+
+<blockquote>
+  <p><code>Load.pack &lt;- function(lst=list("readxl","xlsx","data.table","plyr","dplyr","knitr", "gridExtra","ggplot2","zoo","R.oo","R.utils","psych","robustHD")){ <br>
+    lapply(lst, require, character.only = TRUE)}</code></p>
+</blockquote>
+
+<h5 id="readdb-讀入excel檔並重新命名欄位">readDB 讀入excel檔，並重新命名欄位</h5>
+
+<blockquote>
+  <p><code>readDB &lt;- function(fil = "DB2.xlsx", attr_sht = "TEJ_attr", xls_sht = "TEJ"){</code></p>
+  
+  <p># 讀入檔案：DB2.xlsx，工作表：TEJ_attr，有新舊欄位名稱及欄位屬性 <br>
+  <code>DBattr &lt;- read_excel(fil, sheet=attr_sht, col_names = TRUE)</code> <br>
+  # 讀入檔案：DB2.xlsx，工作表：TEJ，包含欄位屬性 <br>
+  <code>DBori &lt;- read_excel(fil, sheet=xls_sht, col_names = TRUE, col_types = DBattr$attr)</code> <br>
+  # 重設欄位名稱為新名稱 <br>
+  <code>setnames(DBori,old=as.character(DBattr$old), new=as.character(DBattr$new))</code> <br>
+  <code>}</code></p>
+</blockquote>
+
+<h5 id="dbfilter-篩選資料集">DBfilter 篩選資料集</h5>
+
+<blockquote>
+  <p><code>DBfilter &lt;- function(x = TEJ,filt='filtered'){</code></p>
+  
+  <p># 原始資料─<code>DB0</code>： <br>
+  <code>DB0 &lt;- as.data.table(x)[,.SD[.N &gt; 0],by=list(TSE_code,year(date))]</code> <br>
+  # 篩選1：以<code>DB0</code>篩選：當年度產業不足五家公司的─<code>DB1</code>： <br>
+  <code>DB1 &lt;- as.data.table(x)[,.SD[.N &gt;= 5],by=list(TSE_code,year(date))]</code></p>
+  
+  <p># 篩選2： <br>
+  ##以<strong>TSE新產業類別</strong>分類，去除<strong>金融保險(M2800)</strong>、<strong>其他(M9900)</strong>、<strong>其他電子(M2331)</strong>、<strong>存託憑證(W91)</strong> <br>
+  <code>DB2 &lt;- DB1[!(DB1$TSE_code %in% c('M2800','M9900','M2331','W91')) &amp;</code> <br>
+  ##刪除FAMILY(家族企業)缺漏值 <br>
+  <code>!(DB1$FAMILY %in% NA) &amp; # 大部分缺FAMILY的也缺很多其他欄位。</code> <br>
+  ##刪除PB(市價)缺漏值 <br>
+  <code>!(DB1$PB %in% NA) &amp; # 重要指標，不能是NA。</code> <br>
+  ##刪除TA(資產總額)缺漏值 <br>
+  <code>!(DB1$TA %in% NA) &amp; # 是PPE, ROA, SIZE, LEV, INTANG的分母，不能是NA。</code> <br>
+  ##刪除NetSales(營業收入淨額)缺漏值、0值 <br>
+  <code>!(DB1$NetSales %in% c(0,NA)) &amp; # 是RD,EMP,MARKET的分母，不能是NA。</code> <br>
+  ##刪除employee(員工人數)缺漏值 <br>
+  <code>!(DB1$employee %in% NA)]</code></p>
+  
+  <p><code>DB3 &lt;- rbind(DB0,DB2)</code> <br>
+  <code>DB3 &lt;- DB3[order(DB3$TSE_code,DB3$year),]</code> <br>
+  <code>DB4 &lt;- DB3[!(duplicated(DB3) | duplicated(DB3, fromLast = TRUE)),]</code></p>
+  
+  <p># 若<code>filt='filtered'</code>，回傳篩選後的資料集，若<code>filt='dropped'</code>，回傳篩選掉的資料集。 <br>
+  <code>base::ifelse(filt=='filtered', return(DB2), base::ifelse(filt=='dropped',return(DB4),  print("please assign filter type")))</code> <br>
+  <code>}</code> </p>
+</blockquote>
+
+<h5 id="installpack-4">Install.pack</h5>
+
+<h5 id="installpack-5">Install.pack</h5>
+
+<h5 id="installpack-6">Install.pack</h5>
+
+<h5 id="installpack-7">Install.pack</h5>
+
+<h5 id="installpack-8">Install.pack</h5>
+
+<h5 id="installpack-9">Install.pack</h5>
+
+<h5 id="installpack-10">Install.pack</h5>
+
+<h5 id="installpack-11">Install.pack</h5>
+
+
+
+<h4 id="套件函數說明如下">套件函數說明如下</h4>
+
+
+
+<h5 id="installpack-12">Install.pack</h5>
+
+
+
+<h5 id="installpack-13">Install.pack</h5>
+
+
+
+<h5 id="installpack-14">Install.pack</h5>
+
+
+
+<h5 id="installpack-15">Install.pack</h5>
+
+
+
+<h5 id="installpack-16">Install.pack</h5>
+
 <hr>
-
-
 
 <h2 id="qa">Q&amp;A</h2>
 

@@ -90,16 +90,18 @@ dep_var <- function(x=TEJ2,k=5){
   return(as.data.table(DB[order(DB$company,DB$year),]))} # add up 5 years moving sum
 STR <- function(x,k=5,na.rm=TRUE) {
   # construct function rollmean
+  rollmn <- function(x) rollapplyr(x, m+1, function(x) mean(x[-m-1],na.rm = na.rm), fill = NA, partial=TRUE) # add remove na
+  rollsm <- function(x) rollapplyr(x, m+1, function(x) sum(x[-m-1],na.rm = na.rm), fill = NA, partial=TRUE) # add remove na
   rollmn0 <- function(x) rollapplyr(x, m+1, function(x) mean(x[-m-1],na.rm = na.rm), fill = NA, partial=TRUE) # add remove na
   rollsm0 <- function(x) rollapplyr(x, m+1, function(x) sum(x[-m-1],na.rm = na.rm), fill = NA, partial=TRUE) # add remove na
   x <- x[order(x$company,x$year),]
   m <- k
   DB1 <- transform(x[,.SD[.N > k],by=company],
-                   STR_RD_mean = ave(STR_RD, company, FUN=rollmn0),
-                   STR_EMP_mean = ave(STR_EMP, company, FUN=rollmn0),
-                   STR_MB_mean = ave(STR_MB, company, FUN=rollmn0),
-                   STR_MARKET_mean = ave(STR_MARKET, company, FUN=rollmn0),
-                   STR_PPE_mean = ave(STR_PPE, company, FUN=rollmn0))
+                   STR_RD_mean = ave(STR_RD, company, FUN=rollmn),
+                   STR_EMP_mean = ave(STR_EMP, company, FUN=rollmn),
+                   STR_MB_mean = ave(STR_MB, company, FUN=rollmn),
+                   STR_MARKET_mean = ave(STR_MARKET, company, FUN=rollmn),
+                   STR_PPE_mean = ave(STR_PPE, company, FUN=rollmn))
   # use past 4 yr for only 5 items' company
   m <- k-1
   DB2 <- transform(x[,.SD[.N == k],by=company],

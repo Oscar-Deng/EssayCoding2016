@@ -4,17 +4,19 @@ rm(list=ls())
 
 # functions!!!
 # install all packages and load.
-Install.pack <- function(list = c("readxl","xlsx","data.table","plyr","dplyr","knitr","gridExtra","ggplot2","zoo","R.oo","R.utils","psych","robustHD")){
+Install.pack <- function(list = c("readxl","xlsx","data.table","plyr","dplyr","knitr",
+                                  "gridExtra","ggplot2","zoo","R.oo","R.utils","psych",
+                                  "robustHD")){
   list.of.packages <- list
   new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
   if(length(new.packages)){install.packages(new.packages)}else{update.packages(list.of.packages)}
 }
-Load.pack <- function(lst=list("readxl","xlsx","data.table","plyr","dplyr","knitr","gridExtra","ggplot2","zoo","R.oo","R.utils","psych","robustHD")){
+Load.pack <- function(lst=list("readxl","xlsx","data.table","plyr","dplyr","knitr",
+                               "gridExtra","ggplot2","zoo","R.oo","R.utils","psych",
+                               "robustHD")){
   lapply(lst, require, character.only = TRUE)}
 
 readDB <- function(fil = "DB2.xlsx", attr_sht = "TEJ_attr", xls_sht = "TEJ"){
-  # read in excel database: DB2.xlsx, excel sheet: DBattr
-  # {include old and new column and column attributes}
   DBattr <- read_excel(fil, sheet=attr_sht, col_names = TRUE)
   # read in excel database: DB2.xlsx, excel sheet: TEJ, with column names.
   DBori <- read_excel(fil, sheet=xls_sht, col_names = TRUE, col_types = DBattr$attr)
@@ -88,8 +90,8 @@ dep_var <- function(x=TEJ2,k=5){
   return(as.data.table(DB[order(DB$company,DB$year),]))} # add up 5 years moving sum
 STR <- function(x,k=5,na.rm=TRUE) {
   # construct function rollmean
-  rollmn0 <- function(x) rollapplyr(x, m+1, function(x) mean(x[-m-1],na.rm = na.rm), fill = NA) # add remove na
-  rollsm0 <- function(x) rollapplyr(x, m+1, function(x) sum(x[-m-1],na.rm = na.rm), fill = NA) # add remove na
+  rollmn0 <- function(x) rollapplyr(x, m+1, function(x) mean(x[-m-1],na.rm = na.rm), fill = NA, partial=TRUE) # add remove na
+  rollsm0 <- function(x) rollapplyr(x, m+1, function(x) sum(x[-m-1],na.rm = na.rm), fill = NA, partial=TRUE) # add remove na
   x <- x[order(x$company,x$year),]
   m <- k
   DB1 <- transform(x[,.SD[.N > k],by=company],
@@ -188,7 +190,7 @@ fnHHI_na.rm <- function(x,k=5) {
   return(DBA)
 }
 catchDB <- function(x){
-  y <- subset(x,select=c(company,market,TSE_code,TSE_name,year,
+  y <- base::subset(x=x,select=c(company,market,TSE_code,TSE_name,year,
                          ETR,CETR,STR,HHI,STR_HHI,
                          ROA,SIZE,LEV,INTANG,QUICK,EQINC,OUTINSTI,RELATIN,RELATOUT,FAM_Dum
   ))

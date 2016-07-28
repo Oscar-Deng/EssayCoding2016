@@ -41,7 +41,8 @@ TEJ82 <- TEJ7
 TEJ82 <- winsamp2(x='TEJ82',col = c('ETR','CETR','ROA','SIZE','LEV','INTANG'
                                     ,'QUICK','EQINC','OUTINSTI','RELATIN','RELATOUT')
                   ,prob = 0.01)
-TEJ9 <- catchDB(TEJ8)
+TEJ91 <- catchDB(x=TEJ81)
+TEJ92 <- catchDB(x=TEJ82)
 View(TEJ9)
 # ----
 # replace TSE_code to TEJ_code1 ### code beneath havn't finished!!!!!!!!!

@@ -143,7 +143,7 @@
 <h3 id="getting-data"><strong>Getting Data</strong></h3>
 
 <ol>
-<li>開啟Excel，使用TEJ的Excel增益集。 <a href="#如何開啟TEJ增益集">(如何開啟TEJ增益集?)</a></li>
+<li>開啟Excel，使用TEJ的Excel增益集。 <a href="#如何開啟tej增益集">(如何開啟TEJ增益集?)</a></li>
 <li>讀入記錄檔.dat，可以得到本分析資料庫的原始設定。</li>
 <li>運行RStudio</li>
 </ol>
@@ -168,9 +168,6 @@
   
   <p>#擷取工作路徑，用於之後輸出資料庫 <br>
   <code>wd &lt;- getwd()</code> </p>
-  
-  <p>#… <br>
-  <code>...</code> </p>
 </blockquote>
 
 <h3 id="preparing-data"><strong>Preparing Data</strong></h3>
@@ -187,7 +184,7 @@
   <p><code>TEJ0 &lt;- DBfilter(x = TEJ,filt = 'filtered')</code> <br>
   <code>TEJ01 &lt;- DBfilter(x = TEJ,filt = 'dropped')</code></p>
   
-  <p><code>DBfilter</code>函數請見<strong><code>DBfilter</code></strong>節</p>
+  <p><code>DBfilter</code>函數請見[<strong><code>DBfilter</code></strong>節](#dbfilter 篩選資料集)</p>
 </blockquote>
 
 <p>3.缺漏值補0。</p>
@@ -427,7 +424,17 @@
   <code>}</code> </p>
 </blockquote>
 
-<h5 id="installpack-4">Install.pack</h5>
+<h5 id="nato0-補na為0">NAto0 補NA為0</h5>
+
+<blockquote>
+  <p># 將要補0的欄位放入col，如：<code>col=c('OERD','OEPRO','Land','LandR','RELATIN'))</code> <br>
+  <code>NAto0 &lt;- function(x = 'TEJ0',col=c(NA)){</code> <br>
+  <code>x1 &lt;- captureOutput(</code> <br>
+  <code>for(y in col){cat(x,'$',y,'[is.na(',x,'$',y,')] &lt;- 0',sep="",fill = TRUE)})</code> <br>
+  <code>x2 &lt;- captureOutput(cat('return(',paste(x),')',sep=""))</code> <br>
+  <code>xx &lt;- c(x1,x2)</code> <br>
+  <code>eval(base::parse(text=xx))}</code></p>
+</blockquote>
 
 <h5 id="installpack-5">Install.pack</h5>
 

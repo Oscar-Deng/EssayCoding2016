@@ -234,8 +234,6 @@
   <p>123</p>
 </blockquote>
 
-<p>(撰寫中…)</p>
-
 <h3 id="produce-variables"><strong>Produce Variables</strong></h3>
 
 
@@ -353,7 +351,7 @@
   <p># 檢查並安裝所有<strong>未安裝</strong>的套件 <br>
   <code>Install.pack&lt;-function(list=c("readxl","xlsx","data.table","plyr","dplyr","knitr", "gridExtra","ggplot2","zoo","R.oo","R.utils","psych","robustHD")){ <br>
     list.of.packages &lt;- list <br>
-    new.packages &lt;- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])] <br>
+    new.packages&lt;-list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])] <br>
     if(length(new.packages)){install.packages(new.packages)}else{update.packages(list.of.packages)} <br>
   }</code></p>
 </blockquote>

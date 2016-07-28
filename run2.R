@@ -14,7 +14,9 @@ Sys.getlocale(category = "LC_ALL")
 ## if not please set locale to:
 Sys.setlocale("LC_ALL",locale='cht')
 
-# RUN! RUN! RUN!
+## other trouble shooting please read:
+# https://github.com/dspim/R/wiki/R-&-RStudio-Troubleshooting-Guide
+
 # ----
 Install.pack()
 Load.pack()

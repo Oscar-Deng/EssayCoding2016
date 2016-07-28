@@ -184,7 +184,7 @@
   <p><code>TEJ0 &lt;- DBfilter(x = TEJ,filt = 'filtered')</code> <br>
   <code>TEJ01 &lt;- DBfilter(x = TEJ,filt = 'dropped')</code></p>
   
-  <p><code>DBfilter</code>函數請見 <a href="%22DBfilter%20%E7%AF%A9%E9%81%B8%E8%B3%87%E6%96%99%E9%9B%86%22"><strong><code>DBfilter</code></strong>節</a></p>
+  <p><code>DBfilter</code>函數請見 <a href="#DBfilter%20%E7%AF%A9%E9%81%B8%E8%B3%87%E6%96%99%E9%9B%86"><strong><code>DBfilter</code></strong>節</a></p>
 </blockquote>
 
 <p>3.缺漏值補0。</p>

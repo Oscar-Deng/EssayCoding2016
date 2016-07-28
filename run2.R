@@ -29,28 +29,20 @@ readDB <- function(fil = "DB2.xlsx", attr_sht = "TEJ_attr", xls_sht = "TEJ"){
   # rename columns
   setnames(DBori,old=as.character(DBattr$old), new=as.character(DBattr$new))
 } # read in xlsx
-DBfilter <- function(x = TEJ){
-  DB1 <- as.data.table(x)[,.SD[.N >= 5],by=list(TSE_code,year(date))] # removed M1800<2001-2005>,M2200<2001>
-  DB  <- DB1[!(DB1$TSE_code %in% c('M2800','M9900','M2331','W91')) & # M2800金融業 # M9900其他 # M2331其他電子 # W91存託憑證
-               !(DB1$FAMILY %in% NA) & # most family with NA got lots of NAs in other columns
-               !(DB1$PB %in% NA) & # important var, must not be NA
-               !(DB1$TA %in% NA) & # denominator or main var as PPE, ROA, SIZE, LEV, INTANG, must not bo NA.
-               !(DB1$NetSales %in% c(0,NA)) & # remove netsales = 0
-               !(DB1$employee %in% NA)]
-  return(DB)} # remove certain value or var ==> TEJ0 + TEJ00 <items removed> = TEJ
-DBfilter0 <- function(x = TEJ){
-  DB1 <- as.data.table(x)[,.SD[.N >= 5],by=list(TSE_code,year(date))] # removed M1800<2001-2005>,M2200<2001>
-  DB2 <- DB1[!(DB1$TSE_code %in% c('M2800','M9900','M2331','W91')) & # M2800金融業 # M9900其他 # M2331其他電子 # W91存託憑證
-               !(DB1$FAMILY %in% NA) & # most family with NA got lots of NAs in other columns
-               !(DB1$PB %in% NA) & # important var, must not be NA
-               !(DB1$TA %in% NA) & # denominator or main var as PPE, ROA, SIZE, LEV, INTANG, must not bo NA.
-               !(DB1$NetSales %in% c(0,NA)) & # remove netsales = 0
-               !(DB1$employee %in% NA)]
+DBfilter <- function(x = TEJ,filt='filtered'){
   DB0 <- as.data.table(x)[,.SD[.N > 0],by=list(TSE_code,year(date))]
+  DB1 <- as.data.table(x)[,.SD[.N >= 5],by=list(TSE_code,year(date))] # removed M1800<2001-2005>,M2200<2001>
+    DB2 <- DB1[!(DB1$TSE_code %in% c('M2800','M9900','M2331','W91')) & # M2800金融業 # M9900其他 # M2331其他電子 # W91存託憑證
+               !(DB1$FAMILY %in% NA) & # most family with NA got lots of NAs in other columns
+               !(DB1$PB %in% NA) & # important var, must not be NA
+               !(DB1$TA %in% NA) & # denominator or main var as PPE, ROA, SIZE, LEV, INTANG, must not bo NA.
+               !(DB1$NetSales %in% c(0,NA)) & # remove netsales = 0 ... Denominator of (RD,EMP,MARKET),HHI's main var,
+               !(DB1$employee %in% NA)]
   DB3 <- rbind(DB0,DB2)
   DB3 <- DB3[order(DB3$TSE_code,DB3$year),]
-  DB <- DB3[!(duplicated(DB3) | duplicated(DB3, fromLast = TRUE)),]
-  return(DB)} 
+  DB4 <- DB3[!(duplicated(DB3) | duplicated(DB3, fromLast = TRUE)),]
+  base::ifelse(filt=='filtered', return(DB2), base::ifelse(filt=='dropped', return(DB4), print("please assign filter type")))
+  } # 篩選後的:filt=filtered, #篩選刪掉的filt=dropped
 NAto0 <- function(x = 'TEJ0',col=c(NA)){
   x1 <- captureOutput(
     for(y in col){cat(x,'$',y,'[is.na(',x,'$',y,')] <- 0',sep="",fill = TRUE)})
@@ -169,6 +161,7 @@ STR_na.rm <- function(x,k=5) {
   # construct function rollmean
   rollmn0 <- function(x) rollapplyr(x, m+1, function(x) mean(x[-m-1],na.rm = TRUE), fill = NA) # add remove na
   rollsm0 <- function(x) rollapplyr(x, m+1, function(x) sum(x[-m-1],na.rm = TRUE), fill = NA) # add remove na
+  x <- x[order(x$company,x$year),]
   m <- k
   DB1 <- transform(x[,.SD[.N > k],by=company],
                    STR_RD_mean = ave(STR_RD, company, FUN=rollmn0),
@@ -271,20 +264,28 @@ catchDB <- function(x){
                          ROA,SIZE,LEV,INTANG,QUICK,EQINC,OUTINSTI,RELATIN,RELATOUT,FAM_Dum
   ))
   return(y)}
-winsorized.sample <- function (x, prob = 0,...) { 
-  n <- length(x)
-  n0 <- length(x[!is.na(x)])
-  low <- floor(n0 * prob) + 1
-  high <- n0 + 1 - low
-  idx <- seq(1,n)
-  DT<-data.frame(idx,x)
-  DT2<-DT[order(DT$x,DT$idx,na.last=TRUE),]
-  DT2$x[1:low]<-DT2$x[low]
-  DT2$x[high:n0]<-DT2$x[high]
-  DT3<-DT2[order(DT2$idx,DT2$x),]
-  x2<-DT3$x
-  return(x2)}
 
+winsamp1 <- function(x = 'TEJ7', col, prob=0.01, na.rm=TRUE){
+  x1 <- captureOutput(
+    for(y in col){cat(x,'$',y,' <- winsor(',x,'$',y,',trim = ',prob,',na.rm = ',na.rm,')',sep="",fill = TRUE)})
+  eval(base::parse(text=x1))} 
+winsamp2 <- function(x = 'TEJ7', col, prob=0.01){
+  winsorized.sample <- function (x, prob = 0) { # remove NA
+    n <- length(x)
+    n0 <- length(x[!is.na(x)])
+    low <- floor(n0 * prob) + 1
+    high <- n0 + 1 - low
+    idx <- seq(1,n)
+    DT<-data.frame(idx,x)
+    DT2<-DT[order(DT$x,DT$idx,na.last=TRUE),]
+    DT2$x[1:low]<-DT2$x[low]
+    DT2$x[high:n0]<-DT2$x[high]
+    DT3<-DT2[order(DT2$idx,DT2$x),]
+    x2<-DT3$x
+    return(x2)}
+  DD <- captureOutput(
+    for(y in col){cat(x,'$',y,' <- winsorized.sample(x=',x,'$',y,',prob = ',prob,')',sep="",fill = TRUE)})
+  eval(base::parse(text=DD))} 
 # ----
 # RUN! RUN! RUN!
 # ----
@@ -293,32 +294,26 @@ Load.pack()
 wd <- getwd()
 GDP <- fnGDP()
 TEJ <- readDB(fil = "DB2.xlsx", attr_sht = "TEJ_attr", xls_sht = "TEJ")
-TEJ0 <- DBfilter(x = TEJ)
-TEJ01 <- DBfilter0(x = TEJ)
+TEJ0 <- DBfilter(x = TEJ,filt = 'filtered')
+TEJ01 <- DBfilter(x = TEJ,filt = 'dropped')
 TEJ1 <- NAto0(x ='TEJ0',col=c('OERD','OEPRO','Land','LandR','RELATIN','RELATOUT','CTP_IFRS_CFI','CTP_IFRS_CFO','CTP_IFRS_CFF','CTP_GAAP'))
 TEJ2 <- control_var(x=TEJ1)
 TEJ3 <- exp_var_STR(x=TEJ2)
-TEJ3 <- dep_var(TEJ3,k=5)
-TEJ4 <- STR_na.rm(TEJ3,k=5) # TEJ3 removed NAs
+TEJ4 <- dep_var(TEJ3,k=5)
+TEJ5 <- STR_na.rm(TEJ4,k=5) # TEJ4 removed NAs
 #TEJ3 <- NAto0(x ='TEJ3',col=c('STR_RD_mean','STR_EMP_mean','STR_MB_mean','STR_MARKET_mean','STR_PPE_mean'))
-TEJ4 <- STRrank(TEJ4)
-TEJ5 <- fnHHI_na.rm(TEJ4,k=5)
-TEJ6 <- TEJ5
-TEJ6$ETR <- winsor(x=TEJ6$ETR,trim = 0.01,na.rm = TRUE)
-TEJ6$CETR <- winsor(x=TEJ6$CETR,trim = 0.01,na.rm = TRUE)
-TEJ6$ROA <- winsor(x=TEJ6$ROA,trim = 0.01,na.rm = TRUE)
-TEJ6$SIZE <- winsor(x=TEJ6$SIZE,trim = 0.01,na.rm = TRUE)
-TEJ6$LEV <- winsor(x=TEJ6$LEV,trim = 0.01,na.rm = TRUE)
-TEJ6$INTANG <- winsor(x=TEJ6$INTANG,trim = 0.01,na.rm = TRUE)
-TEJ6$QUICK <- winsor(x=TEJ6$QUICK,trim = 0.01,na.rm = TRUE)
-TEJ6$EQINC <- winsor(x=TEJ6$EQINC,trim = 0.01,na.rm = TRUE)
-TEJ6$OUTINSTI <- winsor(x=TEJ6$OUTINSTI,trim = 0.01,na.rm = TRUE)
-TEJ6$RELATIN <- winsor(x=TEJ6$RELATIN,trim = 0.01,na.rm = TRUE)
-TEJ6$RELATOUT <- winsor(x=TEJ6$RELATOUT,trim = 0.01,na.rm = TRUE)
-
-
-TEJ7 <- catchDB(TEJ6)
-View(TEJ6)
+TEJ6 <- STRrank(TEJ5)
+TEJ7 <- fnHHI_na.rm(TEJ6,k=5)
+TEJ81 <- TEJ7
+TEJ81 <- winsamp1(x = 'TEJ81', col = c('ETR','CETR','ROA','SIZE','LEV','INTANG'
+                                    ,'QUICK','EQINC','OUTINSTI','RELATIN','RELATOUT')
+                  , prob = 0.01, na.rm = TRUE)
+TEJ82 <- TEJ7
+TEJ82 <- winsamp2(x='TEJ82',col = c('ETR','CETR','ROA','SIZE','LEV','INTANG'
+                                    ,'QUICK','EQINC','OUTINSTI','RELATIN','RELATOUT')
+                  ,prob = 0.01)
+TEJ9 <- catchDB(TEJ8)
+View(TEJ9)
 # ----
 # replace TSE_code to TEJ_code1 ### code beneath havn't finished!!!!!!!!!
 # GIANT & MERIDA are deleted< sort by TSE_code>, do we have to use TEJ_code1 or TEJ_code2 to classify?

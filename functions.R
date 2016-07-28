@@ -6,14 +6,14 @@ rm(list=ls())
 # install all packages and load.
 Install.pack <- function(list = c("readxl","xlsx","data.table","plyr","dplyr","knitr",
                                   "gridExtra","ggplot2","zoo","R.oo","R.utils","psych",
-                                  "robustHD")){
+                                  "robustHD","rbenchmark")){
   list.of.packages <- list
   new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
   if(length(new.packages)){install.packages(new.packages)}else{update.packages(list.of.packages)}
 }
 Load.pack <- function(lst=list("readxl","xlsx","data.table","plyr","dplyr","knitr",
                                "gridExtra","ggplot2","zoo","R.oo","R.utils","psych",
-                               "robustHD")){lapply(lst, require, character.only = TRUE)}
+                               "robustHD","rbenchmark")){lapply(lst, require, character.only = TRUE)}
 
 readDB <- function(fil = "DB2.xlsx", attr_sht = "TEJ_attr", xls_sht = "TEJ"){
   DBattr <- read_excel(fil, sheet=attr_sht, col_names = TRUE)
@@ -115,7 +115,7 @@ STR <- function(x=TEJ4) {
   return(DBA)
 }
 
-STRrank <- function(x=TEJ3){
+STRrank <- function(x=TEJ5){
   prank<-function(x) {ifelse(is.na(x),NA,rank(x,ties.method = 'min')/sum(!is.na(x)))} # STRATEGY ranktile.
   rankscore <- function(x) ifelse(x>=0 & x<=0.2,1,ifelse(x>0.2 & x<=0.4,2,ifelse(x>0.4 & x<=0.6,3,ifelse(x>0.6 & x<=0.8,4,ifelse(x>0.8 & x<=1,5,NA)))))
   DB <- transform(x[,by=c(TSE_code,year)],
@@ -140,25 +140,39 @@ fnGDP <- function(file="DB2.xlsx",col_sht="GDP_colnames",DB_sht="GDP"){
   setnames(rGDP, old=as.character(GDP_colname$old), new=as.character(GDP_colname$new))
   return(rGDP)
 } # GDP
-fnHHI_na.rm <- function(x,k=5) {
-  # construct function rollmean
-  rollmn0 <- function(x) rollapplyr(x, k+1, function(x) mean(x[-k-1],na.rm = TRUE), fill = NA) # add remove na
-  rollsm0 <- function(x) rollapplyr(x, k+1, function(x) sum(x[-k-1],na.rm = TRUE), fill = NA) # add remove na
+fnHHI_na.rm <- function(x=TEJ6) {
+  func <- function(z=y2) {
+    rollmn <- function(x) rollapplyr(x, width, function(x) mean(x, na.rm = TRUE), fill=NA)
+    mkdt <- capture.output(for(i in 1:15){
+      cat('DB',i,"<- z[,.SD[.N==",i,"],by=TSE_code]",sep="",fill=TRUE)
+      if(i>5){cat("width <- list(numeric(0),-1,-(1:2),-(1:3),-(1:4)",rep(',-(1:5)',i-5),')',sep="",fill=TRUE)}
+      if(i==5){cat("width <- list(numeric(0),-1,-(1:2),-(1:3),-(1:4)",')',sep="",fill=TRUE)}
+      if(i==4){cat("width <- list(numeric(0),-1,-(1:2),-(1:3)",')',sep="",fill=TRUE)}
+      if(i==3){cat("width <- list(numeric(0),-1,-(1:2)",')',sep="",fill=TRUE)}
+      if(i==2){cat("width <- list(numeric(0),-1",')',sep="",fill=TRUE)}
+      if(i==1){cat("width <- numeric(0)",sep="",fill=TRUE)}
+      cat('DB',i,'<-transform(DB',i, ",HHI = ave(HHIsum, TSE_code, FUN=rollmn))",sep="",fill=TRUE)
+    })
+    eval(base::parse(text=mkdt))
+    DT <- rbind(DB1,DB2,DB3,DB4,DB5,DB6,DB7,DB8,DB9,DB10,DB11,DB12,DB13,DB14,DB15)
+    return(DT)
+  }
   x1 <- x[,NSsum := sum(NetSales,na.rm = TRUE),by=list(TSE_code,year)]
   x2 <- x1[,NSalpha2 := (as.numeric(NetSales) / as.numeric(NSsum))^2 ]
-  x3 <- x2[,`:=`(HHIsum = sum(NSalpha2,na.rm = TRUE),
-                 count_TSE_in_year = .N)
-           ,by=list(TSE_code,year)]
-  y1 <- subset(x3,select=c(TSE_code,year,count_TSE_in_year,HHIsum))
+  x3 <- x2[,HHIsum := sum(NSalpha2,na.rm = TRUE),by=list(TSE_code,year)]
+  y1 <- subset(x3,select=c(TSE_code,year,HHIsum))
   y2 <- y1[!duplicated(y1)][order(TSE_code, year),]
-  y3 <- transform(y2[,.SD[.N > k],by=TSE_code],
-                  HHI = ave(HHIsum, TSE_code, FUN=rollmn0)) # ,by=TSE_code
+  y3 <- func(y2)
   y4 <- subset(y3,select=c(TSE_code,year,HHI))
-  y5 <- merge(x3,y4,by=c('TSE_code','year'))
-  DB <- transform(y5, STR_HHI = as.numeric(STR)*as.numeric(HHI))
-  DBA <- as.data.table(DB[order(DB$TSE_code,DB$year,DB$company),])
-  DBA$HHI <- ifelse(DBA$HHI < 0.1,numeric(1),numeric(0))
-  return(DBA)
+  
+  y5 <- merge(x3,y4,by=c("TSE_code","year"))
+  y5$HHI <- ifelse(is.nan(y5$HHI),as.numeric(NA),as.numeric(y5$HHI))
+  y5$HHI_mark <- ifelse(y5$HHI < 0.1,1,0)
+  DB <- transform(y5, STR_HHI = as.numeric(STR * HHI_mark))
+
+  #DBA <- DB[order(TSE_code,year,company)]
+  
+  return(DB)
 }
 catchDB <- function(x){
   y <- base::subset(x=x,select=c(company,market,TSE_code,TSE_name,year,

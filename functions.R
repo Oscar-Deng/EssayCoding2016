@@ -132,14 +132,14 @@ STRrank <- function(x=TEJ5){
                    PPE = rankscore(STR_PPE_mean_rank))
   DB2$STR <- as.numeric(DB2$RD) + as.numeric(DB2$EMP) + as.numeric(DB2$MB) + as.numeric(DB2$MARKET) + as.numeric(DB2$PPE)
   return(DB2)} # rank score function
-fnGDP <- function(file="DB2.xlsx",col_sht="GDP_colnames",DB_sht="GDP"){
-  # GDP : ln(realGDP)
+fnGDP <- function(x=TEJ91,file="DB2.xlsx",col_sht="GDP_colnames",DB_sht="GDP"){
   GDP_colname <- read_excel(file, sheet=col_sht)
   rGDP <- read_excel(file, sheet=DB_sht)
-  # rename GDP columns
   setnames(rGDP, old=as.character(GDP_colname$old), new=as.character(GDP_colname$new))
-  return(rGDP)
-} # GDP
+  rGDP$year <- year(rGDP$Date)
+  rGDP$GDP <- log(rGDP$Value,base=exp(1))
+  GDP <- subset(rGDP,select=c(year,GDP))
+  return(merge(x,GDP,by="year"))}
 fnHHI <- function(x=TEJ6) {
   func <- function(z=y2) {
     rollmn <- function(x) rollapplyr(x, width, function(x) mean(x, na.rm = TRUE), fill=NA)

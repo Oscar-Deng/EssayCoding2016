@@ -21,7 +21,7 @@ Sys.setlocale("LC_ALL",locale='cht')
 Install.pack()
 Load.pack()
 wd <- getwd()
-GDP <- fnGDP()
+
 TEJ <- readDB(fil = "DB2.xlsx", attr_sht = "TEJ_attr", xls_sht = "TEJ")
 TEJ0 <- DBfilter(x = TEJ,filt = 'filtered')
 TEJ01 <- DBfilter(x = TEJ,filt = 'dropped')
@@ -41,8 +41,11 @@ TEJ82 <- winsamp2(x='TEJ82',col = c('ETR','CETR','ROA','SIZE','LEV','INTANG'
                   ,prob = 0.01)
 TEJ91 <- catchDB(x=TEJ81)
 TEJ92 <- catchDB(x=TEJ82)
+TEJ101 <- fnGDP(x=TEJ91,file="DB2.xlsx",col_sht="GDP_colnames",DB_sht="GDP")
+TEJ102 <- fnGDP(x=TEJ92,file="DB2.xlsx",col_sht="GDP_colnames",DB_sht="GDP")
 print("Finished running 'run2.R' !")
-View(TEJ92)
+View(TEJ101)
+View(TEJ102)
 # ----
 # replace TSE_code to TEJ_code1 ### code beneath havn't finished!!!!!!!!!
 # GIANT & MERIDA are deleted< sort by TSE_code>, do we have to use TEJ_code1 or TEJ_code2 to classify?

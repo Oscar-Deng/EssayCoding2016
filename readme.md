@@ -59,6 +59,32 @@
 </ul>
 </li>
 <li><a href="#explain">Explain</a></li>
+<li><a href="#functions">Functions</a><ul>
+<li><a href="#所有自定義函數說明如下">所有自定義函數說明如下</a><ul>
+<li><a href="#installpack">Install.pack</a></li>
+<li><a href="#loadpack">Load.pack</a></li>
+<li><a href="#readdb">readDB</a></li>
+<li><a href="#dbfilter">DBfilter</a></li>
+<li><a href="#nato0">NAto0</a></li>
+<li><a href="#installpack-1">Install.pack</a></li>
+<li><a href="#installpack-1-1">Install.pack</a></li>
+<li><a href="#installpack-2">Install.pack</a></li>
+<li><a href="#installpack-3">Install.pack</a></li>
+<li><a href="#installpack-4">Install.pack</a></li>
+<li><a href="#installpack-5">Install.pack</a></li>
+<li><a href="#installpack-6">Install.pack</a></li>
+</ul>
+</li>
+<li><a href="#套件函數說明如下">套件函數說明如下</a><ul>
+<li><a href="#installpack-7">Install.pack</a></li>
+<li><a href="#installpack-8">Install.pack</a></li>
+<li><a href="#installpack-9">Install.pack</a></li>
+<li><a href="#installpack-10">Install.pack</a></li>
+<li><a href="#installpack-11">Install.pack</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#qa">Q&amp;A</a><ul>
@@ -80,8 +106,6 @@
 </p>
 
 <hr>
-
-
 
 <h2 id="運行前的準備">運行前的準備</h2>
 

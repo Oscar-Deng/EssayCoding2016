@@ -140,7 +140,7 @@ fnGDP <- function(file="DB2.xlsx",col_sht="GDP_colnames",DB_sht="GDP"){
   setnames(rGDP, old=as.character(GDP_colname$old), new=as.character(GDP_colname$new))
   return(rGDP)
 } # GDP
-fnHHI_na.rm <- function(x=TEJ6) {
+fnHHI <- function(x=TEJ6) {
   func <- function(z=y2) {
     rollmn <- function(x) rollapplyr(x, width, function(x) mean(x, na.rm = TRUE), fill=NA)
     mkdt <- capture.output(for(i in 1:15){
@@ -164,14 +164,11 @@ fnHHI_na.rm <- function(x=TEJ6) {
   y2 <- y1[!duplicated(y1)][order(TSE_code, year),]
   y3 <- func(y2)
   y4 <- subset(y3,select=c(TSE_code,year,HHI))
-  
-  y5 <- merge(x3,y4,by=c("TSE_code","year"))
-  y5$HHI <- ifelse(is.nan(y5$HHI),as.numeric(NA),as.numeric(y5$HHI))
-  y5$HHI_mark <- ifelse(y5$HHI < 0.1,1,0)
-  DB <- transform(y5, STR_HHI = as.numeric(STR * HHI_mark))
-
+  z1 <- merge(x3,y4,by=c("TSE_code","year"))
+  z1$HHI <- ifelse(is.nan(z1$HHI),as.numeric(NA),as.numeric(z1$HHI))
+  z1$HHI_mark <- ifelse(z1$HHI < 0.1,1,0)
+  DB <- transform(z1, STR_HHI = as.numeric(STR * HHI_mark))
   #DBA <- DB[order(TSE_code,year,company)]
-  
   return(DB)
 }
 catchDB <- function(x){

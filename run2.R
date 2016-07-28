@@ -29,10 +29,9 @@ TEJ1 <- NAto0(x ='TEJ0',col=c('OERD','OEPRO','Land','LandR','CTP_IFRS_CFI','CTP_
 TEJ2 <- control_var(x=TEJ1)
 TEJ3 <- exp_var_STR(x=TEJ2)
 TEJ4 <- dep_var(TEJ3,k=5)
-TEJ5 <- STR(TEJ4) # TEJ4 removed NAs
-
+TEJ5 <- STR(TEJ4)
 TEJ6 <- STRrank(TEJ5)
-TEJ7 <- fnHHI_na.rm(TEJ6)
+TEJ7 <- fnHHI(TEJ6)
 TEJ81 <- TEJ7
 TEJ81 <- winsamp1(x='TEJ81',col=c('ETR','CETR','ROA','SIZE','LEV','INTANG','QUICK','EQINC','OUTINSTI','RELATIN','RELATOUT')
                   ,prob=0.01,na.rm=TRUE)

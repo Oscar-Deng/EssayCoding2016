@@ -47,6 +47,12 @@ TEJ102 <- fnGDP(x=TEJ92,file="DB2.xlsx",col_sht="GDP_colnames",DB_sht="GDP")
 # ----
 source('output.R',encoding='utf-8')
 outputcsv()
+#outputSPSS()
+#outputSAS()
+#outputSTATA
+
+# ----
+#source('tables.R',encoding='utf-8')
 
 # ----
 print("Finished running 'run2.R' !")
@@ -54,8 +60,6 @@ print("Finished running 'run2.R' !")
 #View(TEJ101)
 #View(TEJ102)
 
-
-#source('tables.R',encoding='utf-8')
 
 # ----
 # replace TSE_code to TEJ_code1 ### code beneath havn't finished!!!!!!!!!

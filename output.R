@@ -22,7 +22,7 @@ outputSPSS <- function(){
   }
 
 # output SAS
-outputSPSS <- function(){
+outputSAS <- function(){
   sasfile <- paste(wd, "/SASout.txt",sep="")
   sasset <- paste(wd, "/SASout.sas",sep="")
   write.foreign(TEJ1, sasfile, sasset, package="SAS")

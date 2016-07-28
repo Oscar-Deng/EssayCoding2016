@@ -1,6 +1,5 @@
 # tables
 # 樣本篩選表
-removedDB01 <- DBfilter0(TEJ)
 
 tbA1 <- data.frame(tbA1_1,tbA1_2)
 tbA1_1 <- c('說明','2001~2015 原始樣本總數','刪除金融保險業(TSE產業代碼 M2800)'

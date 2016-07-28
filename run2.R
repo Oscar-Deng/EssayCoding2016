@@ -1,4 +1,5 @@
 # ----
+# source('run2.R',encoding='utf-8')
 # Clean Console # only available for rstudio.
 cat("\014")
 # set directory to path
@@ -42,11 +43,18 @@ TEJ91 <- catchDB(x=TEJ81)
 TEJ92 <- catchDB(x=TEJ82)
 TEJ101 <- fnGDP(x=TEJ91,file="DB2.xlsx",col_sht="GDP_colnames",DB_sht="GDP")
 TEJ102 <- fnGDP(x=TEJ92,file="DB2.xlsx",col_sht="GDP_colnames",DB_sht="GDP")
+
+# ----
+source('output.R',encoding='utf-8')
+outputcsv()
+
+# ----
 print("Finished running 'run2.R' !")
+
 #View(TEJ101)
 #View(TEJ102)
 
-source('output.R',encoding='utf-8')
+
 #source('tables.R',encoding='utf-8')
 
 # ----

@@ -4,16 +4,16 @@ rm(list=ls())
 
 # functions!!!
 # install all packages and load.
-Install.pack <- function(list = c("readxl","xlsx","data.table","plyr","dplyr","knitr",
-                                  "gridExtra","ggplot2","zoo","R.oo","R.utils","psych",
-                                  "robustHD","rbenchmark")){
+packtogo <- c("readxl","xlsx","data.table","plyr","dplyr","knitr",
+              "gridExtra","ggplot2","zoo","R.oo","R.utils","psych",
+              "robustHD","rbenchmark","foreign")
+
+Install.pack <- function(list = packtogo){
   list.of.packages <- list
   new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
   if(length(new.packages)){install.packages(new.packages)}else{update.packages(list.of.packages)}
 }
-Load.pack <- function(lst=list("readxl","xlsx","data.table","plyr","dplyr","knitr",
-                               "gridExtra","ggplot2","zoo","R.oo","R.utils","psych",
-                               "robustHD","rbenchmark")){lapply(lst, require, character.only = TRUE)}
+Load.pack <- function(list=as.list(packtogo)){lapply(list, require, character.only = TRUE)}
 
 readDB <- function(fil = "DB2.xlsx", attr_sht = "TEJ_attr", xls_sht = "TEJ"){
   DBattr <- read_excel(fil, sheet=attr_sht, col_names = TRUE)
@@ -21,15 +21,15 @@ readDB <- function(fil = "DB2.xlsx", attr_sht = "TEJ_attr", xls_sht = "TEJ"){
   DBori <- read_excel(fil, sheet=xls_sht, col_names = TRUE, col_types = DBattr$attr)
   # rename columns
   setnames(DBori,old=as.character(DBattr$old), new=as.character(DBattr$new))
-} # read in xlsx
+}
 DBfilter <- function(x = TEJ,filt='filtered'){
   DB0 <- as.data.table(x)[,.SD[.N > 0],by=list(TSE_code,year(date))]
   DB1 <- as.data.table(x)[,.SD[.N >= 5],by=list(TSE_code,year(date))] # removed M1800<2001-2005>,M2200<2001>
   DB2 <- DB1[!(DB1$TSE_code %in% c('M2800','M9900','M2331','W91')) & # M2800金融業 # M9900其他 # M2331其他電子 # W91存託憑證
                !(DB1$FAMILY %in% NA) & # most family with NA got lots of NAs in other columns
                !(DB1$PB %in% NA) & # important var, must not be NA
-#               !(DB1$TA %in% NA) & # denominator or main var as PPE, ROA, SIZE, LEV, INTANG, must not bo NA.
-#               !(DB1$NetSales %in% c(0,NA)) & # remove netsales = 0 ... Denominator of (RD,EMP,MARKET),HHI's main var,
+               !(DB1$TA %in% NA) & # denominator or main var as PPE, ROA, SIZE, LEV, INTANG, must not bo NA.
+               !(DB1$NetSales %in% c(0,NA)) & # remove netsales = 0 ... Denominator of (RD,EMP,MARKET),HHI's main var,
                !(DB1$employee %in% NA)]
   DB3 <- rbind(DB0,DB2)
   DB3 <- DB3[order(DB3$TSE_code,DB3$year),]
@@ -49,19 +49,14 @@ control_var <- function(x=TEJ1){
                  LEV = as.numeric(TL) / as.numeric(TA), # LEV : TL / TA
                  INTANG = as.numeric(INTAN) / as.numeric(TA), # INTANG : intangible assets / TA
                  QUICK = ifelse(is.na(QUICK),0,as.numeric(QUICK)), # QUICK : = QUICK
-                 EQINC = as.numeric(-(InvIn + InvLoss)) / as.numeric(TA), # EQINC : (InvIn + InvLos) / TA
-                 # should make InvIn positive and make InvLos negative, 
-                 # so thus just add minus in denominator.
+                 EQINC = as.numeric(-(InvIn + InvLoss)) / as.numeric(TA), # EQINC : (InvIn + InvLos) / -TA
                  OUTINSTI = ifelse(is.na(OUTINSTI),0,as.numeric(OUTINSTI)), # OUTINSTI : = OUTINSTI
-                 # RELATION : Relation in and out, two variables:  RELATIN, RELATOUT
                  RELATIN = ifelse(is.na(RELATIN),0,as.numeric(RELATIN)),
                  RELATOUT = ifelse(is.na(RELATOUT),0,as.numeric(RELATOUT)),
-                 # FAMILY : if company is FAMILY, then 1, else 0. 
-                 # Observations with FAMILY in NA had been removed.
                  FAM_Dum = ifelse(FAMILY == 'F', 1, 0)
   )
   DB <- as.data.table(y[order(y$company,y$year),]) # sort by company<ascending> and year<ascending>
-  return(DB)} # set new vars
+  return(DB)}
 exp_var_STR <- function(x=TEJ1){
   y <- transform(x,
                  CTP_IFRS = as.numeric(-(CTP_IFRS_CFI + CTP_IFRS_CFO + CTP_IFRS_CFF)),

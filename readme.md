@@ -184,7 +184,7 @@
   <p><code>TEJ0 &lt;- DBfilter(x = TEJ,filt = 'filtered')</code> <br>
   <code>TEJ01 &lt;- DBfilter(x = TEJ,filt = 'dropped')</code></p>
   
-  <p><code>DBfilter</code>函數請見[<strong><code>DBfilter</code></strong>節](#dbfilter 篩選資料集)</p>
+  <p><code>DBfilter</code>函數請見 <a href="%22DBfilter%20%E7%AF%A9%E9%81%B8%E8%B3%87%E6%96%99%E9%9B%86%22"><strong><code>DBfilter</code></strong>節</a></p>
 </blockquote>
 
 <p>3.缺漏值補0。</p>
@@ -370,12 +370,16 @@
    - robustHD：統計分析套件</p>
 </blockquote>
 
+
+
 <h5 id="loadpack-讀入所有使用到的套件">Load.pack 讀入所有使用到的套件</h5>
 
 <blockquote>
   <p><code>Load.pack &lt;- function(lst=list("readxl","xlsx","data.table","plyr","dplyr","knitr", "gridExtra","ggplot2","zoo","R.oo","R.utils","psych","robustHD")){ <br>
     lapply(lst, require, character.only = TRUE)}</code></p>
 </blockquote>
+
+
 
 <h5 id="readdb-讀入excel檔並重新命名欄位">readDB 讀入excel檔，並重新命名欄位</h5>
 
@@ -390,6 +394,8 @@
   <code>setnames(DBori,old=as.character(DBattr$old), new=as.character(DBattr$new))</code> <br>
   <code>}</code></p>
 </blockquote>
+
+
 
 <h5 id="dbfilter-篩選資料集">DBfilter 篩選資料集</h5>
 
@@ -424,6 +430,8 @@
   <code>}</code> </p>
 </blockquote>
 
+
+
 <h5 id="nato0-補na為0">NAto0 補NA為0</h5>
 
 <blockquote>
@@ -436,19 +444,33 @@
   <code>eval(base::parse(text=xx))}</code></p>
 </blockquote>
 
+
+
+<h5 id="installpack">Install.pack</h5>
+
+
+
+<h5 id="installpack-1">Install.pack</h5>
+
+
+
+<h5 id="installpack-2">Install.pack</h5>
+
+
+
+<h5 id="installpack-3">Install.pack</h5>
+
+
+
+<h5 id="installpack-4">Install.pack</h5>
+
+
+
 <h5 id="installpack-5">Install.pack</h5>
 
+
+
 <h5 id="installpack-6">Install.pack</h5>
-
-<h5 id="installpack-7">Install.pack</h5>
-
-<h5 id="installpack-8">Install.pack</h5>
-
-<h5 id="installpack-9">Install.pack</h5>
-
-<h5 id="installpack-10">Install.pack</h5>
-
-<h5 id="installpack-11">Install.pack</h5>
 
 
 
@@ -456,25 +478,27 @@
 
 
 
-<h5 id="installpack-12">Install.pack</h5>
+<h5 id="installpack-7">Install.pack</h5>
 
 
 
-<h5 id="installpack-13">Install.pack</h5>
+<h5 id="installpack-8">Install.pack</h5>
 
 
 
-<h5 id="installpack-14">Install.pack</h5>
+<h5 id="installpack-9">Install.pack</h5>
 
 
 
-<h5 id="installpack-15">Install.pack</h5>
+<h5 id="installpack-10">Install.pack</h5>
 
 
 
-<h5 id="installpack-16">Install.pack</h5>
+<h5 id="installpack-11">Install.pack</h5>
 
 <hr>
+
+
 
 <h2 id="qa">Q&amp;A</h2>
 
@@ -611,6 +635,8 @@
 
 <p><a href="http://www.tej.com.tw/webtej/doc/wind1.htm">http://www.tej.com.tw/webtej/doc/wind1.htm</a> <br>
 <a href="http://web.ntpu.edu.tw/~cflin/Teach/R/R06EN06Graphics.pdf">http://web.ntpu.edu.tw/~cflin/Teach/R/R06EN06Graphics.pdf</a></p>
+
+
 
 <h2 id="r說明檔">R說明檔</h2>
 

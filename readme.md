@@ -499,8 +499,6 @@ control_var &lt;- function(x=TEJ1){
 
 <h5 id="expvarstr"><strong>exp_var_STR</strong></h5>
 
-<p>&gt;</p>
-
 <pre><code>exp_var_STR &lt;- function(x=TEJ1){
   y &lt;- transform(x,
     CTP_IFRS = as.numeric(-(CTP_IFRS_CFI + CTP_IFRS_CFO + CTP_IFRS_CFF)),
@@ -516,8 +514,6 @@ control_var &lt;- function(x=TEJ1){
 </code></pre>
 
 <h5 id="depvar"><strong>dep_var</strong></h5>
-
-<p>&gt;</p>
 
 <pre><code>dep_var &lt;- function(x=TEJ2,k=5){
   DB01 &lt;- x[,.SD[.N &gt;= k],by=company]
@@ -535,8 +531,6 @@ control_var &lt;- function(x=TEJ1){
 </code></pre>
 
 <h5 id="str"><strong>STR</strong></h5>
-
-<p>&gt;</p>
 
 <pre><code>STR &lt;- function(x=TEJ4) {
   x &lt;- x[order(x$company,x$year),]
@@ -569,8 +563,6 @@ control_var &lt;- function(x=TEJ1){
 
 <h5 id="strrank"><strong>STRrank</strong></h5>
 
-<p>&gt;</p>
-
 <pre><code>STRrank &lt;- function(x=TEJ5){
   prank&lt;-function(x) {ifelse(is.na(x),NA,rank(x,ties.method = 'min')/sum(!is.na(x)))} # STRATEGY ranktile.
   rankscore &lt;- function(x) ifelse(x&gt;=0 &amp; x&lt;=0.2,1,ifelse(x&gt;0.2 &amp; x&lt;=0.4,2,ifelse(x&gt;0.4 &amp; x&lt;=0.6,3,ifelse(x&gt;0.6 &amp; x&lt;=0.8,4,ifelse(x&gt;0.8 &amp; x&lt;=1,5,NA)))))
@@ -591,8 +583,6 @@ control_var &lt;- function(x=TEJ1){
 </code></pre>
 
 <h5 id="fngdp"><strong>fnGDP</strong></h5>
-
-<p>&gt;</p>
 
 <pre><code>fnGDP &lt;- function(x=TEJ91,file="DB2.xlsx",col_sht="GDP_colnames",DB_sht="GDP"){
   GDP_colname &lt;- read_excel(file, sheet=col_sht)
@@ -640,8 +630,6 @@ control_var &lt;- function(x=TEJ1){
 </code></pre>
 
 <h5 id="winsorizedsample"><strong>winsorized.sample</strong></h5>
-
-<p>&gt;</p>
 
 <pre><code>winsorized.sample &lt;- function (x, prob = 0) { # remove NA
   n &lt;- length(x)

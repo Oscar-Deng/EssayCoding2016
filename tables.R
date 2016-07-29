@@ -6,11 +6,11 @@ require(gridExtra)
 require(grid)
 require(data.table)
 
-rm(list=ls())
-TEJ <- as.data.table(read.csv("TEJout.csv",header = TRUE))
-TEJ01 <- read.csv("TEJ01out.csv",header = TRUE)
-TEJ02 <- read.csv("TEJ02out.csv",header = TRUE)
-TEJ102 <- read.csv("TEJ102out.csv",header = TRUE)
+#rm(list=ls())
+#TEJ <- as.data.table(read.csv("TEJout.csv",header = TRUE,row.names = 1))
+#TEJ01 <- read.csv("TEJ01out.csv",header = TRUE,row.names = 1)
+#TEJ02 <- read.csv("TEJ02out.csv",header = TRUE,row.names = 1)
+#TEJ102 <- read.csv("TEJ102out.csv",header = TRUE,row.names = 1)
 
 
 nonNAs <- function(x) {
@@ -73,8 +73,8 @@ return(tbA1)
 tbA1 <- plottbA1()
 
 plottbA2 <- function(Q){
-  TEJ102$TSE <- paste(TEJ102$TSE_code,TEJ102$TSE_name,sep=" ")
-  tbA2 <- as.data.frame.matrix(table(TEJ102$TSE,TEJ102$year))
+  TEJ01$TSE <- paste(TEJ01$TSE_code,TEJ01$TSE_name,sep=" ")
+  tbA2 <- as.data.frame.matrix(table(TEJ01$TSE,TEJ01$year))
   png(filename="table2.png",width=300,height = 200,units="mm",res = 500)
   grid.table(tbA2)
   dev.off()

@@ -52,7 +52,7 @@ outputcsv()
 #outputSTATA
 
 # ----
-#source('tables.R',encoding='utf-8')
+source('tables.R',encoding='utf-8')
 
 # ----
 print("Finished running 'run2.R' !")

@@ -232,7 +232,7 @@
 
 <blockquote>
   <p><code>TEJ2 &lt;- control_var(x=TEJ1)</code> <br>
-  <a href="#control_var">control_var</a>說明</p>
+  <a href="#controlvar">control_var</a>說明</p>
 </blockquote>
 
 <p>5.產生解釋變數。 <br>
@@ -240,7 +240,7 @@
 
 <blockquote>
   <p><code>TEJ3 &lt;- exp_var_STR(x=TEJ2)</code> <br>
-  <a href="#"></a>說明</p>
+  <a href="#expvarstr">exp_var_STR</a>說明</p>
 </blockquote>
 
 <p>6.產生依變數。 <br>
@@ -248,7 +248,7 @@
 
 <blockquote>
   <p><code>TEJ4 &lt;- dep_var(TEJ3,k=5)</code> <br>
-  <a href="#"></a>說明</p>
+  <a href="#depvar">dep_var</a>說明</p>
 </blockquote>
 
 <p>7.產生<code>企業競爭策略</code> <strong>(STRATEGY)</strong>變數 <br>
@@ -257,8 +257,8 @@
 <blockquote>
   <p><code>TEJ5 &lt;- STR(TEJ4)</code> <br>
   <code>TEJ6 &lt;- STRrank(TEJ5)</code> <br>
-  <a href="#"></a>說明 <br>
-  <a href="#"></a>說明</p>
+  <a href="#str">STR</a>說明 <br>
+  <a href="#strrank">STRrank</a>說明</p>
 </blockquote>
 
 <p>8.產生賀芬達指標(虛擬變數) <strong>HHI</strong> <br>
@@ -266,7 +266,7 @@
 
 <blockquote>
   <p><code>TEJ7 &lt;- fnHHI(TEJ6)</code> <br>
-  <a href="#"></a>說明</p>
+  <a href="#fnhhi">fnHHI</a>說明</p>
 </blockquote>
 
 <p>9.極值調整winsorizing</p>
@@ -276,14 +276,14 @@
   <code>TEJ81 &lt;- TEJ7</code> <br>
   <code>TEJ81 &lt;- winsamp1(x='TEJ81',col=c('ETR','CETR','ROA','SIZE','LEV','INTANG','QUICK','EQINC','OUTINSTI','RELATIN','RELATOUT')</code> <br>
   <code>,prob=0.01,na.rm=TRUE)</code> <br>
-  <a href="#"></a> 說明</p>
+  <a href="#winsamp1">winsamp1</a> 說明</p>
   
   <p>#自定義winsorize函數 <br>
   <code>TEJ82 &lt;- TEJ7</code> <br>
   <code>TEJ82 &lt;- winsamp2(x='TEJ82',col = c('ETR','CETR','ROA','SIZE','LEV','INTANG'</code> <br>
   <code>,'QUICK','EQINC','OUTINSTI','RELATIN','RELATOUT')</code> <br>
   <code>,prob = 0.01)</code> <br>
-  <a href="#"></a> 說明</p>
+  <a href="#winsamp2">winsamp2</a> 說明</p>
 </blockquote>
 
 <p>10.取需要欄位以便建模 <br>
@@ -292,7 +292,7 @@
 <blockquote>
   <p><code>TEJ91 &lt;- catchDB(x=TEJ81)</code> <br>
   <code>TEJ92 &lt;- catchDB(x=TEJ82)</code> <br>
-  <a href="#"></a> 說明</p>
+  <a href="#catchdb">catchDB</a> 說明</p>
 </blockquote>
 
 <p>11.併入GDP值 <br>
@@ -301,7 +301,7 @@
 <blockquote>
   <p><code>TEJ101 &lt;- fnGDP(x=TEJ91,file="DB2.xlsx",col_sht="GDP_colnames",DB_sht="GDP")</code> <br>
   <code>TEJ102 &lt;- fnGDP(x=TEJ92,file="DB2.xlsx",col_sht="GDP_colnames",DB_sht="GDP")</code> <br>
-  <a href="#"></a> 說明</p>
+  <a href="#fngdp">fnGDP</a> 說明</p>
 </blockquote>
 
 <p>12.建立線性模型 <br>
@@ -318,7 +318,7 @@
 <blockquote>
   <p><code>source('output.R',encoding='utf-8')</code> <br>
   <code>outputcsv()</code> <br>
-  <a href="#"></a> 說明</p>
+  <a href="#outputcsv">outputcsv</a> 說明</p>
 </blockquote>
 
 <p>14.若所有結果執行無誤，則回傳”執行完畢”。</p>
@@ -343,7 +343,7 @@
 
 <blockquote>
   <p><code>tbA1 &lt;- plottbA1()</code>  <br>
-  <a href="#plottbA1">plottbA1</a> 說明</p>
+  <a href="#plottba1">plottbA1</a> 說明</p>
 </blockquote>
 
 <h5 id="表二樣本產業與年度分配表">表二、樣本產業與年度分配表</h5>
@@ -405,19 +405,17 @@
 <h5 id="表七實證結果表">表七、實證結果表</h5>
 
 <ul>
-<li><p>無STRATEGY*HHI</p>
+<li><p>無STRATEGY × HHI變數 <code>(STR_HHI)</code></p>
 
 <blockquote>
   <p><code></code> </p>
 </blockquote></li>
-<li><p>有STRATEGY*HHI</p>
+<li><p>有STRATEGY × HHI變數 <code>(STR_HHI)</code></p>
 
 <blockquote>
   <p><code></code> </p>
 </blockquote></li>
 </ul>
-
-
 
 <h3 id="explain"><strong>Explain</strong></h3>
 
@@ -432,8 +430,6 @@
 
 
 <h4 id="所有自定義函數說明如下">所有自定義函數說明如下</h4>
-
-
 
 <h5 id="installpack"><strong>Install.pack</strong></h5>
 
@@ -885,15 +881,6 @@
 <li><a href="http://stackoverflow.com/questions/13590887/print-a-data-frame-with-columns-aligned-as-displayed-in-r">http://stackoverflow.com/questions/13590887/print-a-data-frame-with-columns-aligned-as-displayed-in-r</a></li>
 <li><a href="http://stackoverflow.com/questions/12844316/align-text-when-using-tablegrob-or-grid-table-in-r">http://stackoverflow.com/questions/12844316/align-text-when-using-tablegrob-or-grid-table-in-r</a></li>
 <li><a href="http://stackoverflow.com/questions/11852408/frequency-table-with-several-variables-in-r">http://stackoverflow.com/questions/11852408/frequency-table-with-several-variables-in-r</a></li>
-<li>0</li>
-<li>0</li>
-<li>0</li>
-<li>0</li>
-<li>0</li>
-<li>0</li>
-<li>0</li>
-<li>0</li>
-<li>0</li>
 <li>0</li>
 <li>0</li>
 <li>0</li>

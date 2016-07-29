@@ -305,6 +305,8 @@ tbA2 &lt;- as.data.frame.matrix(table(TEJ102$TSE,TEJ102$year))
 grid.table(tbA2)
 </code></pre>
 
+<p><img src="table2.png" alt="table2.png" title=""></p>
+
 <h5 id="表0按產業年份及變數分類之缺漏值數量表">表0、按產業、年份及變數分類之缺漏值數量表</h5>
 
 <blockquote>

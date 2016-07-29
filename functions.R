@@ -6,7 +6,7 @@ rm(list=ls())
 # install all packages and load.
 packtogo <- c("readxl","xlsx","data.table","plyr","dplyr","knitr",
               "gridExtra","ggplot2","zoo","R.oo","R.utils","psych",
-              "robustHD","rbenchmark","foreign")
+              "robustHD","rbenchmark","foreign","rgl")
 
 Install.pack <- function(list = packtogo){
   list.of.packages <- list
@@ -21,20 +21,23 @@ readDB <- function(fil = "DB2.xlsx", attr_sht = "TEJ_attr", xls_sht = "TEJ"){
   DBori <- read_excel(fil, sheet=xls_sht, col_names = TRUE, col_types = DBattr$attr)
   # rename columns
   setnames(DBori,old=as.character(DBattr$old), new=as.character(DBattr$new))
+  return(DBori)
 }
 DBfilter <- function(x = TEJ,filt='filtered'){
-  DB0 <- as.data.table(x)[,.SD[.N > 0],by=list(TSE_code,year(date))]
-  DB1 <- as.data.table(x)[,.SD[.N >= 5],by=list(TSE_code,year(date))] # removed M1800<2001-2005>,M2200<2001>
-  DB2 <- DB1[!(DB1$TSE_code %in% c('M2800','M9900','M2331','W91')) & # M2800金融業 # M9900其他 # M2331其他電子 # W91存託憑證
-               !(DB1$FAMILY %in% NA) & # most family with NA got lots of NAs in other columns
-               !(DB1$PB %in% NA) & # important var, must not be NA
-               !(DB1$TA %in% NA) & # denominator or main var as PPE, ROA, SIZE, LEV, INTANG, must not bo NA.
-               !(DB1$NetSales %in% c(0,NA)) & # remove netsales = 0 ... Denominator of (RD,EMP,MARKET),HHI's main var,
-               !(DB1$employee %in% NA)]
-  DB3 <- rbind(DB0,DB2)
-  DB3 <- DB3[order(DB3$TSE_code,DB3$year),]
-  DB4 <- DB3[!(duplicated(DB3) | duplicated(DB3, fromLast = TRUE)),]
-  base::ifelse(filt=='filtered', return(DB2), base::ifelse(filt=='dropped', return(DB4), print("please assign filter type")))
+  DB <- as.data.table(x)
+  DB$year <- year(DB$date)
+  DB0 <- DB[,.SD[.N > 0],by=list(TSE_code,year)]
+  DB1 <- DB0[!(DB0$TSE_code %in% c('M2800','M9900','M2331','W91'))] # M2800金融業 # M9900其他 # M2331其他電子 # W91存託憑證
+  DB2 <- DB1[,.SD[.N >= 5],by=list(TSE_code,year)] # removed M1800<2001-2005>,M2200<2001>
+  DB3 <- DB2[!(DB2$FAMILY %in% NA) & # most family with NA got lots of NAs in other columns
+               !(DB2$PB %in% NA) & # important var, must not be NA
+               !(DB2$TA %in% NA) & # denominator or main var as PPE, ROA, SIZE, LEV, INTANG, must not bo NA.
+               !(DB2$NetSales %in% c(0,NA)) & # remove netsales = 0 ... Denominator of (RD,EMP,MARKET),HHI's main var,
+               !(DB2$employee %in% NA)]
+  DB4 <- rbind(DB0,DB3)
+  DB4 <- DB4[order(DB4$TSE_code,DB4$year),]
+  DB5 <- DB4[!(duplicated(DB4) | duplicated(DB4, fromLast = TRUE)),]
+  base::ifelse(filt=='filtered', return(DB2), base::ifelse(filt=='dropped', return(DB5), print("please assign filter type")))
 } # 篩選後的:filt=filtered, #篩選刪掉的filt=dropped
 NAto0 <- function(x = 'TEJ01',col=c(NA)){
   x1 <- captureOutput(

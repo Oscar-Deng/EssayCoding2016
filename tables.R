@@ -1,7 +1,10 @@
 # tables
 # 樣本篩選表
+setwd("D:\\Documents\\Dropbox\\MyEssay\\Rcoding\\")
+
 require(gridExtra)
 require(grid)
+require(data.table)
 
 rm(list=ls())
 TEJ <- as.data.table(read.csv("TEJout.csv",header = TRUE))
@@ -9,14 +12,13 @@ TEJ01 <- read.csv("TEJ01out.csv",header = TRUE)
 TEJ02 <- read.csv("TEJ02out.csv",header = TRUE)
 TEJ102 <- read.csv("TEJ102out.csv",header = TRUE)
 
-#countNA <- function(x) length(which(!is.na(x)))
+
 nonNAs <- function(x) {
   as.vector(apply(x, 2, function(x) length(which(!is.na(x)))))
 }
 
-countNA <- apply(TEJ, 2, function(x) length(which(is.na(x))))
 
-plottbA1 <- function(filename="table1.png"){
+plottbA1 <- function(){
   x <- nrow(TEJ)
   x1 <- nrow(TEJ[TEJ$TSE_code=='M2800'])
   x2 <- nrow(TEJ[TEJ$TSE_code=='M9900'])
@@ -56,15 +58,28 @@ plottbA1 <- function(filename="table1.png"){
   
   g1 <- tableGrob(m, theme = theme1, rows=NULL)
   
-  png(filename="table1.png",width=125,height = 70,units="mm",res = 500)
+  png(filename="table1_樣本篩選表.png",width=125,height = 70,units="mm",res = 500)
   #grid.newpage()
   grid.draw(g1)
   dev.off()
+  write.xlsx(tbA1,file="tables.xlsx",sheetName = "table1_樣本篩選表",col.names = TRUE,row.names = FALSE,showNA = FALSE,append = TRUE)
 return(tbA1)
   }
-
-
-
 tbA1 <- plottbA1()
+
+png(filename="table2.png",width=400,height = 300,units="mm",res = 500)
+
+TEJ102$TSE <- paste(TEJ102$TSE_code,TEJ102$TSE_name,sep=" ")
+tbA2 <- as.data.frame.matrix(table(TEJ102$TSE,TEJ102$year))
+
+grid.table(tbA2)
+dev.off()
+
+write.xlsx(tbA2,file="tables.xlsx",sheetName = "table2",col.names = TRUE,row.names = FALSE,showNA = FALSE,append = TRUE)
+
+
+
+ggplot(as.data.frame(table(tb2)), aes(x=year, y=Freq, fill=TSE)) + geom_bar(stat="identity")
+
 
 

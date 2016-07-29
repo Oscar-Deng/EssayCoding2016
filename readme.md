@@ -216,8 +216,8 @@
 <p>2.篩選資料集TEJ，並命為<code>TEJ0</code>，同時將篩選掉的資料集另命為<code>TEJ01</code>。</p>
 
 <blockquote>
-  <p><code>TEJ0 &lt;- DBfilter(x = TEJ,filt = 'filtered')</code> <br>
-  <code>TEJ01 &lt;- DBfilter(x = TEJ,filt = 'dropped')</code> <br>
+  <p><code>TEJ01 &lt;- DBfilter(x = TEJ,filt = 'filtered')</code> <br>
+  <code>TEJ02 &lt;- DBfilter(x = TEJ,filt = 'dropped')</code> <br>
   <a href="#dbfilter">DBfilter</a> 說明</p>
 </blockquote>
 
@@ -225,52 +225,97 @@
 
 <blockquote>
   <p># 補0欄位： <br>
-  <code>TEJ1&lt;-NAto0(x='TEJ0',col=c('OERD','OEPRO','Land',</code> <br>
-  <code>'LandR',RELATIN','RELATOUT','CTP_IFRS_CFI','CTP_IFRS_CFO','CTP_IFRS_CFF','CTP_GAAP'))</code> <br>
+  <code>TEJ1 &lt;- NAto0(x ='TEJ01',col=c('OERD','OEPRO','Land','LandR','CTP_IFRS_CFI','CTP_IFRS_CFO','CTP_IFRS_CFF','CTP_GAAP'))</code> <br>
   <a href="#nato0">NAto0</a> 說明</p>
 </blockquote>
 
 <p>4.產生控制變數。</p>
 
 <blockquote>
-  <p>123</p>
+  <p>123 <br>
+  <code>TEJ2 &lt;- control_var(x=TEJ1)</code></p>
 </blockquote>
 
 <p>5.產生解釋變數。</p>
 
 <blockquote>
-  <p>123</p>
+  <p>123 <br>
+  <code>TEJ3 &lt;- exp_var_STR(x=TEJ2)</code></p>
 </blockquote>
 
 <p>6.產生依變數。</p>
 
 <blockquote>
-  <p>123</p>
+  <p>123 <br>
+  <code>TEJ4 &lt;- dep_var(TEJ3,k=5)</code></p>
 </blockquote>
 
 <p>7.產生<code>企業競爭策略</code> <strong>(STRATEGY)</strong>變數</p>
 
 <blockquote>
-  <p>123</p>
+  <p>123 <br>
+  <code>TEJ5 &lt;- STR(TEJ4)</code> <br>
+  <code>TEJ6 &lt;- STRrank(TEJ5)</code></p>
 </blockquote>
 
-<p>8.1</p>
+<p>8.產生賀芬達指標(虛擬變數) <strong>HHI</strong></p>
 
 <blockquote>
-  <p>123</p>
+  <p>123 <br>
+  <code>TEJ7 &lt;- fnHHI(TEJ6)</code></p>
 </blockquote>
 
-<p>9.1 </p>
+<p>9.極值調整winsorizing</p>
 
 <blockquote>
-  <p>123</p>
+  <p>#winsor套件 <br>
+  <code>TEJ81 &lt;- TEJ7</code> <br>
+  <code>TEJ81 &lt;- winsamp1(x='TEJ81',col=c('ETR','CETR','ROA','SIZE','LEV','INTANG','QUICK','EQINC','OUTINSTI','RELATIN','RELATOUT')</code> <br>
+  <code>,prob=0.01,na.rm=TRUE)</code></p>
+  
+  <p>#自定義winsorize函數 <br>
+  <code>TEJ82 &lt;- TEJ7</code> <br>
+  <code>TEJ82 &lt;- winsamp2(x='TEJ82',col = c('ETR','CETR','ROA','SIZE','LEV','INTANG'</code> <br>
+  <code>,'QUICK','EQINC','OUTINSTI','RELATIN','RELATOUT')</code> <br>
+  <code>,prob = 0.01)</code></p>
 </blockquote>
 
+<p>10.取需要欄位以便建模 <br>
+&gt;</p>
 
+<blockquote>
+  <p><code>TEJ91 &lt;- catchDB(x=TEJ81)</code> <br>
+  <code>TEJ92 &lt;- catchDB(x=TEJ82)</code></p>
+</blockquote>
 
-<h3 id="produce-variables"><strong>Produce Variables</strong></h3>
+<p>11.併入GDP值 <br>
+&gt;</p>
 
+<blockquote>
+  <p><code>TEJ101 &lt;- fnGDP(x=TEJ91,file="DB2.xlsx",col_sht="GDP_colnames",DB_sht="GDP")</code> <br>
+  <code>TEJ102 &lt;- fnGDP(x=TEJ92,file="DB2.xlsx",col_sht="GDP_colnames",DB_sht="GDP")</code></p>
+</blockquote>
 
+<p>12.建立線性模型 <br>
+&gt;</p>
+
+<blockquote>
+  <p><code>lm()</code></p>
+</blockquote>
+
+<p>13.匯出結果及所有資料表 <br>
+&gt;</p>
+
+<blockquote>
+  <p><code>source('output.R',encoding='utf-8')</code> <br>
+  <code>outputcsv()</code></p>
+</blockquote>
+
+<p>14.若所有結果執行無誤，則回傳”執行完畢”。</p>
+
+<blockquote>
+  <p><code>print("Finished running 'run2.R' !")</code></p>
+</blockquote>
 
 <h3 id="analyze"><strong>Analyze</strong></h3>
 
@@ -287,18 +332,16 @@
 <h5 id="表一樣本篩選表">表一、樣本篩選表</h5>
 
 <blockquote>
-  <p><code></code></p>
+  <p><code>tbA1 &lt;- plottbA1()</code> # (函數說明：<a href="#plottbA1">plottbA1</a>)</p>
 </blockquote>
-
-
 
 <h5 id="表二樣本產業與年度分配表">表二、樣本產業與年度分配表</h5>
 
 <blockquote>
-  <p><code></code></p>
+  <p><code>TEJ102$TSE &lt;- paste(TEJ102$TSE_code,TEJ102$TSE_name,sep=" ")</code> <br>
+  <code>tbA2 &lt;- as.data.frame.matrix(table(TEJ102$TSE,TEJ102$year))</code> <br>
+  <code>grid.table(tbA2)</code></p>
 </blockquote>
-
-
 
 <h5 id="表0按產業年份及變數分類之缺漏值數量表">表0、按產業、年份及變數分類之缺漏值數量表</h5>
 
@@ -412,8 +455,6 @@
   </ul>
 </blockquote>
 
-
-
 <h5 id="loadpack"><strong>Load.pack</strong></h5>
 
 <blockquote>
@@ -421,8 +462,6 @@
   <code>Load.pack &lt;- function(lst=list("readxl","xlsx","data.table","plyr","dplyr","knitr", "gridExtra","ggplot2","zoo","R.oo","R.utils","psych","robustHD")){ <br>
     lapply(lst, require, character.only = TRUE)}</code></p>
 </blockquote>
-
-
 
 <h5 id="readdb"><strong>readDB</strong></h5>
 
@@ -444,44 +483,44 @@
 <h5 id="dbfilter"><strong>DBfilter</strong></h5>
 
 <blockquote>
-  <p># 篩選資料集 <br>
+  <p># 篩選資料集函數 <br>
   <code>DBfilter &lt;- function(x = TEJ,filt='filtered'){</code></p>
   
-  <p># 原始資料─<code>DB0</code>： <br>
-  <code>DB0 &lt;- as.data.table(x)[,.SD[.N &gt; 0],by=list(TSE_code,year(date))]</code> <br>
-  # 篩選1：以<code>DB0</code>篩選：當年度產業不足五家公司的─<code>DB1</code>： <br>
-  <code>DB1 &lt;- as.data.table(x)[,.SD[.N &gt;= 5],by=list(TSE_code,year(date))]</code></p>
-  
-  <p># 篩選2： <br>
+  <p># 原始資料─<code>DB</code>，data.table型態： <br>
+  <code>DB &lt;- as.data.table(x)</code> <br>
+  # 新增年份欄位 <br>
+  <code>DB$year &lt;- year(DB$date)</code> <br>
+  <code>DB0 &lt;- DB[,.SD[.N &gt; 0],by=list(TSE_code,year)]</code> <br>
+  # 篩選1： <br>
   ##以<strong>TSE新產業類別</strong>分類，去除<strong>金融保險(M2800)</strong>、<strong>其他(M9900)</strong>、<strong>其他電子(M2331)</strong>、<strong>存託憑證(W91)</strong> <br>
-  <code>DB2 &lt;- DB1[!(DB1$TSE_code %in% c('M2800','M9900','M2331','W91')) &amp;</code> <br>
+  <code>DB1 &lt;- DB0[!(DB0$TSE_code %in% c('M2800','M9900','M2331','W91'))]</code> <br>
+  # 篩選2：當年度產業不足五家公司的─<code>DB1</code>： <br>
+  <code>DB2 &lt;- DB1[,.SD[.N &gt;= 5],by=list(TSE_code,year)]</code> <br>
+  # 篩選3： <br>
   ##刪除FAMILY(家族企業)缺漏值 <br>
-  <code>!(DB1$FAMILY %in% NA) &amp; # 大部分缺FAMILY的也缺很多其他欄位。</code> <br>
+  <code>DB3 &lt;- DB2[!(DB2$FAMILY %in% NA) &amp;</code> <br>
   ##刪除PB(市價)缺漏值 <br>
-  <code>!(DB1$PB %in% NA) &amp; # 重要指標，不能是NA。</code> <br>
+  <code>!(DB2$PB %in% NA) &amp; # 重要指標，不能是NA。</code> <br>
   ##刪除TA(資產總額)缺漏值 <br>
-  <code>!(DB1$TA %in% NA) &amp; # 是PPE, ROA, SIZE, LEV, INTANG的分母，不能是NA。</code> <br>
+  <code>!(DB2$TA %in% NA) &amp; # 是PPE, ROA, SIZE, LEV, INTANG的分母，不能是NA。</code> <br>
   ##刪除NetSales(營業收入淨額)缺漏值、0值 <br>
-  <code>!(DB1$NetSales %in% c(0,NA)) &amp; # 是RD,EMP,MARKET的分母，不能是NA。</code> <br>
+  <code>!(DB2$NetSales %in% c(0,NA)) &amp; # 是RD,EMP,MARKET的分母，不能是NA。</code> <br>
   ##刪除employee(員工人數)缺漏值 <br>
-  <code>!(DB1$employee %in% NA)]</code></p>
-  
-  <p><code>DB3 &lt;- rbind(DB0,DB2)</code> <br>
-  <code>DB3 &lt;- DB3[order(DB3$TSE_code,DB3$year),]</code> <br>
-  <code>DB4 &lt;- DB3[!(duplicated(DB3) | duplicated(DB3, fromLast = TRUE)),]</code></p>
+  <code>!(DB2$employee %in% NA)]</code> <br>
+  <code>DB4 &lt;- rbind(DB0,DB3)</code> <br>
+  <code>DB4 &lt;- DB4[order(DB4$TSE_code,DB4$year),]</code> <br>
+  <code>DB5 &lt;- DB4[!(duplicated(DB4) | duplicated(DB4, fromLast = TRUE)),]</code></p>
   
   <p># 若<code>filt='filtered'</code>，回傳篩選後的資料集，若<code>filt='dropped'</code>，回傳篩選掉的資料集。 <br>
-  <code>base::ifelse(filt=='filtered', return(DB2), base::ifelse(filt=='dropped',return(DB4),  print("please assign filter type")))</code> <br>
+  <code>base::ifelse(filt=='filtered', return(DB2), base::ifelse(filt=='dropped', return(DB5), print("please assign filter type")))</code> <br>
   <code>}</code> </p>
 </blockquote>
-
-
 
 <h5 id="nato0"><strong>NAto0</strong></h5>
 
 <blockquote>
   <p># 補NA為0 ─ 將欲補0的欄位放入col，如：<code>col=c('OERD','OEPRO','Land','LandR','RELATIN'))</code> <br>
-  <code>NAto0 &lt;- function(x = 'TEJ0',col=c(NA)){</code> <br>
+  <code>NAto0 &lt;- function(x = 'TEJ01',col=c(NA)){</code> <br>
   <code>x1 &lt;- captureOutput(</code> <br>
   <code>for(y in col){cat(x,'$',y,'[is.na(',x,'$',y,')] &lt;- 0',sep="",fill = TRUE)})</code> <br>
   <code>x2 &lt;- captureOutput(cat('return(',paste(x),')',sep=""))</code> <br>
@@ -489,61 +528,238 @@
   <code>eval(base::parse(text=xx))}</code></p>
 </blockquote>
 
+<h5 id="controlvar"><strong>control_var</strong></h5>
 
+<blockquote>
+  <p># 產生控制變數 <br>
+  <code>control_var &lt;- function(x=TEJ1){</code> <br>
+  <code>y &lt;- transform(x,</code> <br>
+  <code>ROA = as.numeric(PTEBX) / as.numeric(TA), # ROA : NetSales / TotalAssets</code> <br>
+  <code>SIZE = as.numeric(log(x = as.numeric(TA), base = exp(1))), # SIZE : ln(TA)</code> <br>
+  <code>LEV = as.numeric(TL) / as.numeric(TA), # LEV : TL / TA</code> <br>
+  <code>INTANG = as.numeric(INTAN) / as.numeric(TA), # INTANG : intangible assets / TA</code> <br>
+  <code>QUICK = ifelse(is.na(QUICK),0,as.numeric(QUICK)), # QUICK : = QUICK</code> <br>
+  <code>EQINC = as.numeric(-(InvIn + InvLoss)) / as.numeric(TA), # EQINC : (InvIn + InvLos) / -TA</code> <br>
+  <code>OUTINSTI = ifelse(is.na(OUTINSTI),0,as.numeric(OUTINSTI)), # OUTINSTI : = OUTINSTI</code> <br>
+  <code>RELATIN = ifelse(is.na(RELATIN),0,as.numeric(RELATIN)),</code> <br>
+  <code>RELATOUT = ifelse(is.na(RELATOUT),0,as.numeric(RELATOUT)),</code> <br>
+  <code>FAM_Dum = ifelse(FAMILY == 'F', 1, 0)</code> <br>
+  <code>)</code> <br>
+  <code>DB &lt;- as.data.table(y[order(y$company,y$year),])</code> <br>
+  <code>return(DB)}</code></p>
+</blockquote>
 
-<h5 id="installpack-1">Install.pack</h5>
+<h5 id="expvarstr"><strong>exp_var_STR</strong></h5>
 
+<p>&gt;</p>
 
+<blockquote>
+  <p><code>exp_var_STR &lt;- function(x=TEJ1){</code> <br>
+  <code>y &lt;- transform(x,</code> <br>
+  <code>CTP_IFRS = as.numeric(-(CTP_IFRS_CFI + CTP_IFRS_CFO + CTP_IFRS_CFF)),</code> <br>
+  <code>STR_RD = as.numeric(OERD) / as.numeric(NetSales),</code> <br>
+  <code>STR_EMP = as.numeric(employee) / as.numeric(NetSales),</code> <br>
+  <code>STR_MB = as.numeric(PB),</code> <br>
+  <code>STR_MARKET = as.numeric(OEPRO) / as.numeric(NetSales),</code> <br>
+  <code>STR_PPE = as.numeric( FA - Land - LandR ) / as.numeric(TA)</code> <br>
+  <code>)</code> <br>
+  <code>z &lt;- transform(y, CTP = ifelse(year &gt;= 2012,CTP_IFRS,CTP_GAAP))</code> <br>
+  <code>DB &lt;- as.data.table(z[order(z$company,z$year),])</code> <br>
+  <code>return(DB)}</code></p>
+</blockquote>
 
-<h5 id="installpack-2">Install.pack</h5>
+<h5 id="depvar"><strong>dep_var</strong></h5>
 
+<p>&gt;</p>
 
+<blockquote>
+  <p><code>dep_var &lt;- function(x=TEJ2,k=5){</code> <br>
+  <code>DB01 &lt;- x[,.SD[.N &gt;= k],by=company]</code> <br>
+  <code>DB02 &lt;- x[,.SD[.N &lt; k],by=company]</code> <br>
+  <code>DB1 &lt;- DB01[,</code>:=<code>(BTE5yrsum = rollapplyr(BTE, width = 5, FUN = sum, fill = NA),</code> <br>
+  <code>CTP5yrsum = rollapplyr(CTP, width = 5, FUN = sum, fill = NA),</code> <br>
+  <code>PTEBX5yrsum = rollapplyr(PTEBX, width = 5, FUN = sum, fill = NA)),</code> <br>
+  <code>by=company]</code> <br>
+  <code>DB2 &lt;- DB02[,</code>:=<code>(BTE5yrsum = NA,CTP5yrsum = NA,PTEBX5yrsum = NA),by=company]</code> <br>
+  <code>DB3 &lt;- rbind(DB1,DB2)</code> <br>
+  <code>DB &lt;- transform(DB3,</code> <br>
+  <code>ETR = as.numeric(BTE5yrsum) / as.numeric(PTEBX5yrsum),</code> <br>
+  <code>CETR = as.numeric(CTP5yrsum) / as.numeric(PTEBX5yrsum))</code> <br>
+  <code>return(as.data.table(DB[order(DB$company,DB$year),]))}</code></p>
+</blockquote>
 
-<h5 id="installpack-3">Install.pack</h5>
+<h5 id="str"><strong>STR</strong></h5>
 
+<p>&gt;</p>
 
+<blockquote>
+  <p><code>STR &lt;- function(x=TEJ4) {</code> <br>
+  <code>x &lt;- x[order(x$company,x$year),]</code> <br>
+  <code>rollmn &lt;- function(x) rollapplyr(x, width, function(x) mean(x, na.rm = TRUE), fill=NA)</code> <br>
+  <code>mkdt &lt;- capture.output(for(i in 1:15){</code> <br>
+  <code>cat('DB',i,"&lt;- x[,.SD[.N==",i,"],by=company]",sep="",fill=TRUE)</code> <br>
+  <code>if(i&gt;5){cat("width &lt;- list(numeric(0),-1,-(1:2),-(1:3),-(1:4)",rep(',-(1:5)',i-5),')',sep="",fill=TRUE)}</code> <br>
+  <code>if(i==5){cat("width &lt;- list(numeric(0),-1,-(1:2),-(1:3),-(1:4)",')',sep="",fill=TRUE)}</code> <br>
+  <code>if(i==4){cat("width &lt;- list(numeric(0),-1,-(1:2),-(1:3)",')',sep="",fill=TRUE)}</code> <br>
+  <code>if(i==3){cat("width &lt;- list(numeric(0),-1,-(1:2)",')',sep="",fill=TRUE)}</code> <br>
+  <code>if(i==2){cat("width &lt;- list(numeric(0),-1",')',sep="",fill=TRUE)}</code> <br>
+  <code>if(i==1){cat("width &lt;- numeric(0)",sep="",fill=TRUE)}</code> <br>
+  <code>cat('DB',i,'&lt;-transform(DB',i,</code> <br>
+  <code>",STR_RD_mean = ave(STR_RD, company, FUN=rollmn),STR_EMP_mean = ave(STR_EMP, company, FUN=rollmn),STR_MB_mean = ave(STR_MB, company, FUN=rollmn),STR_MARKET_mean = ave(STR_MARKET, company, FUN=rollmn),STR_PPE_mean = ave(STR_PPE, company, FUN=rollmn))",sep="",fill=TRUE)</code> <br>
+  <code>})</code> <br>
+  <code>eval(base::parse(text=mkdt))</code> <br>
+  <code>DT &lt;- rbind(DB1,DB2,DB3,DB4,DB5,DB6,DB7,DB8,DB9,DB10,DB11,DB12,DB13,DB14,DB15)</code> <br>
+  <code>NAto0 &lt;- function(x = 'DT',col=c('STR_RD_mean','STR_EMP_mean','STR_MB_mean','STR_MARKET_mean','STR_PPE_mean')){</code> <br>
+  <code>x1 &lt;- captureOutput(</code> <br>
+  <code>for(y in col){cat(x,'$',y,'[is.nan(',x,'$',y,')] &lt;- 0',sep="",fill = TRUE)})</code> <br>
+  <code>x2 &lt;- captureOutput(cat('return(',paste(x),')',sep=""))</code> <br>
+  <code>xx &lt;- c(x1,x2)</code> <br>
+  <code>eval(base::parse(text=xx))} # replace NA with 0.</code> <br>
+  <code>DT1 &lt;- NAto0()</code> <br>
+  <code>DBA &lt;- as.data.table(DT1[order(DT1$company,DT1$year),])</code> <br>
+  <code>return(DBA)</code> <br>
+  <code>}</code></p>
+</blockquote>
 
-<h5 id="installpack-4">Install.pack</h5>
+<h5 id="strrank"><strong>STRrank</strong></h5>
 
+<p>&gt;</p>
 
+<blockquote>
+  <p><code>STRrank &lt;- function(x=TEJ5){</code> <br>
+  <code>prank&lt;-function(x) {ifelse(is.na(x),NA,rank(x,ties.method = 'min')/sum(!is.na(x)))}</code> <br>
+  <code>rankscore &lt;- function(x) ifelse(x&gt;=0 &amp; x&lt;=0.2,1,ifelse(x&gt;0.2 &amp; x&lt;=0.4,2,ifelse(x&gt;0.4 &amp; x&lt;=0.6,3,ifelse(x&gt;0.6 &amp; x&lt;=0.8,4,ifelse(x&gt;0.8 &amp; x&lt;=1,5,NA)))))</code> <br>
+  <code>DB &lt;- transform(x[,by=c(TSE_code,year)],</code> <br>
+  <code>STR_RD_mean_rank = prank(STR_RD_mean),</code> <br>
+  <code>STR_EMP_mean_rank = prank(STR_EMP_mean),</code> <br>
+  <code>STR_MB_mean_rank = prank(STR_MB_mean),</code> <br>
+  <code>STR_MARKET_mean_rank = prank(STR_MARKET_mean),</code> <br>
+  <code>STR_PPE_mean_rank = prank(STR_PPE_mean))</code> <br>
+  <code>DB2 &lt;- transform(DB,</code> <br>
+  <code>RD = rankscore(STR_RD_mean_rank),</code> <br>
+  <code>EMP = rankscore(STR_EMP_mean_rank),</code> <br>
+  <code>MB = rankscore(STR_MB_mean_rank),</code> <br>
+  <code>MARKET = rankscore(STR_MARKET_mean_rank),</code> <br>
+  <code>PPE = rankscore(STR_PPE_mean_rank))</code> <br>
+  <code>DB2$STR &lt;- as.numeric(DB2$RD) + as.numeric(DB2$EMP) + as.numeric(DB2$MB) + as.numeric(DB2$MARKET) + as.numeric(DB2$PPE)</code> <br>
+  <code>return(DB2)}</code></p>
+</blockquote>
 
-<h5 id="installpack-5">Install.pack</h5>
+<h5 id="fngdp"><strong>fnGDP</strong></h5>
 
+<p>&gt;</p>
 
+<blockquote>
+  <p><code>fnGDP &lt;- function(x=TEJ91,file="DB2.xlsx",col_sht="GDP_colnames",DB_sht="GDP"){</code> <br>
+  <code>GDP_colname &lt;- read_excel(file, sheet=col_sht)</code> <br>
+  <code>rGDP &lt;- read_excel(file, sheet=DB_sht)</code> <br>
+  <code>setnames(rGDP, old=as.character(GDP_colname$old), new=as.character(GDP_colname$new))</code> <br>
+  <code>rGDP$year &lt;- year(rGDP$Date)</code> <br>
+  <code>rGDP$GDP &lt;- log(rGDP$Value,base=exp(1))</code> <br>
+  <code>GDP &lt;- subset(rGDP,select=c(year,GDP))</code> <br>
+  <code>return(merge(x,GDP,by="year"))}</code></p>
+</blockquote>
 
-<h5 id="installpack-6">Install.pack</h5>
+<h5 id="fnhhi"><strong>fnHHI</strong></h5>
 
+<p>&gt;</p>
 
+<blockquote>
+  <p><code>fnHHI &lt;- function(x=TEJ6) {</code> <br>
+  <code>func &lt;- function(z=y2) {</code> <br>
+  <code>rollmn &lt;- function(x) rollapplyr(x, width, function(x) mean(x, na.rm = TRUE), fill=NA)</code> <br>
+  <code>mkdt &lt;- capture.output(for(i in 1:15){</code> <br>
+  <code>cat('DB',i,"&lt;- z[,.SD[.N==",i,"],by=TSE_code]",sep="",fill=TRUE)</code> <br>
+  <code>if(i&gt;5){cat("width &lt;- list(numeric(0),-1,-(1:2),-(1:3),-(1:4)",rep(',-(1:5)',i-5),')',sep="",fill=TRUE)}</code> <br>
+  <code>if(i==5){cat("width &lt;- list(numeric(0),-1,-(1:2),-(1:3),-(1:4)",')',sep="",fill=TRUE)}</code> <br>
+  <code>if(i==4){cat("width &lt;- list(numeric(0),-1,-(1:2),-(1:3)",')',sep="",fill=TRUE)}</code> <br>
+  <code>if(i==3){cat("width &lt;- list(numeric(0),-1,-(1:2)",')',sep="",fill=TRUE)}</code> <br>
+  <code>if(i==2){cat("width &lt;- list(numeric(0),-1",')',sep="",fill=TRUE)}</code> <br>
+  <code>if(i==1){cat("width &lt;- numeric(0)",sep="",fill=TRUE)}</code> <br>
+  <code>cat('DB',i,'&lt;-transform(DB',i, ",HHI = ave(HHIsum, TSE_code, FUN=rollmn))",sep="",fill=TRUE)</code> <br>
+  <code>})</code> <br>
+  <code>eval(base::parse(text=mkdt))</code> <br>
+  <code>DT &lt;- rbind(DB1,DB2,DB3,DB4,DB5,DB6,DB7,DB8,DB9,DB10,DB11,DB12,DB13,DB14,DB15)</code> <br>
+  <code>return(DT)</code> <br>
+  <code>}</code> <br>
+  <code>x1 &lt;- x[,NSsum := sum(NetSales,na.rm = TRUE),by=list(TSE_code,year)]</code> <br>
+  <code>x2 &lt;- x1[,NSalpha2 := (as.numeric(NetSales) / as.numeric(NSsum))^2 ]</code> <br>
+  <code>x3 &lt;- x2[,HHIsum := sum(NSalpha2,na.rm = TRUE),by=list(TSE_code,year)]</code> <br>
+  <code>y1 &lt;- subset(x3,select=c(TSE_code,year,HHIsum))</code> <br>
+  <code>y2 &lt;- y1[!duplicated(y1)][order(TSE_code, year),]</code> <br>
+  <code>y3 &lt;- func(y2)</code> <br>
+  <code>y4 &lt;- subset(y3,select=c(TSE_code,year,HHI))</code> <br>
+  <code>z1 &lt;- merge(x3,y4,by=c("TSE_code","year"))</code> <br>
+  <code>z1$HHI &lt;- ifelse(is.nan(z1$HHI),as.numeric(NA),as.numeric(z1$HHI))</code> <br>
+  <code>z1$HHI_mark &lt;- ifelse(z1$HHI &lt; 0.1,1,0)</code> <br>
+  <code>DB &lt;- transform(z1, STR_HHI = as.numeric(STR * HHI_mark))</code> <br>
+  <code>return(DB)</code> <br>
+  <code>}</code></p>
+</blockquote>
 
-<h5 id="installpack-7">Install.pack</h5>
+<h5 id="winsorizedsample"><strong>winsorized.sample</strong></h5>
 
+<p>&gt;</p>
 
+<blockquote>
+  <p><code>winsorized.sample &lt;- function (x, prob = 0) { # remove NA</code> <br>
+  <code>n &lt;- length(x)</code> <br>
+  <code>n0 &lt;- length(x[!is.na(x)])</code> <br>
+  <code>low &lt;- floor(n0 * prob) + 1</code> <br>
+  <code>high &lt;- n0 + 1 - low</code> <br>
+  <code>idx &lt;- seq(1,n)</code> <br>
+  <code>DT&lt;-data.frame(idx,x)</code> <br>
+  <code>DT2&lt;-DT[order(DT$x,DT$idx,na.last=TRUE),]</code> <br>
+  <code>DT2$x[1:low]&lt;-DT2$x[low]</code> <br>
+  <code>DT2$x[high:n0]&lt;-DT2$x[high]</code> <br>
+  <code>DT3&lt;-DT2[order(DT2$idx,DT2$x),]</code> <br>
+  <code>x2&lt;-DT3$x</code> <br>
+  <code>return(x2)}</code></p>
+</blockquote>
+
+<h5 id="winsamp1"><strong>winsamp1</strong></h5>
+
+<p>&gt;</p>
+
+<blockquote>
+  <p><code>winsamp1 &lt;- function(x = 'TEJ81', col=c('ETR','CETR','ROA','SIZE','LEV','INTANG','QUICK','EQINC','OUTINSTI','RELATIN','RELATOUT')</code> <br>
+  <code>, prob=0.01, na.rm=TRUE){</code> <br>
+  <code>x1 &lt;- captureOutput(cat('DB1&lt;-',x,sep="",fill=TRUE))</code> <br>
+  <code>x2 &lt;- captureOutput(for(y in col){cat('DB1$',y,' &lt;- winsor(',x,'$',y,',trim = ',prob,',na.rm = ',na.rm,')',sep="",fill = TRUE)})</code> <br>
+  <code>eval(base::parse(text=x1))</code> <br>
+  <code>eval(base::parse(text=x2))</code> <br>
+  <code>return(DB1)}</code></p>
+</blockquote>
+
+<h5 id="winsamp2"><strong>winsamp2</strong></h5>
+
+<p>&gt;</p>
+
+<blockquote>
+  <p><code>winsamp2 &lt;- function(x = 'TEJ82', col=c('ETR','CETR','ROA','SIZE','LEV','INTANG','QUICK','EQINC','OUTINSTI','RELATIN','RELATOUT')</code> <br>
+  <code>, prob=0.01){</code> <br>
+  <code>x1 &lt;- captureOutput(cat('DB1&lt;-',x,sep="",fill=TRUE))</code> <br>
+  <code>x2 &lt;- captureOutput(for(y in col){cat('DB1$',y,' &lt;- winsorized.sample(',x,'$',y,',prob = ',prob,')',sep="",fill = TRUE)})</code> <br>
+  <code>eval(base::parse(text=x1))</code> <br>
+  <code>eval(base::parse(text=x2))</code> <br>
+  <code>return(DB1)}</code></p>
+</blockquote>
 
 <h4 id="套件函數說明如下">套件函數說明如下</h4>
 
 
 
-<h5 id="installpack-8">Install.pack</h5>
+<h5 id="installpack-2">Install.pack</h5>
 
+<h5 id="installpack-3">Install.pack</h5>
 
+<h5 id="installpack-4">Install.pack</h5>
 
-<h5 id="installpack-9">Install.pack</h5>
+<h5 id="installpack-5">Install.pack</h5>
 
-
-
-<h5 id="installpack-10">Install.pack</h5>
-
-
-
-<h5 id="installpack-11">Install.pack</h5>
-
-
-
-<h5 id="installpack-12">Install.pack</h5>
+<h5 id="installpack-6">Install.pack</h5>
 
 <hr>
-
-
 
 <h2 id="qa">Q&amp;A</h2>
 
@@ -650,20 +866,42 @@
 <li><a href="http://stackoverflow.com/questions/25598361/calculating-row-entry-conditional-on-value-in-another-column-in-r">http://stackoverflow.com/questions/25598361/calculating-row-entry-conditional-on-value-in-another-column-in-r</a></li>
 <li><a href="http://stackoverflow.com/questions/12844316/align-text-when-using-tablegrob-or-grid-table-in-r">http://stackoverflow.com/questions/12844316/align-text-when-using-tablegrob-or-grid-table-in-r</a></li>
 <li><a href="http://stackoverflow.com/questions/13590887/print-a-data-frame-with-columns-aligned-as-displayed-in-r">http://stackoverflow.com/questions/13590887/print-a-data-frame-with-columns-aligned-as-displayed-in-r</a></li>
+<li><a href="http://stackoverflow.com/questions/8166931/plots-with-good-resolution-for-printing-and-screen-display">http://stackoverflow.com/questions/8166931/plots-with-good-resolution-for-printing-and-screen-display</a></li>
+<li><a href="http://stackoverflow.com/questions/22486790/r-grid-table-plots-overlapping-each-other">http://stackoverflow.com/questions/22486790/r-grid-table-plots-overlapping-each-other</a></li>
+<li><a href="http://stackoverflow.com/questions/17059099/saving-grid-arrange-plot-to-file">http://stackoverflow.com/questions/17059099/saving-grid-arrange-plot-to-file</a></li>
+<li><a href="http://stackoverflow.com/questions/26788049/plot-table-objects-with-ggplot">http://stackoverflow.com/questions/26788049/plot-table-objects-with-ggplot</a></li>
+<li><a href="http://stackoverflow.com/questions/22640016/code-to-clear-all-plots-in-rstudio">http://stackoverflow.com/questions/22640016/code-to-clear-all-plots-in-rstudio</a></li>
+<li><a href="http://stackoverflow.com/questions/13590887/print-a-data-frame-with-columns-aligned-as-displayed-in-r">http://stackoverflow.com/questions/13590887/print-a-data-frame-with-columns-aligned-as-displayed-in-r</a></li>
+<li><a href="http://stackoverflow.com/questions/12844316/align-text-when-using-tablegrob-or-grid-table-in-r">http://stackoverflow.com/questions/12844316/align-text-when-using-tablegrob-or-grid-table-in-r</a></li>
+<li><a href="http://stackoverflow.com/questions/11852408/frequency-table-with-several-variables-in-r">http://stackoverflow.com/questions/11852408/frequency-table-with-several-variables-in-r</a></li>
+<li>0</li>
+<li>0</li>
+<li>0</li>
+<li>0</li>
+<li>0</li>
+<li>0</li>
+<li>0</li>
+<li>0</li>
+<li>0</li>
+<li>0</li>
+<li>0</li>
+<li>0</li>
+<li>0</li>
 </ul>
 
 <p>……</p>
 
-<p><a href="http://stats.stackexchange.com/questions/6759/removing-duplicated-rows-data-frame-in-r">http://stats.stackexchange.com/questions/6759/removing-duplicated-rows-data-frame-in-r</a> <br>
-<a href="http://www.r-bloggers.com/winsorization/">http://www.r-bloggers.com/winsorization/</a> <br>
-<a href="http://www.inside-r.org/packages/cran/robustHD/docs/winsorize">http://www.inside-r.org/packages/cran/robustHD/docs/winsorize</a> <br>
-<a href="http://www.programiz.com/r-programming/if-else-statement">http://www.programiz.com/r-programming/if-else-statement</a> <br>
-<a href="http://italwaysrainonme.blogspot.tw/2013/01/git-gitignore-commit.html">http://italwaysrainonme.blogspot.tw/2013/01/git-gitignore-commit.html</a> <br>
-<a href="http://huan-lin.blogspot.com/2012/04/git-ignore-file.html">http://huan-lin.blogspot.com/2012/04/git-ignore-file.html</a> <br>
-<a href="http://www.r-tutor.com/r-introduction/data-frame">http://www.r-tutor.com/r-introduction/data-frame</a></p>
-
 <ul>
-<li><a href="https://stat.ethz.ch/">https://stat.ethz.ch/</a></li>
+<li><a href="http://www.cyclismo.org/tutorial/R/tables.html">http://www.cyclismo.org/tutorial/R/tables.html</a></li>
+<li><a href="http://www.r-bloggers.com/how-to-convert-contingency-tables-to-data-frames-with-r/">http://www.r-bloggers.com/how-to-convert-contingency-tables-to-data-frames-with-r/</a></li>
+<li><a href="http://stats.stackexchange.com/questions/6759/removing-duplicated-rows-data-frame-in-r">http://stats.stackexchange.com/questions/6759/removing-duplicated-rows-data-frame-in-r</a></li>
+<li><a href="http://www.r-bloggers.com/winsorization/">http://www.r-bloggers.com/winsorization/</a></li>
+<li><a href="http://www.inside-r.org/packages/cran/robustHD/docs/winsorize">http://www.inside-r.org/packages/cran/robustHD/docs/winsorize</a></li>
+<li><a href="http://www.programiz.com/r-programming/if-else-statement">http://www.programiz.com/r-programming/if-else-statement</a></li>
+<li><a href="http://italwaysrainonme.blogspot.tw/2013/01/git-gitignore-commit.html">http://italwaysrainonme.blogspot.tw/2013/01/git-gitignore-commit.html</a></li>
+<li><a href="http://huan-lin.blogspot.com/2012/04/git-ignore-file.html">http://huan-lin.blogspot.com/2012/04/git-ignore-file.html</a></li>
+<li><p><a href="http://www.r-tutor.com/r-introduction/data-frame">http://www.r-tutor.com/r-introduction/data-frame</a></p></li>
+<li><p><a href="https://stat.ethz.ch/">https://stat.ethz.ch/</a></p></li>
 <li><a href="https://stat.ethz.ch/pipermail/r-help/2002-April/020794.html">https://stat.ethz.ch/pipermail/r-help/2002-April/020794.html</a></li>
 <li><a href="https://stat.ethz.ch/R-manual/R-devel/library/stats/html/sd.html">https://stat.ethz.ch/R-manual/R-devel/library/stats/html/sd.html</a></li>
 <li><a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/sample.html">https://stat.ethz.ch/R-manual/R-devel/library/base/html/sample.html</a></li>
@@ -673,18 +911,14 @@
 <li><a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/Extract.data.frame.html">https://stat.ethz.ch/R-manual/R-devel/library/base/html/Extract.data.frame.html</a></li>
 <li><a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/table.html">https://stat.ethz.ch/R-manual/R-devel/library/base/html/table.html</a></li>
 <li><a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/merge.html">https://stat.ethz.ch/R-manual/R-devel/library/base/html/merge.html</a></li>
-<li><a href="https://stat.ethz.ch/pipermail/r-help/2011-August/285614.html">https://stat.ethz.ch/pipermail/r-help/2011-August/285614.html</a></li>
+<li><p><a href="https://stat.ethz.ch/pipermail/r-help/2011-August/285614.html">https://stat.ethz.ch/pipermail/r-help/2011-August/285614.html</a></p></li>
+<li><p><a href="http://www.statmethods.net/input/missingdata.html">http://www.statmethods.net/input/missingdata.html</a></p></li>
+<li><a href="http://www.statmethods.net/advgraphs/layout.html">http://www.statmethods.net/advgraphs/layout.html</a></li>
+<li><a href="http://www.inside-r.org/r-doc/stats/rnorm">http://www.inside-r.org/r-doc/stats/rnorm</a></li>
+<li><p><a href="http://www.inside-r.org/packages/cran/robustHD/docs/winsorize">http://www.inside-r.org/packages/cran/robustHD/docs/winsorize</a></p></li>
+<li><p><a href="http://www.tej.com.tw/webtej/doc/wind1.htm">http://www.tej.com.tw/webtej/doc/wind1.htm</a></p></li>
+<li><a href="http://web.ntpu.edu.tw/~cflin/Teach/R/R06EN06Graphics.pdf">http://web.ntpu.edu.tw/~cflin/Teach/R/R06EN06Graphics.pdf</a></li>
 </ul>
-
-<p><a href="http://www.statmethods.net/input/missingdata.html">http://www.statmethods.net/input/missingdata.html</a> <br>
-<a href="http://www.statmethods.net/advgraphs/layout.html">http://www.statmethods.net/advgraphs/layout.html</a> <br>
-<a href="http://www.inside-r.org/r-doc/stats/rnorm">http://www.inside-r.org/r-doc/stats/rnorm</a> <br>
-<a href="http://www.inside-r.org/packages/cran/robustHD/docs/winsorize">http://www.inside-r.org/packages/cran/robustHD/docs/winsorize</a></p>
-
-<p><a href="http://www.tej.com.tw/webtej/doc/wind1.htm">http://www.tej.com.tw/webtej/doc/wind1.htm</a> <br>
-<a href="http://web.ntpu.edu.tw/~cflin/Teach/R/R06EN06Graphics.pdf">http://web.ntpu.edu.tw/~cflin/Teach/R/R06EN06Graphics.pdf</a></p>
-
-
 
 <h2 id="r說明檔">R說明檔</h2>
 

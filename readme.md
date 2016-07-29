@@ -75,6 +75,7 @@
 <li><a href="#winsorizedsample">winsorized.sample</a></li>
 <li><a href="#winsamp1">winsamp1</a></li>
 <li><a href="#winsamp2">winsamp2</a></li>
+<li><a href="#plottba1">plottbA1</a></li>
 </ul>
 </li>
 <li><a href="#套件函數說明如下">套件函數說明如下</a><ul>

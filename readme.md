@@ -67,20 +67,20 @@
 <li><a href="#dbfilter">DBfilter</a></li>
 <li><a href="#nato0">NAto0</a></li>
 <li><a href="#installpack-1">Install.pack</a></li>
-<li><a href="#installpack-1-1">Install.pack</a></li>
 <li><a href="#installpack-2">Install.pack</a></li>
 <li><a href="#installpack-3">Install.pack</a></li>
 <li><a href="#installpack-4">Install.pack</a></li>
 <li><a href="#installpack-5">Install.pack</a></li>
 <li><a href="#installpack-6">Install.pack</a></li>
+<li><a href="#installpack-7">Install.pack</a></li>
 </ul>
 </li>
 <li><a href="#套件函數說明如下">套件函數說明如下</a><ul>
-<li><a href="#installpack-7">Install.pack</a></li>
 <li><a href="#installpack-8">Install.pack</a></li>
 <li><a href="#installpack-9">Install.pack</a></li>
 <li><a href="#installpack-10">Install.pack</a></li>
 <li><a href="#installpack-11">Install.pack</a></li>
+<li><a href="#installpack-12">Install.pack</a></li>
 </ul>
 </li>
 </ul>
@@ -106,6 +106,8 @@
 </p>
 
 <hr>
+
+
 
 <h2 id="運行前的準備">運行前的準備</h2>
 
@@ -147,6 +149,8 @@
 
 <hr>
 
+
+
 <h2 id="實證分析"><strong>實證分析</strong></h2>
 
 
@@ -172,6 +176,8 @@
 <li>運行RStudio</li>
 </ol>
 
+
+
 <h3 id="preparation-for-rstudio"><strong>Preparation for RStudio</strong></h3>
 
 <blockquote>
@@ -195,6 +201,8 @@
   <p>#擷取工作路徑，用於之後輸出資料庫 <br>
   <code>wd &lt;- getwd()</code> </p>
 </blockquote>
+
+
 
 <h3 id="preparing-data"><strong>Preparing Data</strong></h3>
 
@@ -257,6 +265,8 @@
 <blockquote>
   <p>123</p>
 </blockquote>
+
+
 
 <h3 id="produce-variables"><strong>Produce Variables</strong></h3>
 
@@ -369,6 +379,8 @@
 
 <h4 id="所有自定義函數說明如下">所有自定義函數說明如下</h4>
 
+
+
 <h5 id="installpack"><strong>Install.pack</strong></h5>
 
 <blockquote>
@@ -400,6 +412,8 @@
   </ul>
 </blockquote>
 
+
+
 <h5 id="loadpack"><strong>Load.pack</strong></h5>
 
 <blockquote>
@@ -407,6 +421,8 @@
   <code>Load.pack &lt;- function(lst=list("readxl","xlsx","data.table","plyr","dplyr","knitr", "gridExtra","ggplot2","zoo","R.oo","R.utils","psych","robustHD")){ <br>
     lapply(lst, require, character.only = TRUE)}</code></p>
 </blockquote>
+
+
 
 <h5 id="readdb"><strong>readDB</strong></h5>
 
@@ -422,6 +438,8 @@
   <code>setnames(DBori,old=as.character(DBattr$old), new=as.character(DBattr$new))</code> <br>
   <code>}</code></p>
 </blockquote>
+
+
 
 <h5 id="dbfilter"><strong>DBfilter</strong></h5>
 
@@ -457,6 +475,8 @@
   <code>}</code> </p>
 </blockquote>
 
+
+
 <h5 id="nato0"><strong>NAto0</strong></h5>
 
 <blockquote>
@@ -468,8 +488,6 @@
   <code>xx &lt;- c(x1,x2)</code> <br>
   <code>eval(base::parse(text=xx))}</code></p>
 </blockquote>
-
-<h5 id="installpack">Install.pack</h5>
 
 
 
@@ -497,11 +515,11 @@
 
 
 
-<h4 id="套件函數說明如下">套件函數說明如下</h4>
-
-
-
 <h5 id="installpack-7">Install.pack</h5>
+
+
+
+<h4 id="套件函數說明如下">套件函數說明如下</h4>
 
 
 
@@ -518,6 +536,10 @@
 
 
 <h5 id="installpack-11">Install.pack</h5>
+
+
+
+<h5 id="installpack-12">Install.pack</h5>
 
 <hr>
 
@@ -626,6 +648,8 @@
 <li><a href="http://stackoverflow.com/questions/8491754/converting-different-rows-of-a-data-frame-to-one-single-row-in-r">http://stackoverflow.com/questions/8491754/converting-different-rows-of-a-data-frame-to-one-single-row-in-r</a></li>
 <li><a href="http://stackoverflow.com/questions/17513109/calculating-mean-when-2-conditions-need-met-in-r">http://stackoverflow.com/questions/17513109/calculating-mean-when-2-conditions-need-met-in-r</a></li>
 <li><a href="http://stackoverflow.com/questions/25598361/calculating-row-entry-conditional-on-value-in-another-column-in-r">http://stackoverflow.com/questions/25598361/calculating-row-entry-conditional-on-value-in-another-column-in-r</a></li>
+<li><a href="http://stackoverflow.com/questions/12844316/align-text-when-using-tablegrob-or-grid-table-in-r">http://stackoverflow.com/questions/12844316/align-text-when-using-tablegrob-or-grid-table-in-r</a></li>
+<li><a href="http://stackoverflow.com/questions/13590887/print-a-data-frame-with-columns-aligned-as-displayed-in-r">http://stackoverflow.com/questions/13590887/print-a-data-frame-with-columns-aligned-as-displayed-in-r</a></li>
 </ul>
 
 <p>……</p>
@@ -659,6 +683,8 @@
 
 <p><a href="http://www.tej.com.tw/webtej/doc/wind1.htm">http://www.tej.com.tw/webtej/doc/wind1.htm</a> <br>
 <a href="http://web.ntpu.edu.tw/~cflin/Teach/R/R06EN06Graphics.pdf">http://web.ntpu.edu.tw/~cflin/Teach/R/R06EN06Graphics.pdf</a></p>
+
+
 
 <h2 id="r說明檔">R說明檔</h2>
 

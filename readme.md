@@ -133,23 +133,19 @@
 
 <p>安裝完成後，請確認Rstudio或RGui之語言及區域(language &amp; locale)設定正確：</p>
 
-<blockquote>
-  <p># 查看環境設定 <br>
-  <code>sessionInfo()</code></p>
-  
-  <p># 查看語言/地區設定 <br>
-  <code>Sys.getlocale(category = "LC_ALL")</code> <br>
-  <code>[1]"LC_COLLATE=Chinese (Traditional)_Taiwan.950;LC_MONETARY=Chinese (Traditional)_Taiwan.950;LC_NUMERIC=C;LC_TIME=Chinese (Traditional)_Taiwan.950"</code> <br>
-  # 若上述回傳非顯示相同值，請輸入下方設定 <br>
-  <code>Sys.setlocale("LC_ALL",locale='cht')</code></p>
-</blockquote>
+<pre><code># 查看環境設定
+sessionInfo()
+# 查看語言/地區設定
+Sys.getlocale(category = "LC_ALL")
+[1]"LC_COLLATE=Chinese (Traditional)_Taiwan.950;LC_MONETARY=Chinese (Traditional)_Taiwan.950;LC_NUMERIC=C;LC_TIME=Chinese (Traditional)_Taiwan.950"
+# 若上述回傳非顯示相同值，請輸入下方設定
+Sys.setlocale("LC_ALL",locale='cht')
+</code></pre>
 
 <p>其他疑難排解，請見手冊： <br>
 <a href="https://github.com/dspim/R/wiki/R-&amp;-RStudio-Troubleshooting-Guide">https://github.com/dspim/R/wiki/R-&amp;-RStudio-Troubleshooting-Guide</a></p>
 
 <hr>
-
-
 
 <h2 id="實證分析"><strong>實證分析</strong></h2>
 

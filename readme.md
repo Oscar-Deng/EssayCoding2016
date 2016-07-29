@@ -296,7 +296,7 @@ TEJ82 &lt;- winsamp2(x=’TEJ82’,col = c(‘ETR’,’CETR’,’ROA’,’SIZ
 </code></pre>
 
 <p><a href="#plottba1">plottbA1</a> 說明 <br>
-<img src="table1.png" alt="table1.png" title=""></p>
+<img src="table1_樣本篩選表.png" alt="table1_樣本篩選表.png" title=""></p>
 
 <h5 id="表二樣本產業與年度分配表">表二、樣本產業與年度分配表</h5>
 
@@ -305,7 +305,7 @@ tbA2 &lt;- as.data.frame.matrix(table(TEJ102$TSE,TEJ102$year))
 grid.table(tbA2)
 </code></pre>
 
-<p><img src="table2.png" alt="table2.png" title=""></p>
+<p><img src="table2_產業年份分配表.png" alt="table2_產業年份分配表.png" title=""></p>
 
 <h5 id="表0按產業年份及變數分類之缺漏值數量表">表0、按產業、年份及變數分類之缺漏值數量表</h5>
 

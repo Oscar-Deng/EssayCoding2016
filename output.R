@@ -10,8 +10,9 @@ outputcsv <- function(){
   }})
   eval(base::parse(text=cap1to7))
   eval(base::parse(text=cap8to10add0))
+  
 }
-
+write.csv(x=TEJ,file=paste(wd,"/TEJout.csv",sep=""))
 
 
 # output SPSS

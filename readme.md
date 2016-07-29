@@ -36,7 +36,6 @@
 <li><a href="#getting-data">Getting Data</a></li>
 <li><a href="#preparation-for-rstudio">Preparation for RStudio</a></li>
 <li><a href="#preparing-data">Preparing Data</a></li>
-<li><a href="#produce-variables">Produce Variables</a></li>
 <li><a href="#analyze">Analyze</a></li>
 <li><a href="#produce-reports-and-graphs">Produce reports and graphs</a><ul>
 <li><a href="#樣本說明">樣本說明</a><ul>
@@ -66,21 +65,24 @@
 <li><a href="#readdb">readDB</a></li>
 <li><a href="#dbfilter">DBfilter</a></li>
 <li><a href="#nato0">NAto0</a></li>
-<li><a href="#installpack-1">Install.pack</a></li>
-<li><a href="#installpack-2">Install.pack</a></li>
-<li><a href="#installpack-3">Install.pack</a></li>
-<li><a href="#installpack-4">Install.pack</a></li>
-<li><a href="#installpack-5">Install.pack</a></li>
-<li><a href="#installpack-6">Install.pack</a></li>
-<li><a href="#installpack-7">Install.pack</a></li>
+<li><a href="#controlvar">control_var</a></li>
+<li><a href="#expvarstr">exp_var_STR</a></li>
+<li><a href="#depvar">dep_var</a></li>
+<li><a href="#str">STR</a></li>
+<li><a href="#strrank">STRrank</a></li>
+<li><a href="#fngdp">fnGDP</a></li>
+<li><a href="#fnhhi">fnHHI</a></li>
+<li><a href="#winsorizedsample">winsorized.sample</a></li>
+<li><a href="#winsamp1">winsamp1</a></li>
+<li><a href="#winsamp2">winsamp2</a></li>
 </ul>
 </li>
 <li><a href="#套件函數說明如下">套件函數說明如下</a><ul>
-<li><a href="#installpack-8">Install.pack</a></li>
-<li><a href="#installpack-9">Install.pack</a></li>
-<li><a href="#installpack-10">Install.pack</a></li>
-<li><a href="#installpack-11">Install.pack</a></li>
-<li><a href="#installpack-12">Install.pack</a></li>
+<li><a href="#installpack-2-1">Install.pack</a></li>
+<li><a href="#installpack-3-1">Install.pack</a></li>
+<li><a href="#installpack-4-1">Install.pack</a></li>
+<li><a href="#installpack-5">Install.pack</a></li>
+<li><a href="#installpack-6">Install.pack</a></li>
 </ul>
 </li>
 </ul>
@@ -106,8 +108,6 @@
 </p>
 
 <hr>
-
-
 
 <h2 id="運行前的準備">運行前的準備</h2>
 
@@ -202,8 +202,6 @@
   <code>wd &lt;- getwd()</code> </p>
 </blockquote>
 
-
-
 <h3 id="preparing-data"><strong>Preparing Data</strong></h3>
 
 <p>1.讀入自TEJ下載的<a href="https://github.com/Oscar-Deng/EssayCoding2016/blob/master/DB2.xlsx">excel檔</a>，並命名為<code>TEJ</code>資料集。</p>
@@ -229,40 +227,46 @@
   <a href="#nato0">NAto0</a> 說明</p>
 </blockquote>
 
-<p>4.產生控制變數。</p>
+<p>4.產生控制變數。 <br>
+&gt;</p>
 
 <blockquote>
-  <p>123 <br>
-  <code>TEJ2 &lt;- control_var(x=TEJ1)</code></p>
+  <p><code>TEJ2 &lt;- control_var(x=TEJ1)</code> <br>
+  <a href="#control_var">control_var</a>說明</p>
 </blockquote>
 
-<p>5.產生解釋變數。</p>
+<p>5.產生解釋變數。 <br>
+&gt;</p>
 
 <blockquote>
-  <p>123 <br>
-  <code>TEJ3 &lt;- exp_var_STR(x=TEJ2)</code></p>
+  <p><code>TEJ3 &lt;- exp_var_STR(x=TEJ2)</code> <br>
+  <a href="#"></a>說明</p>
 </blockquote>
 
-<p>6.產生依變數。</p>
+<p>6.產生依變數。 <br>
+&gt;</p>
 
 <blockquote>
-  <p>123 <br>
-  <code>TEJ4 &lt;- dep_var(TEJ3,k=5)</code></p>
+  <p><code>TEJ4 &lt;- dep_var(TEJ3,k=5)</code> <br>
+  <a href="#"></a>說明</p>
 </blockquote>
 
-<p>7.產生<code>企業競爭策略</code> <strong>(STRATEGY)</strong>變數</p>
+<p>7.產生<code>企業競爭策略</code> <strong>(STRATEGY)</strong>變數 <br>
+&gt;</p>
 
 <blockquote>
-  <p>123 <br>
-  <code>TEJ5 &lt;- STR(TEJ4)</code> <br>
-  <code>TEJ6 &lt;- STRrank(TEJ5)</code></p>
+  <p><code>TEJ5 &lt;- STR(TEJ4)</code> <br>
+  <code>TEJ6 &lt;- STRrank(TEJ5)</code> <br>
+  <a href="#"></a>說明 <br>
+  <a href="#"></a>說明</p>
 </blockquote>
 
-<p>8.產生賀芬達指標(虛擬變數) <strong>HHI</strong></p>
+<p>8.產生賀芬達指標(虛擬變數) <strong>HHI</strong> <br>
+&gt;</p>
 
 <blockquote>
-  <p>123 <br>
-  <code>TEJ7 &lt;- fnHHI(TEJ6)</code></p>
+  <p><code>TEJ7 &lt;- fnHHI(TEJ6)</code> <br>
+  <a href="#"></a>說明</p>
 </blockquote>
 
 <p>9.極值調整winsorizing</p>
@@ -271,13 +275,15 @@
   <p>#winsor套件 <br>
   <code>TEJ81 &lt;- TEJ7</code> <br>
   <code>TEJ81 &lt;- winsamp1(x='TEJ81',col=c('ETR','CETR','ROA','SIZE','LEV','INTANG','QUICK','EQINC','OUTINSTI','RELATIN','RELATOUT')</code> <br>
-  <code>,prob=0.01,na.rm=TRUE)</code></p>
+  <code>,prob=0.01,na.rm=TRUE)</code> <br>
+  <a href="#"></a> 說明</p>
   
   <p>#自定義winsorize函數 <br>
   <code>TEJ82 &lt;- TEJ7</code> <br>
   <code>TEJ82 &lt;- winsamp2(x='TEJ82',col = c('ETR','CETR','ROA','SIZE','LEV','INTANG'</code> <br>
   <code>,'QUICK','EQINC','OUTINSTI','RELATIN','RELATOUT')</code> <br>
-  <code>,prob = 0.01)</code></p>
+  <code>,prob = 0.01)</code> <br>
+  <a href="#"></a> 說明</p>
 </blockquote>
 
 <p>10.取需要欄位以便建模 <br>
@@ -285,7 +291,8 @@
 
 <blockquote>
   <p><code>TEJ91 &lt;- catchDB(x=TEJ81)</code> <br>
-  <code>TEJ92 &lt;- catchDB(x=TEJ82)</code></p>
+  <code>TEJ92 &lt;- catchDB(x=TEJ82)</code> <br>
+  <a href="#"></a> 說明</p>
 </blockquote>
 
 <p>11.併入GDP值 <br>
@@ -293,14 +300,16 @@
 
 <blockquote>
   <p><code>TEJ101 &lt;- fnGDP(x=TEJ91,file="DB2.xlsx",col_sht="GDP_colnames",DB_sht="GDP")</code> <br>
-  <code>TEJ102 &lt;- fnGDP(x=TEJ92,file="DB2.xlsx",col_sht="GDP_colnames",DB_sht="GDP")</code></p>
+  <code>TEJ102 &lt;- fnGDP(x=TEJ92,file="DB2.xlsx",col_sht="GDP_colnames",DB_sht="GDP")</code> <br>
+  <a href="#"></a> 說明</p>
 </blockquote>
 
 <p>12.建立線性模型 <br>
 &gt;</p>
 
 <blockquote>
-  <p><code>lm()</code></p>
+  <p><code>lm()</code> <br>
+  <a href="#"></a> 說明</p>
 </blockquote>
 
 <p>13.匯出結果及所有資料表 <br>
@@ -308,7 +317,8 @@
 
 <blockquote>
   <p><code>source('output.R',encoding='utf-8')</code> <br>
-  <code>outputcsv()</code></p>
+  <code>outputcsv()</code> <br>
+  <a href="#"></a> 說明</p>
 </blockquote>
 
 <p>14.若所有結果執行無誤，則回傳”執行完畢”。</p>
@@ -332,7 +342,8 @@
 <h5 id="表一樣本篩選表">表一、樣本篩選表</h5>
 
 <blockquote>
-  <p><code>tbA1 &lt;- plottbA1()</code> # (函數說明：<a href="#plottbA1">plottbA1</a>)</p>
+  <p><code>tbA1 &lt;- plottbA1()</code>  <br>
+  <a href="#plottbA1">plottbA1</a> 說明</p>
 </blockquote>
 
 <h5 id="表二樣本產業與年度分配表">表二、樣本產業與年度分配表</h5>

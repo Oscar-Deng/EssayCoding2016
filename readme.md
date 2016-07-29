@@ -643,7 +643,8 @@ control_var &lt;- function(x=TEJ1){
   DT2$x[high:n0]&lt;-DT2$x[high]
   DT3&lt;-DT2[order(DT2$idx,DT2$x),]
   x2&lt;-DT3$x
-  return(x2)}
+  return(x2)
+  }
 </code></pre>
 
 <h5 id="winsamp1"><strong>winsamp1</strong></h5>
@@ -654,7 +655,7 @@ control_var &lt;- function(x=TEJ1){
   x2 &lt;- captureOutput(for(y in col){cat('DB1$',y,' &lt;- winsor(',x,'$',y,',trim = ',prob,',na.rm = ',na.rm,')',sep="",fill = TRUE)})
   eval(base::parse(text=x1))
   eval(base::parse(text=x2))
-  return(DB1)}
+  }
 </code></pre>
 
 <h5 id="winsamp2"><strong>winsamp2</strong></h5>
@@ -665,7 +666,8 @@ x1 &lt;- captureOutput(cat('DB1&lt;-',x,sep="",fill=TRUE))
 x2 &lt;- captureOutput(for(y in col){cat('DB1$',y,' &lt;- winsorized.sample(',x,'$',y,',prob = ',prob,')',sep="",fill = TRUE)})
 eval(base::parse(text=x1))
 eval(base::parse(text=x2))
-return(DB1)}
+return(DB1)
+}
 </code></pre>
 
 <h4 id="套件函數說明如下">套件函數說明如下</h4>

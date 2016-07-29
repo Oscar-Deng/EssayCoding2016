@@ -295,7 +295,8 @@ TEJ82 &lt;- winsamp2(x=’TEJ82’,col = c(‘ETR’,’CETR’,’ROA’,’SIZ
 <pre><code>tbA1 &lt;- plottbA1()
 </code></pre>
 
-<p><a href="#plottba1">plottbA1</a> 說明</p>
+<p><a href="#plottba1">plottbA1</a> 說明 <br>
+<img src="table1.png" alt="table1.png" title=""></p>
 
 <h5 id="表二樣本產業與年度分配表">表二、樣本產業與年度分配表</h5>
 

@@ -70,7 +70,7 @@
 <li><a href="#qa">Q&amp;A</a> <br>
 <ul><li><a href="#如何開啟tej增益集?">如何開啟TEJ增益集?</a></li>
 <li><a href="#自記錄檔匯入tej設定">自記錄檔匯入TEJ設定</a></li>
-<li><a href="#出現failed-with-error-package-rJava-could-not-be-loaded">出現Failed with error: ‘package ‘rJava’ could not be loaded’</a></li>
+<li><a href="#出現failed-with-error-package-rjava-could-not-be-loaded">出現Failed with error: ‘package ‘rJava’ could not be loaded’</a></li>
 <li><a href="#"></a></li>
 <li><a href="#"></a></li></ul></li>
 <li><a href="#後記">後記</a></li>

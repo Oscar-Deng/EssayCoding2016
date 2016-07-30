@@ -927,10 +927,6 @@ return(tbA1)
   <th></th>
   <th></th>
   <th></th>
-  <th></th>
-  <th></th>
-  <th></th>
-  <th></th>
 </tr>
 </thead>
 <tbody><tr>
@@ -949,10 +945,6 @@ return(tbA1)
   <td><a href="http://www.inside-r.org/packages/cran/robustHD/docs/winsorize" title="http://www.inside-r.org/packages/cran/robustHD/docs/winsorize">O13</a></td>
   <td><a href="https://help.github.com/articles/adding-images-to-wikis/" title="https://help.github.com/articles/adding-images-to-wikis/">O14</a></td>
   <td>( “0”)</td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
 </tr>
 </tbody></table>
 
@@ -980,17 +972,17 @@ return(tbA1)
   <td><a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/sample.html" title="https://stat.ethz.ch/R-manual/R-devel/library/base/html/sample.html">stat.ethz.ch04</a></td>
   <td><a href="https://stat.ethz.ch/R-manual/R-devel/library/graphics/html/plot.html" title="https://stat.ethz.ch/R-manual/R-devel/library/graphics/html/plot.html">stat.ethz.ch05</a></td>
   <td><a href="https://stat.ethz.ch/R-manual/R-devel/library/utils/html/write.table.html" title="https://stat.ethz.ch/R-manual/R-devel/library/utils/html/write.table.html">stat.ethz.ch06</a></td>
-  <td><a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/print.dataframe.html" title="https://stat.ethz.ch/R-manual/R-devel/library/base/html/print.dataframe.html">stat.ethz.ch07</a></td>
-  <td><a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/Extract.data.frame.html" title="https://stat.ethz.ch/R-manual/R-devel/library/base/html/Extract.data.frame.html">stat.ethz.ch08</a></td>
-  <td><a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/table.html" title="https://stat.ethz.ch/R-manual/R-devel/library/base/html/table.html">stat.ethz.ch09</a></td>
+  <td></td>
+  <td></td>
+  <td></td>
 </tr>
 <tr>
-  <td align="center"><a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/merge.html" title="https://stat.ethz.ch/R-manual/R-devel/library/base/html/merge.html">stat.ethz.ch10</a></td>
-  <td align="center"><a href="https://stat.ethz.ch/pipermail/r-help/2011-August/285614.html" title="https://stat.ethz.ch/pipermail/r-help/2011-August/285614.html">stat.ethz.ch11</a></td>
-  <td align="center"><a href="https://stat.ethz.ch/R-manual/R-devel/library/grDevices/html/dev2.html" title="https://stat.ethz.ch/R-manual/R-devel/library/grDevices/html/dev2.html">stat.ethz.ch12</a></td>
-  <td></td>
-  <td></td>
-  <td></td>
+  <td align="center"><a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/print.dataframe.html" title="https://stat.ethz.ch/R-manual/R-devel/library/base/html/print.dataframe.html">stat.ethz.ch07</a></td>
+  <td align="center"><a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/Extract.data.frame.html" title="https://stat.ethz.ch/R-manual/R-devel/library/base/html/Extract.data.frame.html">stat.ethz.ch08</a></td>
+  <td align="center"><a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/table.html" title="https://stat.ethz.ch/R-manual/R-devel/library/base/html/table.html">stat.ethz.ch09</a></td>
+  <td><a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/merge.html" title="https://stat.ethz.ch/R-manual/R-devel/library/base/html/merge.html">stat.ethz.ch10</a></td>
+  <td><a href="https://stat.ethz.ch/pipermail/r-help/2011-August/285614.html" title="https://stat.ethz.ch/pipermail/r-help/2011-August/285614.html">stat.ethz.ch11</a></td>
+  <td><a href="https://stat.ethz.ch/R-manual/R-devel/library/grDevices/html/dev2.html" title="https://stat.ethz.ch/R-manual/R-devel/library/grDevices/html/dev2.html">stat.ethz.ch12</a></td>
   <td></td>
   <td></td>
   <td></td>

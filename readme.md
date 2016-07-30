@@ -797,7 +797,6 @@ return(tbA1)
   <th align="center"></th>
   <th align="center"></th>
   <th align="center"></th>
-  <th align="center"></th>
 </tr>
 </thead>
 <tbody><tr>
@@ -806,7 +805,6 @@ return(tbA1)
   <td align="center"><a href="http://stackoverflow.com/questions/9368900/how-to-check-if-object-variable-is-defined-in-r" title="http://stackoverflow.com/questions/9368900/how-to-check-if-object-variable-is-defined-in-r">stackoverflow003</a></td>
   <td align="center"><a href="http://stackoverflow.com/questions/10276092/to-find-whether-a-column-exists-in-data-frame-or-not" title="http://stackoverflow.com/questions/10276092/to-find-whether-a-column-exists-in-data-frame-or-not">stackoverflow004</a></td>
   <td align="center"><a href="http://stackoverflow.com/questions/9970116/ignoring-values-or-nas-in-the-sample-function" title="http://stackoverflow.com/questions/9970116/ignoring-values-or-nas-in-the-sample-function">stackoverflow005</a></td>
-  <td align="center"></td>
 </tr>
 <tr>
   <td align="center"><a href="http://stackoverflow.com/questions/6229824/winsorize-dataframe" title="http://stackoverflow.com/questions/6229824/winsorize-dataframe">stackoverflow006</a></td>
@@ -814,7 +812,6 @@ return(tbA1)
   <td align="center"><a href="http://stackoverflow.com/questions/20105015/summing-lots-of-vectors-row-wise-or-elementwise-but-ignoring-na-values" title="http://stackoverflow.com/questions/20105015/summing-lots-of-vectors-row-wise-or-elementwise-but-ignoring-na-values">stackoverflow008</a></td>
   <td align="center"><a href="http://stackoverflow.com/questions/5031630/how-to-source-r-file-saved-using-utf-8-encoding" title="http://stackoverflow.com/questions/5031630/how-to-source-r-file-saved-using-utf-8-encoding">stackoverflow009</a></td>
   <td align="center"><a href="http://stackoverflow.com/questions/13763216/how-can-i-remove-all-duplicates-so-that-none-are-left-in-a-data-frame-in-r" title="http://stackoverflow.com/questions/13763216/how-can-i-remove-all-duplicates-so-that-none-are-left-in-a-data-frame-in-r">stackoverflow010</a></td>
-  <td align="center"></td>
 </tr>
 <tr>
   <td align="center"><a href="http://stackoverflow.com/questions/7072159/how-do-you-remove-columns-from-a-data-frame" title="http://stackoverflow.com/questions/7072159/how-do-you-remove-columns-from-a-data-frame">stackoverflow011</a></td>
@@ -822,7 +819,6 @@ return(tbA1)
   <td align="center"><a href="http://stackoverflow.com/questions/19889303/r-force-a-subset-of-a-data-frame-to-remain-as-a-data-frame" title="http://stackoverflow.com/questions/19889303/r-force-a-subset-of-a-data-frame-to-remain-as-a-data-frame">stackoverflow013</a></td>
   <td align="center"><a href="http://stackoverflow.com/questions/35852776/skip-nas-with-rollapplyr" title="http://stackoverflow.com/questions/35852776/skip-nas-with-rollapplyr">stackoverflow014</a></td>
   <td align="center"><a href="http://stackoverflow.com/questions/18435338/print-or-capturing-multiple-objects-in-r" title="http://stackoverflow.com/questions/18435338/print-or-capturing-multiple-objects-in-r">stackoverflow015</a></td>
-  <td align="center"></td>
 </tr>
 <tr>
   <td align="center"><a href="http://stackoverflow.com/questions/4090169/elegant-way-to-check-for-missing-packages-and-install-them" title="http://stackoverflow.com/questions/4090169/elegant-way-to-check-for-missing-packages-and-install-them">stackoverflow016</a></td>
@@ -830,7 +826,6 @@ return(tbA1)
   <td align="center"><a href="http://stackoverflow.com/questions/14260340/function-to-clear-the-console-in-r" title="http://stackoverflow.com/questions/14260340/function-to-clear-the-console-in-r">stackoverflow018</a></td>
   <td align="center"><a href="http://stackoverflow.com/questions/1405571/how-to-assign-output-of-cat-to-an-object" title="http://stackoverflow.com/questions/1405571/how-to-assign-output-of-cat-to-an-object">stackoverflow019</a></td>
   <td align="center"><a href="http://stackoverflow.com/questions/3926106/how-to-use-apply-cat-and-print-without-getting-null" title="http://stackoverflow.com/questions/3926106/how-to-use-apply-cat-and-print-without-getting-null">stackoverflow020</a></td>
-  <td align="center"></td>
 </tr>
 <tr>
   <td align="center"><a href="http://stackoverflow.com/questions/7201341/how-can-2-strings-be-concatenated-in-r" title="http://stackoverflow.com/questions/7201341/how-can-2-strings-be-concatenated-in-r">stackoverflow021</a></td>
@@ -838,7 +833,6 @@ return(tbA1)
   <td align="center"><a href="http://stackoverflow.com/questions/32520808/r-parse-and-evaluate-variable-names-within-a-function" title="http://stackoverflow.com/questions/32520808/r-parse-and-evaluate-variable-names-within-a-function">stackoverflow023</a></td>
   <td align="center"><a href="http://stackoverflow.com/questions/36404576/r-eval-parse-character-limit" title="http://stackoverflow.com/questions/36404576/r-eval-parse-character-limit">stackoverflow024</a></td>
   <td align="center"><a href="http://stackoverflow.com/questions/8175912/load-multiple-packages-at-once" title="http://stackoverflow.com/questions/8175912/load-multiple-packages-at-once">stackoverflow025</a></td>
-  <td align="center"></td>
 </tr>
 <tr>
   <td align="center"><a href="http://stackoverflow.com/questions/18306362/run-r-script-from-command-line" title="http://stackoverflow.com/questions/18306362/run-r-script-from-command-line">stackoverflow026</a></td>
@@ -846,7 +840,6 @@ return(tbA1)
   <td align="center"><a href="http://stackoverflow.com/questions/4605206/drop-data-frame-columns-by-name" title="http://stackoverflow.com/questions/4605206/drop-data-frame-columns-by-name">stackoverflow028</a></td>
   <td align="center"><a href="http://stackoverflow.com/questions/9202413/how-do-you-delete-a-column-by-name-in-data-table" title="http://stackoverflow.com/questions/9202413/how-do-you-delete-a-column-by-name-in-data-table">stackoverflow029</a></td>
   <td align="center"><a href="http://stackoverflow.com/questions/19379081/how-to-replace-na-values-in-a-table-for-selected-columns-data-frame-data-tab" title="http://stackoverflow.com/questions/19379081/how-to-replace-na-values-in-a-table-for-selected-columns-data-frame-data-tab">stackoverflow030</a></td>
-  <td align="center"></td>
 </tr>
 <tr>
   <td align="center"><a href="http://stackoverflow.com/questions/18562680/replacing-nas-with-0s-in-r-dataframe" title="http://stackoverflow.com/questions/18562680/replacing-nas-with-0s-in-r-dataframe">stackoverflow031</a></td>
@@ -854,7 +847,6 @@ return(tbA1)
   <td align="center"><a href="http://stackoverflow.com/questions/4935479/how-to-combine-multiple-conditions-to-subset-a-data-frame-using-or" title="http://stackoverflow.com/questions/4935479/how-to-combine-multiple-conditions-to-subset-a-data-frame-using-or">stackoverflow033</a></td>
   <td align="center"><a href="http://stackoverflow.com/questions/8161836/how-do-i-replace-na-values-with-zeros-in-r" title="http://stackoverflow.com/questions/8161836/how-do-i-replace-na-values-with-zeros-in-r">stackoverflow034</a></td>
   <td align="center"><a href="http://stackoverflow.com/questions/19409550/rank-and-length-with-missing-values-in-r" title="http://stackoverflow.com/questions/19409550/rank-and-length-with-missing-values-in-r">stackoverflow035</a></td>
-  <td align="center"></td>
 </tr>
 <tr>
   <td align="center"><a href="http://stackoverflow.com/questions/18302610/remove-ids-that-occur-x-times-r" title="http://stackoverflow.com/questions/18302610/remove-ids-that-occur-x-times-r">stackoverflow036</a></td>
@@ -862,7 +854,6 @@ return(tbA1)
   <td align="center"><a href="https://stackoverflow.com/questions/24628708/moving-average-with-changing-period-in-r" title="https://stackoverflow.com/questions/24628708/moving-average-with-changing-period-in-r">stackoverflow038</a></td>
   <td align="center"><a href="http://stackoverflow.com/questions/17573226/generating-a-moving-sum-variable-in-r?answertab=active#tab-top" title="http://stackoverflow.com/questions/17573226/generating-a-moving-sum-variable-in-r?answertab=active#tab-top">stackoverflow039</a></td>
   <td align="center"><a href="http://stackoverflow.com/questions/36190503/running-sum-in-r-data-table/36190577" title="http://stackoverflow.com/questions/36190503/running-sum-in-r-data-table/36190577">stackoverflow040</a></td>
-  <td align="center"></td>
 </tr>
 <tr>
   <td align="center"><a href="http://stackoverflow.com/questions/31896113/clueless-about-this-error-wrong-sign-in-by-argument" title="http://stackoverflow.com/questions/31896113/clueless-about-this-error-wrong-sign-in-by-argument">stackoverflow041</a></td>
@@ -870,7 +861,6 @@ return(tbA1)
   <td align="center"><a href="http://stackoverflow.com/questions/743812/calculating-moving-average-in-r" title="http://stackoverflow.com/questions/743812/calculating-moving-average-in-r">stackoverflow043</a></td>
   <td align="center"><a href="http://stackoverflow.com/questions/19327020/in-r-how-to-split-subset-a-data-frame-by-factors-in-one-column" title="http://stackoverflow.com/questions/19327020/in-r-how-to-split-subset-a-data-frame-by-factors-in-one-column">stackoverflow044</a></td>
   <td align="center"><a href="http://stackoverflow.com/questions/9704213/r-remove-part-of-string" title="http://stackoverflow.com/questions/9704213/r-remove-part-of-string">stackoverflow045</a></td>
-  <td align="center"></td>
 </tr>
 <tr>
   <td align="center"><a href="http://stackoverflow.com/questions/8491754/converting-different-rows-of-a-data-frame-to-one-single-row-in-r" title="http://stackoverflow.com/questions/8491754/converting-different-rows-of-a-data-frame-to-one-single-row-in-r">stackoverflow046</a></td>
@@ -878,7 +868,6 @@ return(tbA1)
   <td align="center"><a href="http://stackoverflow.com/questions/25598361/calculating-row-entry-conditional-on-value-in-another-column-in-r" title="http://stackoverflow.com/questions/25598361/calculating-row-entry-conditional-on-value-in-another-column-in-r">stackoverflow048</a></td>
   <td align="center"><a href="http://stackoverflow.com/questions/12844316/align-text-when-using-tablegrob-or-grid-table-in-r" title="http://stackoverflow.com/questions/12844316/align-text-when-using-tablegrob-or-grid-table-in-r">stackoverflow049</a></td>
   <td align="center"><a href="http://stackoverflow.com/questions/13590887/print-a-data-frame-with-columns-aligned-as-displayed-in-r" title="http://stackoverflow.com/questions/13590887/print-a-data-frame-with-columns-aligned-as-displayed-in-r">stackoverflow050</a></td>
-  <td align="center"></td>
 </tr>
 <tr>
   <td align="center"><a href="http://stackoverflow.com/questions/8166931/plots-with-good-resolution-for-printing-and-screen-display" title="http://stackoverflow.com/questions/8166931/plots-with-good-resolution-for-printing-and-screen-display">stackoverflow051</a></td>
@@ -886,7 +875,6 @@ return(tbA1)
   <td align="center"><a href="http://stackoverflow.com/questions/17059099/saving-grid-arrange-plot-to-file" title="http://stackoverflow.com/questions/17059099/saving-grid-arrange-plot-to-file">stackoverflow053</a></td>
   <td align="center"><a href="http://stackoverflow.com/questions/26788049/plot-table-objects-with-ggplot" title="http://stackoverflow.com/questions/26788049/plot-table-objects-with-ggplot">stackoverflow054</a></td>
   <td align="center"><a href="http://stackoverflow.com/questions/22640016/code-to-clear-all-plots-in-rstudio" title="http://stackoverflow.com/questions/22640016/code-to-clear-all-plots-in-rstudio">stackoverflow055</a></td>
-  <td align="center"></td>
 </tr>
 <tr>
   <td align="center"><a href="http://stackoverflow.com/questions/13590887/print-a-data-frame-with-columns-aligned-as-displayed-in-r" title="http://stackoverflow.com/questions/13590887/print-a-data-frame-with-columns-aligned-as-displayed-in-r">stackoverflow056</a></td>
@@ -894,13 +882,11 @@ return(tbA1)
   <td align="center"><a href="http://stackoverflow.com/questions/11852408/frequency-table-with-several-variables-in-r" title="http://stackoverflow.com/questions/11852408/frequency-table-with-several-variables-in-r">stackoverflow058</a></td>
   <td align="center"><a href="https://github.com/Oscar-Deng/EssayCoding2016" title="0">!!!stackoverflow059</a></td>
   <td align="center"><a href="https://github.com/Oscar-Deng/EssayCoding2016" title="0">stackoverflow060</a></td>
-  <td align="center"></td>
 </tr>
 <tr>
   <td align="center">[stackoverflow061]( “0”)</td>
   <td align="center">[stackoverflow062]( “0”)</td>
   <td align="center">[stackoverflow063]( “0”)</td>
-  <td align="center"></td>
   <td align="center"></td>
   <td align="center"></td>
 </tr>
@@ -960,9 +946,6 @@ return(tbA1)
   <th></th>
   <th></th>
   <th></th>
-  <th></th>
-  <th></th>
-  <th></th>
 </tr>
 </thead>
 <tbody><tr>
@@ -972,9 +955,6 @@ return(tbA1)
   <td><a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/sample.html" title="https://stat.ethz.ch/R-manual/R-devel/library/base/html/sample.html">stat.ethz.ch04</a></td>
   <td><a href="https://stat.ethz.ch/R-manual/R-devel/library/graphics/html/plot.html" title="https://stat.ethz.ch/R-manual/R-devel/library/graphics/html/plot.html">stat.ethz.ch05</a></td>
   <td><a href="https://stat.ethz.ch/R-manual/R-devel/library/utils/html/write.table.html" title="https://stat.ethz.ch/R-manual/R-devel/library/utils/html/write.table.html">stat.ethz.ch06</a></td>
-  <td></td>
-  <td></td>
-  <td></td>
 </tr>
 <tr>
   <td align="center"><a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/print.dataframe.html" title="https://stat.ethz.ch/R-manual/R-devel/library/base/html/print.dataframe.html">stat.ethz.ch07</a></td>
@@ -983,9 +963,6 @@ return(tbA1)
   <td><a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/merge.html" title="https://stat.ethz.ch/R-manual/R-devel/library/base/html/merge.html">stat.ethz.ch10</a></td>
   <td><a href="https://stat.ethz.ch/pipermail/r-help/2011-August/285614.html" title="https://stat.ethz.ch/pipermail/r-help/2011-August/285614.html">stat.ethz.ch11</a></td>
   <td><a href="https://stat.ethz.ch/R-manual/R-devel/library/grDevices/html/dev2.html" title="https://stat.ethz.ch/R-manual/R-devel/library/grDevices/html/dev2.html">stat.ethz.ch12</a></td>
-  <td></td>
-  <td></td>
-  <td></td>
 </tr>
 </tbody></table>
 

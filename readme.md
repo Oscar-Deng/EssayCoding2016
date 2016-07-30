@@ -1006,7 +1006,7 @@ return(tbA1)
 
 <h2 id="r說明檔-official-guide"><strong>R說明檔 (official guide)</strong></h2>
 
-<p><em>* package used*</em></p>
+<p><em>* package used:*</em></p>
 
 <h2 id="liu-faq-dplyr-datatable-robusthd-writexls-readxl-knitr-sampling-xts-astsa-zoo-roo-rutils-psych-gridextra-gridextra-tablegrob-0-0"><table>
 <thead>

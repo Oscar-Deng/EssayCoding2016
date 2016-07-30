@@ -72,10 +72,10 @@ tbA1 <- plottbA1()
 plottbA2 <- function(Q){
   TEJ01$TSE <- paste(TEJ01$TSE_code,TEJ01$TSE_name,sep=" ")
   tbA2 <- as.data.frame.matrix(table(TEJ01$TSE,TEJ01$year))
-  png(filename="table2_產業年份分配表.png",width=300,height = 200,units="mm",res = 500)
+  png(filename="table2.png",width=300,height = 200,units="mm",res = 500)
   grid.table(tbA2)
   dev.off()
-  write.xlsx(tbA2,file="tables.xlsx",sheetName = "table2_產業年份分配表",col.names = TRUE,row.names = TRUE,showNA = FALSE,append = TRUE)
+  write.xlsx(tbA2,file="tables.xlsx",sheetName = "table2",col.names = TRUE,row.names = TRUE,showNA = FALSE,append = TRUE)
 return(tbA2)
 }
 tbA2 <- plottbA2()

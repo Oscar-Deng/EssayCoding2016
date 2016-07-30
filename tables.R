@@ -1,3 +1,4 @@
+# ----
 # tables
 # 樣本篩選表
 #setwd("D:\\Documents\\Dropbox\\MyEssay\\Rcoding\\")
@@ -17,7 +18,7 @@ nonNAs <- function(x) {
   as.vector(apply(x, 2, function(x) length(which(!is.na(x)))))
 }
 
-
+# ----
 plottbA1 <- function(Q){
   x <- nrow(TEJ)
   x1 <- nrow(TEJ[TEJ$TSE_code=='M2800',])
@@ -82,5 +83,22 @@ tbA2 <- plottbA2()
 
 #ggplot(as.data.frame(table(tb2)), aes(x=year, y=Freq, fill=TSE)) + geom_bar(stat="identity")
 
+# ----
+plottbA3 <- function(){
+  
+}
+tbA3 <- plottbA3()
+
+plottbA4 <- function(){}
+tbA4 <- plottbA4()
+
+plottbA5 <- function(){}
+tbA5 <- plottbA5()
+
+plottbA6 <- function(){}
+tbA6 <- plottbA6()
+
+plottbA7 <- function(){}
+tbA7 <- plottbA7()
 
 

@@ -775,7 +775,13 @@ return(tbA1)
 
 
 
-<h3 id="q3"><strong>Q3</strong></h3>
+<h3 id="rjavaerror"><strong>出現Failed with error:  ‘package ‘rJava’ could not be loaded’</strong></h3>
+
+<blockquote>
+  <ol>
+  <li>請<a href="https://java.com/zh_TW/download/win10.jsp">安裝</a>java並再次執行。</li>
+  </ol>
+</blockquote>
 
 
 

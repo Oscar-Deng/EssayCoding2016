@@ -3,7 +3,7 @@
 # Clean Console # only available for rstudio.
 cat("\014")
 # set directory to path
-setwd("D:\\Documents\\Dropbox\\MyEssay\\Rcoding\\")
+#setwd("D:\\Documents\\Dropbox\\MyEssay\\Rcoding\\")
 
 # load in all functions
 source('functions.R',encoding='utf-8')

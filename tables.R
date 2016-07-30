@@ -85,7 +85,7 @@ tbA2 <- plottbA2()
 
 # ----
 plottbA3 <- function(){
-  
+  fnmin <- function(x){apply(TEJ101,2,mean(x,na.rm=TRUE))}
 }
 tbA3 <- plottbA3()
 

@@ -22,6 +22,8 @@
 
 <hr>
 
+
+
 <h2 id="table-of-contents"><strong>Table of Contents</strong></h2>
 
 <ul>
@@ -80,6 +82,8 @@
 
 <hr>
 
+
+
 <h2 id="ready-to-run-r">Ready to run R</h2>
 
 <p>欲建立運行環境，請先至<a href="https://cran.r-project.org/mirrors.html">R的網站</a>下載新版的R安裝。</p>
@@ -117,7 +121,11 @@ Sys.setlocale("LC_ALL",locale='cht')
 
 <hr>
 
+
+
 <h2 id="empirical-analysis"><strong>Empirical Analysis</strong></h2>
+
+
 
 <h3 id="coding-process"><strong>Coding Process</strong></h3>
 
@@ -131,6 +139,8 @@ Sys.setlocale("LC_ALL",locale='cht')
   <li>解釋分析結果。<strong>(Explain)</strong></li>
   </ol>
 </blockquote>
+
+
 
 <h3 id="getting-data"><strong>Getting Data</strong></h3>
 
@@ -271,6 +281,8 @@ TEJ82 &lt;- winsamp2(x=’TEJ82’,col = c(‘ETR’,’CETR’,’ROA’,’SIZ
 <p><a href="#plottba1">plottbA1</a> 說明 <br>
 <img src="table1_excel.png" alt="table1_excel.png" title=""></p>
 
+
+
 <h5 id="表二樣本產業與年度分配表">表二、樣本產業與年度分配表</h5>
 
 <pre><code>TEJ102$TSE &lt;- paste(TEJ102$TSE_code,TEJ102$TSE_name,sep=" ")
@@ -280,6 +292,8 @@ grid.table(tbA2)
 
 <p><strong>另以EXCEL編輯</strong> <br>
 <img src="table2_excel.png" alt="table2_excel.png" title=""></p>
+
+
 
 <h5 id="表0按產業年份及變數分類之缺漏值數量表">表0、按產業、年份及變數分類之缺漏值數量表</h5>
 
@@ -633,6 +647,8 @@ control_var &lt;- function(x=TEJ1){
 }
 </code></pre>
 
+
+
 <h5 id="winsorizedsample"><strong>winsorized.sample</strong></h5>
 
 <pre><code>winsorized.sample &lt;- function (x, prob = 0) { # remove NA
@@ -735,15 +751,25 @@ return(tbA1)
 
 <h4 id="套件函數說明如下"><strong>套件函數說明如下</strong></h4>
 
+
+
 <h5 id="installpack-1"><strong>Install.pack</strong></h5>
 
+
+
 <h5 id="installpack-2"><strong>Install.pack</strong></h5>
+
+
 
 <h5 id="installpack-3"><strong>Install.pack</strong></h5>
 
 <hr>
 
+
+
 <h2 id="qa"><strong>Q&amp;A</strong></h2>
+
+
 
 <h3 id="如何開啟tej增益集"><strong>如何開啟TEJ增益集?</strong></h3>
 
@@ -758,6 +784,8 @@ return(tbA1)
   </ol>
 </blockquote>
 
+
+
 <h3 id="自記錄檔匯入tej設定"><strong>自記錄檔匯入TEJ設定</strong></h3>
 
 <blockquote>
@@ -769,6 +797,8 @@ return(tbA1)
   </ol>
 </blockquote>
 
+
+
 <h3 id="出現failed-with-error-package-rjava-could-not-be-loaded"><strong>出現Failed with error: ‘package ‘rJava’ could not be loaded’</strong></h3>
 
 <blockquote>
@@ -779,11 +809,19 @@ return(tbA1)
   </ol>
 </blockquote>
 
+
+
 <h3 id="q4"><strong>Q4</strong></h3>
+
+
 
 <h3 id="q5"><strong>Q5</strong></h3>
 
+
+
 <h2 id="後記"><strong>後記</strong></h2>
+
+
 
 <h2 id="引用文獻"><strong>引用文獻</strong></h2>
 
@@ -943,26 +981,26 @@ return(tbA1)
   <th align="center"></th>
   <th align="center"></th>
   <th align="center"></th>
-  <th></th>
-  <th></th>
-  <th></th>
+  <th align="center"></th>
+  <th align="center"></th>
+  <th align="center"></th>
 </tr>
 </thead>
 <tbody><tr>
   <td align="center"><a href="https://stat.ethz.ch/" title="https://stat.ethz.ch/">stat.ethz.ch01</a></td>
   <td align="center"><a href="https://stat.ethz.ch/pipermail/r-help/2002-April/020794.html" title="https://stat.ethz.ch/pipermail/r-help/2002-April/020794.html">stat.ethz.ch02</a></td>
   <td align="center"><a href="https://stat.ethz.ch/R-manual/R-devel/library/stats/html/sd.html" title="https://stat.ethz.ch/R-manual/R-devel/library/stats/html/sd.html">stat.ethz.ch03</a></td>
-  <td><a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/sample.html" title="https://stat.ethz.ch/R-manual/R-devel/library/base/html/sample.html">stat.ethz.ch04</a></td>
-  <td><a href="https://stat.ethz.ch/R-manual/R-devel/library/graphics/html/plot.html" title="https://stat.ethz.ch/R-manual/R-devel/library/graphics/html/plot.html">stat.ethz.ch05</a></td>
-  <td><a href="https://stat.ethz.ch/R-manual/R-devel/library/utils/html/write.table.html" title="https://stat.ethz.ch/R-manual/R-devel/library/utils/html/write.table.html">stat.ethz.ch06</a></td>
+  <td align="center"><a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/sample.html" title="https://stat.ethz.ch/R-manual/R-devel/library/base/html/sample.html">stat.ethz.ch04</a></td>
+  <td align="center"><a href="https://stat.ethz.ch/R-manual/R-devel/library/graphics/html/plot.html" title="https://stat.ethz.ch/R-manual/R-devel/library/graphics/html/plot.html">stat.ethz.ch05</a></td>
+  <td align="center"><a href="https://stat.ethz.ch/R-manual/R-devel/library/utils/html/write.table.html" title="https://stat.ethz.ch/R-manual/R-devel/library/utils/html/write.table.html">stat.ethz.ch06</a></td>
 </tr>
 <tr>
   <td align="center"><a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/print.dataframe.html" title="https://stat.ethz.ch/R-manual/R-devel/library/base/html/print.dataframe.html">stat.ethz.ch07</a></td>
   <td align="center"><a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/Extract.data.frame.html" title="https://stat.ethz.ch/R-manual/R-devel/library/base/html/Extract.data.frame.html">stat.ethz.ch08</a></td>
   <td align="center"><a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/table.html" title="https://stat.ethz.ch/R-manual/R-devel/library/base/html/table.html">stat.ethz.ch09</a></td>
-  <td><a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/merge.html" title="https://stat.ethz.ch/R-manual/R-devel/library/base/html/merge.html">stat.ethz.ch10</a></td>
-  <td><a href="https://stat.ethz.ch/pipermail/r-help/2011-August/285614.html" title="https://stat.ethz.ch/pipermail/r-help/2011-August/285614.html">stat.ethz.ch11</a></td>
-  <td><a href="https://stat.ethz.ch/R-manual/R-devel/library/grDevices/html/dev2.html" title="https://stat.ethz.ch/R-manual/R-devel/library/grDevices/html/dev2.html">stat.ethz.ch12</a></td>
+  <td align="center"><a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/merge.html" title="https://stat.ethz.ch/R-manual/R-devel/library/base/html/merge.html">stat.ethz.ch10</a></td>
+  <td align="center"><a href="https://stat.ethz.ch/pipermail/r-help/2011-August/285614.html" title="https://stat.ethz.ch/pipermail/r-help/2011-August/285614.html">stat.ethz.ch11</a></td>
+  <td align="center"><a href="https://stat.ethz.ch/R-manual/R-devel/library/grDevices/html/dev2.html" title="https://stat.ethz.ch/R-manual/R-devel/library/grDevices/html/dev2.html">stat.ethz.ch12</a></td>
 </tr>
 </tbody></table>
 
@@ -1008,10 +1046,9 @@ return(tbA1)
 
 <p><em>* package used:*</em></p>
 
-<h2 id="liu-faq-dplyr-datatable-robusthd-writexls-readxl-knitr-sampling-xts-astsa-zoo-roo-rutils-psych-gridextra-gridextra-tablegrob-0-0"><table>
+<table>
 <thead>
 <tr>
-  <th align="center"></th>
   <th align="center"></th>
   <th align="center"></th>
   <th align="center"></th>
@@ -1021,22 +1058,20 @@ return(tbA1)
 </tr>
 </thead>
 <tbody><tr>
-  <td align="center"><a href="https://cran.r-project.org/doc/contrib/Liu-FAQ.pdf" title="https://cran.r-project.org/doc/contrib/Liu-FAQ.pdf">Liu-FAQ</a></td>
-  <td align="center"><a href="https://cran.r-project.org/web/packages/dplyr/dplyr.pdf" title="https://cran.r-project.org/web/packages/dplyr/dplyr.pdf">dplyr</a></td>
-  <td align="center"><a href="https://cran.r-project.org/web/packages/data.table/data.table.pdf" title="https://cran.r-project.org/web/packages/data.table/data.table.pdf">data.table</a></td>
-  <td align="center"><a href="https://cran.r-project.org/web/packages/robustHD/robustHD.pdf" title="https://cran.r-project.org/web/packages/robustHD/robustHD.pdf">robustHD</a></td>
-  <td align="center"><a href="https://cran.r-project.org/web/packages/WriteXLS/WriteXLS.pdf" title="https://cran.r-project.org/web/packages/WriteXLS/WriteXLS.pdf">WriteXLS</a></td>
-  <td align="center"><a href="https://cran.r-project.org/web/packages/readxl/readxl.pdf" title="https://cran.r-project.org/web/packages/readxl/readxl.pdf">readxl</a></td>
-  <td align="center"><a href="https://cran.r-project.org/web/packages/knitr/knitr.pdf" title="https://cran.r-project.org/web/packages/knitr/knitr.pdf">knitr</a></td>
+  <td align="center"><a href="https://cran.r-project.org/doc/contrib/Liu-FAQ.pdf" title="Liu-FAQ.pdf">Liu-FAQ</a></td>
+  <td align="center"><a href="https://cran.r-project.org/web/packages/dplyr/dplyr.pdf" title="dplyr.pdf">dplyr</a></td>
+  <td align="center"><a href="https://cran.r-project.org/web/packages/data.table/data.table.pdf" title="data.table.pdf">data.table</a></td>
+  <td align="center"><a href="https://cran.r-project.org/web/packages/robustHD/robustHD.pdf" title="robustHD.pdf">robustHD</a></td>
+  <td align="center"><a href="https://cran.r-project.org/web/packages/WriteXLS/WriteXLS.pdf" title="WriteXLS.pdf">WriteXLS</a></td>
+  <td align="center"><a href="https://cran.r-project.org/web/packages/readxl/readxl.pdf" title="readxl.pdf">readxl</a></td>
 </tr>
 <tr>
-  <td align="center"><a href="https://cran.r-project.org/web/packages/sampling/sampling.pdf" title="https://cran.r-project.org/web/packages/sampling/sampling.pdf">sampling</a></td>
+  <td align="center"><a href="https://cran.r-project.org/web/packages/sampling/sampling.pdf" title="sampling.pdf">sampling</a></td>
   <td align="center"><a href="https://cran.r-project.org/web/packages/xts/xts.pdf" title="https://cran.r-project.org/web/packages/xts/xts.pdf">xts</a></td>
   <td align="center"><a href="https://cran.r-project.org/web/packages/astsa/astsa.pdf" title="https://cran.r-project.org/web/packages/astsa/astsa.pdf">astsa</a></td>
   <td align="center"><a href="https://cran.r-project.org/web/packages/zoo/zoo.pdf" title="https://cran.r-project.org/web/packages/zoo/zoo.pdf">zoo</a></td>
   <td align="center"><a href="https://cran.r-project.org/web/packages/R.oo/R.oo.pdf" title="https://cran.r-project.org/web/packages/R.oo/R.oo.pdf">R.oo</a></td>
   <td align="center"><a href="https://cran.r-project.org/web/packages/R.utils/R.utils.pdf" title="https://cran.r-project.org/web/packages/R.utils/R.utils.pdf">R.utils</a></td>
-  <td align="center"><a href="https://cran.r-project.org/web/packages/psych/psych.pdf" title="https://cran.r-project.org/web/packages/psych/psych.pdf">psych</a></td>
 </tr>
 <tr>
   <td align="center"><a href="https://cran.r-project.org/web/packages/gridExtra/gridExtra.pdf" title="https://cran.r-project.org/web/packages/gridExtra/gridExtra.pdf">gridExtra</a></td>
@@ -1045,10 +1080,11 @@ return(tbA1)
   <td align="center">( “0”)</td>
   <td align="center"></td>
   <td align="center"></td>
-  <td align="center"></td>
 </tr>
 </tbody></table>
-</h2>
+
+
+<hr>
 
 <h3 id="all-the-r-package-citations-will-be-added-later-after-finishing-this-readme-file"><strong>ALL THE R PACKAGE CITATIONS WILL BE ADDED LATER AFTER FINISHING THIS README FILE!</strong></h3>
 

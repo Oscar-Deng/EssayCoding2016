@@ -24,7 +24,59 @@
 
 <h2 id="table-of-contents"><strong>Table of Contents</strong></h2>
 
-<p><a href="#readytorunr">運行前的準備</a></p>
+<ul>
+<li><a href="#ready-to-run-r">運行前的準備</a></li>
+<li><a href="#empirical-analysis">實證分析</a> <br>
+<ul><li><a href="#coding-process">架構</a></li>
+<li><a href="#getting-data">獲取資料</a></li>
+<li><a href="#preparation-for-rstudio">準備R環境</a></li>
+<li><a href="#preparing-data">資料預處理</a></li>
+<li><a href="#analyze">分析</a></li>
+<li><a href="#produce-reports-and-graphs">產生圖表</a> <br>
+<ul><li><a href="#樣本說明">樣本說明</a> <br>
+<ul><li><a href="#表一、樣本篩選表">表一、樣本篩選表</a></li>
+<li><a href="#表二、樣本產業與年度分配表">表二、樣本產業與年度分配表</a></li>
+<li><a href="#表0、按產業、年份及變數分類之缺漏值數量表">表0、按產業、年份及變數分類之缺漏值數量表</a></li></ul></li>
+<li><a href="#敘述統計">敘述統計</a> <br>
+<ul><li><a href="#表三、各變數敘述統計量">表三、各變數敘述統計量</a></li>
+<li><a href="#表四、各產業之市場分類結構">表四、各產業之市場分類結構</a></li></ul></li>
+<li><a href="#相關係數分析">相關係數分析</a> <br>
+<ul><li><a href="#表五、各變數之Pearson相關係數表%28以ETR為應變數%29">表五、各變數之Pearson相關係數表(以ETR為應變數)</a></li>
+<li><a href="#表六、各變數之Pearson相關係數表%28以CashETR為應變數%29">表六、各變數之Pearson相關係數表(以CashETR為應變數)</a></li>
+<li><a href="#表七、實證結果表">表七、實證結果表</a></li></ul></li></ul></li>
+<li><a href="#explain">解釋分析</a></li>
+<li><a href="#functions">函數說明</a> <br>
+<ul><li><a href="#所有自定義函數說明如下">一、所有自定義函數說明如下</a> <br>
+<ul><li><a href="#installpack">Install.pack</a></li>
+<li><a href="#loadpack">Load.pack</a></li>
+<li><a href="#readdb">readDB</a></li>
+<li><a href="#dbfilter">DBfilter</a></li>
+<li><a href="#nato0">NAto0</a></li>
+<li><a href="#control_var">control_var</a></li>
+<li><a href="#exp_var_str">exp_var_STR</a></li>
+<li><a href="#dep_var">dep_var</a></li>
+<li><a href="#str">STR</a></li>
+<li><a href="#strrank">STRrank</a></li>
+<li><a href="#fngdp">fnGDP</a></li>
+<li><a href="#fnhhi">fnHHI</a></li>
+<li><a href="#winsorizedsample">winsorized.sample</a></li>
+<li><a href="#winsamp1">winsamp1</a></li>
+<li><a href="#winsamp2">winsamp2</a></li>
+<li><a href="#plottba1">plottbA1</a></li></ul></li>
+<li><a href="#套件函數說明如下">二、套件函數說明如下</a> <br>
+<ul><li><a href="#">???</a></li>
+<li><a href="#">???</a></li>
+<li><a href="#">???</a></li></ul></li></ul></li></ul></li>
+<li><a href="#qa">Q&amp;A</a> <br>
+<ul><li><a href="#如何開啟TEJ增益集?">如何開啟TEJ增益集?</a></li>
+<li><a href="#自記錄檔匯入TEJ設定">自記錄檔匯入TEJ設定</a></li>
+<li><a href="#出現failed-with-error-package-rJava-could-not-be-loaded">出現Failed with error: ‘package ‘rJava’ could not be loaded’</a></li>
+<li><a href="#"></a></li>
+<li><a href="#"></a></li></ul></li>
+<li><a href="#後記">後記</a></li>
+<li><a href="#引用文獻">引用文獻</a></li>
+<li><a href="#r說明檔-official-guide">R說明檔 (official guide)</a></li>
+</ul>
 
 <hr>
 
@@ -65,11 +117,9 @@ Sys.setlocale("LC_ALL",locale='cht')
 
 <hr>
 
-<h2 id="實證分析"><strong>實證分析</strong></h2>
+<h2 id="empirical-analysis"><strong>Empirical Analysis</strong></h2>
 
-
-
-<h3 id="架構"><strong>架構</strong></h3>
+<h3 id="coding-process"><strong>Coding Process</strong></h3>
 
 <blockquote>
   <ol>
@@ -81,8 +131,6 @@ Sys.setlocale("LC_ALL",locale='cht')
   <li>解釋分析結果。<strong>(Explain)</strong></li>
   </ol>
 </blockquote>
-
-
 
 <h3 id="getting-data"><strong>Getting Data</strong></h3>
 

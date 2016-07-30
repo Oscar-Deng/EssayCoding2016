@@ -1034,7 +1034,6 @@ return(tbA1)
   <th align="center"></th>
   <th align="center"></th>
   <th align="center"></th>
-  <th></th>
 </tr>
 </thead>
 <tbody><tr>
@@ -1047,7 +1046,6 @@ return(tbA1)
   <td align="center"><a href="https://cran.r-project.org/web/packages/knitr/knitr.pdf" title="https://cran.r-project.org/web/packages/knitr/knitr.pdf">knitr</a></td>
   <td align="center"><a href="https://cran.r-project.org/web/packages/sampling/sampling.pdf" title="https://cran.r-project.org/web/packages/sampling/sampling.pdf">sampling</a></td>
   <td align="center"><a href="https://cran.r-project.org/web/packages/xts/xts.pdf" title="https://cran.r-project.org/web/packages/xts/xts.pdf">xts</a></td>
-  <td></td>
 </tr>
 <tr>
   <td align="center"><a href="https://cran.r-project.org/web/packages/astsa/astsa.pdf" title="https://cran.r-project.org/web/packages/astsa/astsa.pdf">astsa</a></td>
@@ -1059,6 +1057,5 @@ return(tbA1)
   <td align="center"><a href="https://cran.r-project.org/web/packages/gridExtra/vignettes/tableGrob.html" title="https://cran.r-project.org/web/packages/gridExtra/vignettes/tableGrob.html">gridExtra-tableGrob</a></td>
   <td align="center">( “0”)</td>
   <td align="center">( “0”)</td>
-  <td></td>
 </tr>
 </tbody></table>

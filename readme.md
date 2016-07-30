@@ -973,39 +973,40 @@ return(tbA1)
 
 <p>Other:</p>
 
-<ul>
-<li><a href="http://www.cyclismo.org/tutorial/R/tables.html">http://www.cyclismo.org/tutorial/R/tables.html</a></li>
-<li><a href="http://www.r-bloggers.com/how-to-convert-contingency-tables-to-data-frames-with-r/">http://www.r-bloggers.com/how-to-convert-contingency-tables-to-data-frames-with-r/</a></li>
-<li><a href="http://stats.stackexchange.com/questions/6759/removing-duplicated-rows-data-frame-in-r">http://stats.stackexchange.com/questions/6759/removing-duplicated-rows-data-frame-in-r</a></li>
-<li><a href="http://www.r-bloggers.com/winsorization/">http://www.r-bloggers.com/winsorization/</a></li>
-<li><a href="http://www.inside-r.org/packages/cran/robustHD/docs/winsorize">http://www.inside-r.org/packages/cran/robustHD/docs/winsorize</a></li>
-<li><a href="http://www.programiz.com/r-programming/if-else-statement">http://www.programiz.com/r-programming/if-else-statement</a></li>
-<li><a href="http://italwaysrainonme.blogspot.tw/2013/01/git-gitignore-commit.html">http://italwaysrainonme.blogspot.tw/2013/01/git-gitignore-commit.html</a></li>
-<li><a href="http://huan-lin.blogspot.com/2012/04/git-ignore-file.html">http://huan-lin.blogspot.com/2012/04/git-ignore-file.html</a></li>
-<li><a href="http://www.r-tutor.com/r-introduction/data-frame">http://www.r-tutor.com/r-introduction/data-frame</a></li>
-<li><a href="http://www.statmethods.net/input/missingdata.html">http://www.statmethods.net/input/missingdata.html</a></li>
-<li><a href="http://www.statmethods.net/advgraphs/layout.html">http://www.statmethods.net/advgraphs/layout.html</a></li>
-<li><a href="http://www.inside-r.org/r-doc/stats/rnorm">http://www.inside-r.org/r-doc/stats/rnorm</a></li>
-<li><a href="http://www.inside-r.org/packages/cran/robustHD/docs/winsorize">http://www.inside-r.org/packages/cran/robustHD/docs/winsorize</a></li>
-<li><a href="https://help.github.com/articles/adding-images-to-wikis/">https://help.github.com/articles/adding-images-to-wikis/</a></li>
-</ul>
+<p>|   :—————-:  |   :—————-:  |   :—————-:  | <br>
+|   <a href="http://www.cyclismo.org/tutorial/R/tables.html" title="http://www.cyclismo.org/tutorial/R/tables.html">O01</a>  |   <a href="http://www.r-bloggers.com/how-to-convert-contingency-tables-to-data-frames-with-r/" title="http://www.r-bloggers.com/how-to-convert-contingency-tables-to-data-frames-with-r/">O02</a>  |   <a href="http://stats.stackexchange.com/questions/6759/removing-duplicated-rows-data-frame-in-r" title="http://stats.stackexchange.com/questions/6759/removing-duplicated-rows-data-frame-in-r">O03</a>  | <br>
+|   <a href="http://www.r-bloggers.com/winsorization/" title="http://www.r-bloggers.com/winsorization/">O04</a>  |   <a href="http://www.inside-r.org/packages/cran/robustHD/docs/winsorize" title="http://www.inside-r.org/packages/cran/robustHD/docs/winsorize">O05</a>    |   <a href="http://www.programiz.com/r-programming/if-else-statement" title="http://www.programiz.com/r-programming/if-else-statement">O06</a>  | <br>
+|   <a href="http://italwaysrainonme.blogspot.tw/2013/01/git-gitignore-commit.html" title="http://italwaysrainonme.blogspot.tw/2013/01/git-gitignore-commit.html">O07</a>    |   <a href="http://huan-lin.blogspot.com/2012/04/git-ignore-file.html" title="http://huan-lin.blogspot.com/2012/04/git-ignore-file.html">O08</a>    |   <a href="http://www.r-tutor.com/r-introduction/data-frame" title="http://www.r-tutor.com/r-introduction/data-frame">O09</a>  | <br>
+|   <a href="http://www.statmethods.net/input/missingdata.html" title="http://www.statmethods.net/input/missingdata.html">O10</a>    |   <a href="http://www.statmethods.net/advgraphs/layout.html" title="http://www.statmethods.net/advgraphs/layout.html">O11</a>  |   <a href="http://www.inside-r.org/r-doc/stats/rnorm" title="http://www.inside-r.org/r-doc/stats/rnorm">O12</a>    | <br>
+|   <a href="http://www.inside-r.org/packages/cran/robustHD/docs/winsorize" title="http://www.inside-r.org/packages/cran/robustHD/docs/winsorize">O13</a>    |   <a href="https://help.github.com/articles/adding-images-to-wikis/" title="https://help.github.com/articles/adding-images-to-wikis/">O14</a>  |   ( “0”)  |</p>
 
 <p>Official R:</p>
 
-<ul>
-<li><a href="https://stat.ethz.ch/">https://stat.ethz.ch/</a></li>
-<li><a href="https://stat.ethz.ch/pipermail/r-help/2002-April/020794.html">https://stat.ethz.ch/pipermail/r-help/2002-April/020794.html</a></li>
-<li><a href="https://stat.ethz.ch/R-manual/R-devel/library/stats/html/sd.html">https://stat.ethz.ch/R-manual/R-devel/library/stats/html/sd.html</a></li>
-<li><a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/sample.html">https://stat.ethz.ch/R-manual/R-devel/library/base/html/sample.html</a></li>
-<li><a href="https://stat.ethz.ch/R-manual/R-devel/library/graphics/html/plot.html">https://stat.ethz.ch/R-manual/R-devel/library/graphics/html/plot.html</a></li>
-<li><a href="https://stat.ethz.ch/R-manual/R-devel/library/utils/html/write.table.html">https://stat.ethz.ch/R-manual/R-devel/library/utils/html/write.table.html</a></li>
-<li><a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/print.dataframe.html">https://stat.ethz.ch/R-manual/R-devel/library/base/html/print.dataframe.html</a></li>
-<li><a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/Extract.data.frame.html">https://stat.ethz.ch/R-manual/R-devel/library/base/html/Extract.data.frame.html</a></li>
-<li><a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/table.html">https://stat.ethz.ch/R-manual/R-devel/library/base/html/table.html</a></li>
-<li><a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/merge.html">https://stat.ethz.ch/R-manual/R-devel/library/base/html/merge.html</a></li>
-<li><a href="https://stat.ethz.ch/pipermail/r-help/2011-August/285614.html">https://stat.ethz.ch/pipermail/r-help/2011-August/285614.html</a></li>
-<li><a href="https://stat.ethz.ch/R-manual/R-devel/library/grDevices/html/dev2.html">https://stat.ethz.ch/R-manual/R-devel/library/grDevices/html/dev2.html</a></li>
-</ul>
+<table>
+<thead>
+<tr>
+  <th align="center"></th>
+  <th align="center"></th>
+</tr>
+</thead>
+<tbody><tr>
+  <td align="center"><a href="https://stat.ethz.ch/" title="https://stat.ethz.ch/">stat.ethz.ch01</a></td>
+  <td align="center"><a href="https://stat.ethz.ch/pipermail/r-help/2002-April/020794.html" title="https://stat.ethz.ch/pipermail/r-help/2002-April/020794.html">stat.ethz.ch02</a></td>
+</tr>
+<tr>
+  <td align="center"><a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/sample.html" title="https://stat.ethz.ch/R-manual/R-devel/library/base/html/sample.html">stat.ethz.ch04</a></td>
+  <td align="center"><a href="https://stat.ethz.ch/R-manual/R-devel/library/graphics/html/plot.html" title="https://stat.ethz.ch/R-manual/R-devel/library/graphics/html/plot.html">stat.ethz.ch05</a></td>
+</tr>
+<tr>
+  <td align="center"><a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/print.dataframe.html" title="https://stat.ethz.ch/R-manual/R-devel/library/base/html/print.dataframe.html">stat.ethz.ch07</a></td>
+  <td align="center"><a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/Extract.data.frame.html" title="https://stat.ethz.ch/R-manual/R-devel/library/base/html/Extract.data.frame.html">stat.ethz.ch08</a></td>
+</tr>
+<tr>
+  <td align="center"><a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/merge.html" title="https://stat.ethz.ch/R-manual/R-devel/library/base/html/merge.html">stat.ethz.ch10</a></td>
+  <td align="center"><a href="https://stat.ethz.ch/pipermail/r-help/2011-August/285614.html" title="https://stat.ethz.ch/pipermail/r-help/2011-August/285614.html">stat.ethz.ch11</a></td>
+</tr>
+</tbody></table>
+
 
 <p>images:</p>
 
@@ -1039,22 +1040,35 @@ return(tbA1)
 
 <h2 id="r說明檔-official-guide">R說明檔 (official guide)</h2>
 
-<ul>
-<li><a href="https://cran.r-project.org/doc/contrib/Liu-FAQ.pdf">https://cran.r-project.org/doc/contrib/Liu-FAQ.pdf</a></li>
-<li><a href="https://cran.r-project.org/web/packages/dplyr/dplyr.pdf">https://cran.r-project.org/web/packages/dplyr/dplyr.pdf</a></li>
-<li><a href="https://cran.r-project.org/web/packages/data.table/data.table.pdf">https://cran.r-project.org/web/packages/data.table/data.table.pdf</a></li>
-<li><a href="https://cran.r-project.org/web/packages/robustHD/robustHD.pdf">https://cran.r-project.org/web/packages/robustHD/robustHD.pdf</a></li>
-<li><a href="https://cran.r-project.org/web/packages/WriteXLS/WriteXLS.pdf">https://cran.r-project.org/web/packages/WriteXLS/WriteXLS.pdf</a></li>
-<li><a href="https://cran.r-project.org/web/packages/readxl/readxl.pdf">https://cran.r-project.org/web/packages/readxl/readxl.pdf</a></li>
-<li><a href="https://cran.r-project.org/web/packages/knitr/knitr.pdf">https://cran.r-project.org/web/packages/knitr/knitr.pdf</a></li>
-<li><a href="https://cran.r-project.org/web/packages/sampling/sampling.pdf">https://cran.r-project.org/web/packages/sampling/sampling.pdf</a></li>
-<li><a href="https://cran.r-project.org/web/packages/xts/xts.pdf">https://cran.r-project.org/web/packages/xts/xts.pdf</a></li>
-<li><a href="https://cran.r-project.org/web/packages/astsa/astsa.pdf">https://cran.r-project.org/web/packages/astsa/astsa.pdf</a></li>
-<li><a href="https://cran.r-project.org/web/packages/zoo/zoo.pdf">https://cran.r-project.org/web/packages/zoo/zoo.pdf</a></li>
-<li><a href="https://cran.r-project.org/web/packages/R.oo/R.oo.pdf">https://cran.r-project.org/web/packages/R.oo/R.oo.pdf</a></li>
-<li><a href="https://cran.r-project.org/web/packages/R.utils/R.utils.pdf">https://cran.r-project.org/web/packages/R.utils/R.utils.pdf</a></li>
-<li><a href="https://cran.r-project.org/web/packages/psych/psych.pdf">https://cran.r-project.org/web/packages/psych/psych.pdf</a></li>
-<li><a href="https://cran.r-project.org/web/packages/gridExtra/gridExtra.pdf">https://cran.r-project.org/web/packages/gridExtra/gridExtra.pdf</a></li>
-<li><a href="https://cran.r-project.org/web/packages/gridExtra/vignettes/tableGrob.html">https://cran.r-project.org/web/packages/gridExtra/vignettes/tableGrob.html</a></li>
- - 
-</ul>
+<table>
+<thead>
+<tr>
+  <th align="center"></th>
+  <th align="center"></th>
+</tr>
+</thead>
+<tbody><tr>
+  <td align="center"><a href="https://cran.r-project.org/doc/contrib/Liu-FAQ.pdf" title="https://cran.r-project.org/doc/contrib/Liu-FAQ.pdf">Liu-FAQ</a></td>
+  <td align="center"><a href="https://cran.r-project.org/web/packages/dplyr/dplyr.pdf" title="https://cran.r-project.org/web/packages/dplyr/dplyr.pdf">dplyr</a></td>
+</tr>
+<tr>
+  <td align="center"><a href="https://cran.r-project.org/web/packages/robustHD/robustHD.pdf" title="https://cran.r-project.org/web/packages/robustHD/robustHD.pdf">robustHD</a></td>
+  <td align="center"><a href="https://cran.r-project.org/web/packages/WriteXLS/WriteXLS.pdf" title="https://cran.r-project.org/web/packages/WriteXLS/WriteXLS.pdf">WriteXLS</a></td>
+</tr>
+<tr>
+  <td align="center"><a href="https://cran.r-project.org/web/packages/knitr/knitr.pdf" title="https://cran.r-project.org/web/packages/knitr/knitr.pdf">knitr</a></td>
+  <td align="center"><a href="https://cran.r-project.org/web/packages/sampling/sampling.pdf" title="https://cran.r-project.org/web/packages/sampling/sampling.pdf">sampling</a></td>
+</tr>
+<tr>
+  <td align="center"><a href="https://cran.r-project.org/web/packages/astsa/astsa.pdf" title="https://cran.r-project.org/web/packages/astsa/astsa.pdf">astsa</a></td>
+  <td align="center"><a href="https://cran.r-project.org/web/packages/zoo/zoo.pdf" title="https://cran.r-project.org/web/packages/zoo/zoo.pdf">zoo</a></td>
+</tr>
+<tr>
+  <td align="center"><a href="https://cran.r-project.org/web/packages/R.utils/R.utils.pdf" title="https://cran.r-project.org/web/packages/R.utils/R.utils.pdf">R.utils</a></td>
+  <td align="center"><a href="https://cran.r-project.org/web/packages/psych/psych.pdf" title="https://cran.r-project.org/web/packages/psych/psych.pdf">psych</a></td>
+</tr>
+<tr>
+  <td align="center"><a href="https://cran.r-project.org/web/packages/gridExtra/vignettes/tableGrob.html" title="https://cran.r-project.org/web/packages/gridExtra/vignettes/tableGrob.html">gridExtra-tableGrob</a></td>
+  <td align="center">( “0”)</td>
+</tr>
+</tbody></table>

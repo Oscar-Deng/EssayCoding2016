@@ -1006,6 +1006,8 @@ return(tbA1)
 
 <h2 id="r說明檔-official-guide"><strong>R說明檔 (official guide)</strong></h2>
 
+<p><em>* package used*</em></p>
+
 <h2 id="liu-faq-dplyr-datatable-robusthd-writexls-readxl-knitr-sampling-xts-astsa-zoo-roo-rutils-psych-gridextra-gridextra-tablegrob-0-0"><table>
 <thead>
 <tr>
@@ -1047,8 +1049,6 @@ return(tbA1)
 </tr>
 </tbody></table>
 </h2>
-
-
 
 <h3 id="all-the-r-package-citations-will-be-added-later-after-finishing-this-readme-file"><strong>ALL THE R PACKAGE CITATIONS WILL BE ADDED LATER AFTER FINISHING THIS README FILE!</strong></h3>
 

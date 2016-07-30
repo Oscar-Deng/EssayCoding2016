@@ -4,7 +4,7 @@ rm(list=ls())
 
 # functions!!!
 # install all packages and load.
-packtogo <- c("readxl","xlsx","data.table","plyr","dplyr","knitr",
+packtogo <- c("readxl","xlsx","plyr","dplyr","knitr", "data.table", #"dtplyr"
               "gridExtra","ggplot2","zoo","R.oo","R.utils","psych",
               "robustHD","rbenchmark","foreign","rgl","grid")
 

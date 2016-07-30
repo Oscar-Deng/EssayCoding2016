@@ -3,7 +3,7 @@
 # Clean Console # only available for rstudio.
 cat("\014")
 # set directory to path
-setwd("D:\\Documents\\Dropbox\\MyEssay\\Rcoding\\")
+#setwd("D:\\Documents\\Dropbox\\MyEssay\\Rcoding\\")
 
 # load in all functions
 source('functions.R',encoding='utf-8')
@@ -20,6 +20,8 @@ source('functions.R',encoding='utf-8')
 
 # ----
 Install.pack()
+Install.pack()
+# http://stackoverflow.com/questions/7019912/using-the-rjava-package-on-win7-64-bit-with-r
 Load.pack()
 wd <- getwd()
 TEJ <- readDB(fil = "DB2.xlsx", attr_sht = "TEJ_attr", xls_sht = "TEJ")

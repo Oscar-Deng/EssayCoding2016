@@ -85,7 +85,9 @@ tbA2 <- plottbA2()
 
 # ----
 plottbA3 <- function(){
-  fnmin <- function(x){apply(TEJ101,2,mean(x,na.rm=TRUE))}
+  #fnmin <- function(x){apply(TEJ101[,6:21,with=FALSE],2,mean(x,na.rm=TRUE))}
+  write(stargazer::stargazer(TEJ101,type = "html"),file="table3.html",append = TRUE)
+  
 }
 tbA3 <- plottbA3()
 

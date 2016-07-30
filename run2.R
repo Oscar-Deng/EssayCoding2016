@@ -20,7 +20,6 @@ source('functions.R',encoding='utf-8')
 
 # ----
 Install.pack()
-Install.pack()
 # http://stackoverflow.com/questions/7019912/using-the-rjava-package-on-win7-64-bit-with-r
 Load.pack()
 wd <- getwd()

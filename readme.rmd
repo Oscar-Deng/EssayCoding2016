@@ -1,6 +1,14 @@
-# readme.rmd
-Oscar-Deng  
-2016年7月31日  
+---
+title: "readme.rmd"
+author: "Oscar-Deng"
+date: "2016年7月31日"
+output: 
+  html_document: 
+    keep_md: yes
+    theme: cosmo
+    toc: yes
+    toc_depth: 5
+---
 
 
 處理論文統計分析過程說明
@@ -42,18 +50,25 @@ Oscar-Deng
 
 再至[Rstudio官網](https://www.rstudio.com/)下載主程式安裝，或[點此](https://www.rstudio.com/products/rstudio/download/)至下載頁面。
 
+Rstudio載點快速連結：(**0.99.902**版，於2016/5/14更新)
 > 
-0. Rstudio載點快速連結：(**0.99.902**版，於2016/5/14更新)
 1. [Windows Vista/7/8/10](https://download1.rstudio.org/RStudio-0.99.902.exe "RStudio-0.99.902.exe")
 2. [Mac OS X 10.6+ (64-bit)](https://download1.rstudio.org/RStudio-0.99.902.dmg "RStudio-0.99.902.dmg")
 3. [Ubuntu 12.04+/Debian 8+ (64-bit)](https://download1.rstudio.org/rstudio-0.99.902-amd64.deb "rstudio-0.99.902-amd64.deb")
 
 安裝完成後，請確認Rstudio或RGui之語言及區域(language & locale)設定正確：
 
+```{r include=FALSE}
+packtogo <- c("readxl","xlsx","plyr","dplyr","knitr", "data.table", #"dtplyr"
+              "grid","gridExtra","ggplot2","zoo","R.oo","R.utils","psych",
+              "robustHD","rbenchmark","foreign","rgl","stargazer","rmarkdown")
 
+Load.pack <- function(list=as.list(packtogo)){lapply(list, require, character.only = TRUE)}
 
+Load.pack()
+```
 
-```r
+```{r sessionInfo,eval=FALSE}
 # 查看環境設定
 sessionInfo()
 # 查看語言/地區設定

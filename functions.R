@@ -6,7 +6,7 @@ rm(list=ls())
 # install all packages and load.
 packtogo <- c("readxl","xlsx","plyr","dplyr","knitr", "data.table", #"dtplyr"
               "grid","gridExtra","ggplot2","zoo","R.oo","R.utils","psych",
-              "robustHD","rbenchmark","foreign","rgl","stargazer")
+              "robustHD","rbenchmark","foreign","rgl","stargazer","rmarkdown")
 
 Install.pack <- function(list = packtogo){
   list.of.packages <- list

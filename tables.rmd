@@ -1,0 +1,13 @@
+---
+output: html_document
+---
+
+```{r star_table,results='asis'}
+require(stargazer)
+TEJ <- read.csv("TEJ101out.csv",sep=",",row.names = 1,header = TRUE)
+output <- TEJ[,6:21]
+stargazer(output,type = "html",title="各變數之敘述統計量",mean.sd = TRUE, median = TRUE,iqr=TRUE,min.max=TRUE,column.labels=c("統計量","樣本個數","平均數","標準差","最小值","最大值"),column.separate=c(1,1,1,1,1,1)) -> star
+```
+
+
+

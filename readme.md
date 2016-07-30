@@ -880,15 +880,15 @@ return(tbA1)
   <td align="center"><a href="http://stackoverflow.com/questions/13590887/print-a-data-frame-with-columns-aligned-as-displayed-in-r" title="http://stackoverflow.com/questions/13590887/print-a-data-frame-with-columns-aligned-as-displayed-in-r">stackoverflow056</a></td>
   <td align="center"><a href="http://stackoverflow.com/questions/12844316/align-text-when-using-tablegrob-or-grid-table-in-r" title="http://stackoverflow.com/questions/12844316/align-text-when-using-tablegrob-or-grid-table-in-r">stackoverflow057</a></td>
   <td align="center"><a href="http://stackoverflow.com/questions/11852408/frequency-table-with-several-variables-in-r" title="http://stackoverflow.com/questions/11852408/frequency-table-with-several-variables-in-r">stackoverflow058</a></td>
-  <td align="center"><a href="https://github.com/Oscar-Deng/EssayCoding2016" title="0">!!!stackoverflow059</a></td>
+  <td align="center"><a href="http://stackoverflow.com/questions/10871865/whats-the-best-way-to-edit-githubs-readme-md" title="http://stackoverflow.com/questions/10871865/whats-the-best-way-to-edit-githubs-readme-md">!!!stackoverflow059</a></td>
   <td align="center"><a href="https://github.com/Oscar-Deng/EssayCoding2016" title="0">stackoverflow060</a></td>
 </tr>
 <tr>
   <td align="center">[stackoverflow061]( “0”)</td>
   <td align="center">[stackoverflow062]( “0”)</td>
   <td align="center">[stackoverflow063]( “0”)</td>
-  <td align="center"></td>
-  <td align="center"></td>
+  <td align="center">[stackoverflow063]( “0”)</td>
+  <td align="center">[stackoverflow063]( “0”)</td>
 </tr>
 </tbody></table>
 
@@ -988,18 +988,25 @@ return(tbA1)
 <p><strong>TEJ:</strong></p>
 
 <ul>
-<li><a href="http://www.tej.com.tw/webtej/doc/wind1.htm">http://www.tej.com.tw/webtej/doc/wind1.htm</a></li>
+<li><a href="http://www.tej.com.tw/webtej/doc/wind1.htm" title="上市櫃公司基本屬性資料庫">上市櫃公司 - 基本屬性資料庫</a></li>
+<li><a href="http://www.tej.com.tw/webtej/doc/wgrp.htm" title="上市櫃公司關係企業營運概況暨關係企業合併報表">上市櫃公司 - 關係企業營運概況暨關係企業合併報表</a></li>
+<li><a href="http://www.tej.com.tw/webtej/doc/wgp.htm" title="集團企業資料庫">集團企業資料庫</a></li>
+<li><a href="http://www.tej.com.tw/webtej/doc/fin/wfrp.htm">一般產業(合併及非合併）─ 關係人交易 </a></li>
+ - 
 </ul>
 
 <p><strong>PDF:</strong></p>
 
 <ul>
-<li><a href="http://web.ntpu.edu.tw/~cflin/Teach/R/R06EN06Graphics.pdf">http://web.ntpu.edu.tw/~cflin/Teach/R/R06EN06Graphics.pdf</a></li>
+<li><a href="http://web.ntpu.edu.tw/~cflin/Teach/R/R06EN06Graphics.pdf" title="常用的 R 繪圖程式">第6 章: 常用的R繪圖程式.pdf</a></li>
+<li><a href="http://web.ntpu.edu.tw/~cflin/Teach/R/R06EN05Expression.pdf" title="常用的R 程式語言">第5 章: 常用的R程式語言.pdf</a></li>
+<li><a href="http://web.ntpu.edu.tw/~cflin/Teach/R/R06EN04FunctionBasic.pdf" title="第 4 章: 常用的 R 內建函式">第4 章: 常用的R內建函式.pdf</a></li>
+ - 
 </ul>
 
 <h2 id="r說明檔-official-guide"><strong>R說明檔 (official guide)</strong></h2>
 
-<table>
+<h2 id="liu-faq-dplyr-datatable-robusthd-writexls-readxl-knitr-sampling-xts-astsa-zoo-roo-rutils-psych-gridextra-gridextra-tablegrob-0-0"><table>
 <thead>
 <tr>
   <th align="center"></th>
@@ -1039,3 +1046,19 @@ return(tbA1)
   <td align="center"></td>
 </tr>
 </tbody></table>
+</h2>
+
+
+
+<h3 id="all-the-r-package-citations-will-be-added-later-after-finishing-this-readme-file"><strong>ALL THE R PACKAGE CITATIONS WILL BE ADDED LATER AFTER FINISHING THIS README FILE!</strong></h3>
+
+<p>p.s. the citation should be like this: </p>
+
+<ol>
+<li><p>M Dowle, A Srinivasan, T Short, S Lianoglou with contributions from R Saporta and E Antonyan (2015). <br>
+data.table: Extension of Data.frame. R package version 1.9.6. <br>
+<a href="https://CRAN.R-project.org/package=data.table">https://CRAN.R-project.org/package=data.table</a></p></li>
+<li><p>0</p></li>
+<li>0</li>
+4. 
+</ol>

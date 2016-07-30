@@ -22,94 +22,13 @@
 
 <hr>
 
-<h2 id="目錄">目錄</h2>
+<h2 id="table-of-contents"><strong>Table of Contents</strong></h2>
 
-<p><div class="toc">
-<ul>
-<li><a href="#title"> </a></li>
-<li><a href="#處理論文統計分析過程說明">處理論文統計分析過程說明</a><ul>
-<li><a href="#目錄">目錄</a></li>
-<li><a href="#運行前的準備">運行前的準備</a></li>
-<li><a href="#實證分析">實證分析</a><ul>
-<li><a href="#架構">架構</a></li>
-<li><a href="#getting-data">Getting Data</a></li>
-<li><a href="#preparation-for-rstudio">Preparation for RStudio</a></li>
-<li><a href="#preparing-data">Preparing Data</a></li>
-<li><a href="#analyze">Analyze</a></li>
-<li><a href="#produce-reports-and-graphs">Produce reports and graphs</a><ul>
-<li><a href="#樣本說明">樣本說明</a><ul>
-<li><a href="#表一樣本篩選表">表一、樣本篩選表</a></li>
-<li><a href="#表二樣本產業與年度分配表">表二、樣本產業與年度分配表</a></li>
-<li><a href="#表0按產業年份及變數分類之缺漏值數量表">表0、按產業、年份及變數分類之缺漏值數量表</a></li>
-</ul>
-</li>
-<li><a href="#敘述統計">敘述統計</a><ul>
-<li><a href="#表三各變數敘述統計量">表三、各變數敘述統計量</a></li>
-<li><a href="#表四各產業之市場分類結構">表四、各產業之市場分類結構</a></li>
-</ul>
-</li>
-<li><a href="#相關係數分析">相關係數分析</a><ul>
-<li><a href="#表五各變數之pearson相關係數表以etr為應變數">表五、各變數之Pearson相關係數表(以ETR為應變數)</a></li>
-<li><a href="#表六各變數之pearson相關係數表以cashetr為應變數">表六、各變數之Pearson相關係數表(以CashETR為應變數)</a></li>
-<li><a href="#表七實證結果表">表七、實證結果表</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#explain">Explain</a></li>
-<li><a href="#functions">Functions</a><ul>
-<li><a href="#所有自定義函數說明如下">所有自定義函數說明如下</a><ul>
-<li><a href="#installpack">Install.pack</a></li>
-<li><a href="#loadpack">Load.pack</a></li>
-<li><a href="#readdb">readDB</a></li>
-<li><a href="#dbfilter">DBfilter</a></li>
-<li><a href="#nato0">NAto0</a></li>
-<li><a href="#controlvar">control_var</a></li>
-<li><a href="#expvarstr">exp_var_STR</a></li>
-<li><a href="#depvar">dep_var</a></li>
-<li><a href="#str">STR</a></li>
-<li><a href="#strrank">STRrank</a></li>
-<li><a href="#fngdp">fnGDP</a></li>
-<li><a href="#fnhhi">fnHHI</a></li>
-<li><a href="#winsorizedsample">winsorized.sample</a></li>
-<li><a href="#winsamp1">winsamp1</a></li>
-<li><a href="#winsamp2">winsamp2</a></li>
-<li><a href="#plottba1">plottbA1</a></li>
-</ul>
-</li>
-<li><a href="#套件函數說明如下">套件函數說明如下</a><ul>
-<li><a href="#installpack-1">Install.pack</a></li>
-<li><a href="#installpack-2">Install.pack</a></li>
-<li><a href="#installpack-3">Install.pack</a></li>
-<li><a href="#installpack-4">Install.pack</a></li>
-<li><a href="#installpack-5">Install.pack</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#qa">Q&amp;A</a><ul>
-<li><a href="#如何開啟tej增益集">如何開啟TEJ增益集?</a></li>
-<li><a href="#自記錄檔匯入tej設定">自記錄檔匯入TEJ設定</a></li>
-<li><a href="#出現failed-with-error-package-rjava-could-not-be-loaded">出現Failed with error: ‘package ‘rJava’ could not be loaded’</a></li>
-<li><a href="#q4">Q4</a></li>
-<li><a href="#q5">Q5</a></li>
-<li><a href="#q6">Q6</a></li>
-</ul>
-</li>
-<li><a href="#後記">後記</a></li>
-<li><a href="#引用文獻">引用文獻</a></li>
-<li><a href="#r說明檔-official-guide">R說明檔 (official guide)</a></li>
-</ul>
-</li>
-</ul>
-</div>
-</p>
+<p><a href="#readytorunr">運行前的準備</a></p>
 
 <hr>
 
-<h2 id="運行前的準備">運行前的準備</h2>
+<h2 id="ready-to-run-r">Ready to run R</h2>
 
 <p>欲建立運行環境，請先至<a href="https://cran.r-project.org/mirrors.html">R的網站</a>下載新版的R安裝。</p>
 

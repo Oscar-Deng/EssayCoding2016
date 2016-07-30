@@ -1055,10 +1055,24 @@ return(tbA1)
 <p>p.s. the citation should be like this: </p>
 
 <ol>
-<li><p>M Dowle, A Srinivasan, T Short, S Lianoglou with contributions from R Saporta and E Antonyan (2015). <br>
-data.table: Extension of Data.frame. R package version 1.9.6. <br>
-<a href="https://CRAN.R-project.org/package=data.table">https://CRAN.R-project.org/package=data.table</a></p></li>
-<li><p>0</p></li>
-<li>0</li>
-4. 
+<li>Hadley Wickham (2016). readxl: Read Excel Files. R package version 0.1.1. <a href="https://CRAN.R-project.org/package=readxl">https://CRAN.R-project.org/package=readxl</a></li>
+<li>Adrian A. Dragulescu (2014). xlsx: Read, write, format Excel 2007 and Excel 97/2000/XP/2003 files. R package version 0.5.7. <a href="https://CRAN.R-project.org/package=xlsx">https://CRAN.R-project.org/package=xlsx</a></li>
+<li>Hadley Wickham (2011). The Split-Apply-Combine Strategy for Data Analysis. Journal of Statistical Software, 40(1), 1-29. URL <a href="http://www.jstatsoft.org/v40/i01/">http://www.jstatsoft.org/v40/i01/</a>.</li>
+<li>Hadley Wickham and Romain Francois (2016). dplyr: A Grammar of Data Manipulation. R package version 0.5.0. <a href="https://CRAN.R-project.org/package=dplyr">https://CRAN.R-project.org/package=dplyr</a></li>
+<li>Yihui Xie (2016). knitr: A General-Purpose Package for Dynamic Report Generation in R. R package version 1.13.</li>
+<li>Yihui Xie (2015) Dynamic Documents with R and knitr. 2nd edition. Chapman and Hall/CRC. ISBN 978-1498716963</li>
+<li>Yihui Xie (2014) knitr: A Comprehensive Tool for Reproducible Research in R. In Victoria Stodden, Friedrich Leisch and Roger D. Peng, editors, Implementing Reproducible Computational Research. Chapman and Hall/CRC. ISBN 978-1466561595 </li>
+<li>M Dowle, A Srinivasan, T Short, S Lianoglou with contributions from R Saporta and E Antonyan (2015). data.table: Extension of Data.frame. R package version 1.9.6. <a href="https://CRAN.R-project.org/package=data.table">https://CRAN.R-project.org/package=data.table</a></li>
+<li>Baptiste Auguie (2016). gridExtra: Miscellaneous Functions for “Grid” Graphics. R package version 2.2.1. <a href="https://CRAN.R-project.org/package=gridExtra">https://CRAN.R-project.org/package=gridExtra</a></li>
+<li>H. Wickham. ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York, 2009.</li>
+<li>Achim Zeileis and Gabor Grothendieck (2005). zoo: S3 Infrastructure for Regular and Irregular Time Series. Journal of Statistical Software, 14(6), 1-27. doi:10.18637/jss.v014.i06</li>
+<li>Bengtsson, H. The R.oo package - Object-Oriented Programming with References Using Standard R Code, Proceedings of the 3rd International Workshop on Distributed Statistical Computing (DSC 2003), ISSN 1609-395X, Hornik, K.; Leisch, F. &amp; Zeileis, A. (ed.), 2003</li>
+<li>Henrik Bengtsson (2016). R.utils: Various Programming Utilities. R package version 2.3.0. <a href="https://CRAN.R-project.org/package=R.utils">https://CRAN.R-project.org/package=R.utils</a></li>
+<li>Revelle, W. (2016) psych: Procedures for Personality and Psychological Research, Northwestern University, Evanston, Illinois, USA, <a href="http://CRAN.R-project.org/package=psych">http://CRAN.R-project.org/package=psych</a> Version = 1.6.6.</li>
+<li>Andreas Alfons (2016). robustHD: Robust Methods for High-Dimensional Data. R package version 0.5.1. <a href="https://CRAN.R-project.org/package=robustHD">https://CRAN.R-project.org/package=robustHD</a></li>
+<li>Wacek Kusnierczyk (2012). rbenchmark: Benchmarking routine for R. R package version 1.0.0. <a href="https://CRAN.R-project.org/package=rbenchmark">https://CRAN.R-project.org/package=rbenchmark</a></li>
+<li>R Core Team (2015). foreign: Read Data Stored by Minitab, S, SAS, SPSS, Stata, Systat, Weka, dBase, …. R package version 0.8-66. <a href="https://CRAN.R-project.org/package=foreign">https://CRAN.R-project.org/package=foreign</a></li>
+<li>Daniel Adler, Duncan Murdoch and others (2016). rgl: 3D Visualization Using OpenGL. R package version 0.95.1441. <a href="https://CRAN.R-project.org/package=rgl">https://CRAN.R-project.org/package=rgl</a></li>
+<li>R Core Team (2016). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria. URL <a href="https://www.R-project.org/">https://www.R-project.org/</a>.</li>
+<li>Hlavac, Marek (2015). stargazer: Well-Formatted Regression and Summary Statistics Tables. R package version 5.2. <a href="http://CRAN.R-project.org/package=stargazer">http://CRAN.R-project.org/package=stargazer</a></li>
 </ol>

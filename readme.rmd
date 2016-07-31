@@ -118,7 +118,7 @@ Sys.setlocale("LC_ALL",locale='cht')
 ### **Preparation for RStudio**
 
 
-# 清除環境清單
+#' 清除環境清單
 rm(list=ls())
 
 #' # 設定工作資料夾(EX: D:\Documents\Dropbox\MyEssay\Rcoding)
@@ -128,10 +128,6 @@ rm(list=ls())
 #' # 讀入函數庫
 #source('D:\\Documents\\Dropbox\\MyEssay\\Rcoding\\functions.R',encoding='utf-8')
 
-
-# -*- encoding : utf-8 -*-
-# Clear Global Environment
-rm(list=ls())
 
 # functions!!!
 # install all packages and load.

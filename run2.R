@@ -45,6 +45,12 @@ TEJ92 <- catchDB(x=TEJ82)
 TEJ101 <- fnGDP(x=TEJ91,file="DB2.xlsx",col_sht="GDP_colnames",DB_sht="GDP")
 TEJ102 <- fnGDP(x=TEJ92,file="DB2.xlsx",col_sht="GDP_colnames",DB_sht="GDP")
 
+MNCattr <- read_excel("MNC.xlsx", sheet='MNC_attr', col_names = TRUE,col_types =as.vector(rep("text",3)))
+MNC <- read_excel("MNC.xlsx", sheet='MNC', col_names = TRUE)
+setnames(MNC,old=as.character(MNCattr$old), new=as.character(MNCattr$new))
+MNC$year <- year(MNC$date)
+
+
 # ----
 source('output.R',encoding='utf-8')
 outputcsv()

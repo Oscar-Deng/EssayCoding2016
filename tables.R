@@ -14,12 +14,15 @@
 #TEJ102 <- read.csv("TEJ102out.csv",header = TRUE,row.names = 1)
 
 
+
+
 nonNAs <- function(x) {
   as.vector(apply(x, 2, function(x) length(which(!is.na(x)))))
 }
 
 # ----
 plottbA1 <- function(Q){
+  
   x <- nrow(TEJ)
   x1 <- nrow(TEJ[TEJ$TSE_code=='M2800',])
   x2 <- nrow(TEJ[TEJ$TSE_code=='M9900',])

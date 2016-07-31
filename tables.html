@@ -173,8 +173,11 @@ $(document).ready(function () {
   tbA2 &lt;- rbind(tbA2, '總計'=as.numeric(colSums(tbA2)))
   tbA2 &lt;- cbind(tbA2, '合計'=rowSums(tbA2))
   #'kable(tbA2,format = &quot;html&quot;)
-  stargazer(tbA2,type=&quot;html&quot;,summary = FALSE)</code></pre>
+  stargazer(tbA2,type=&quot;html&quot;,title=&quot;表二、產業年份分配表&quot;,summary = FALSE,column.labels=c(&quot;年分&quot;),column.separate=c(16))</code></pre>
 <table style="text-align:center">
+<caption>
+<strong>表二、產業年份分配表</strong>
+</caption>
 <tr>
 <td colspan="17" style="border-bottom: 1px solid black">
 </td>
@@ -1671,6 +1674,44 @@ M9700 油電燃氣業
 </td>
 </tr>
 </table>
+<pre class="r"><code>  xtable(tbA2)</code></pre>
+% latex table generated in R 3.3.1 by xtable 1.8-2 package % Sun Jul 31 15:49:53 2016
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrrrrrrrrrrrrrrr}
+  \hline
+ &amp; 2001 &amp; 2002 &amp; 2003 &amp; 2004 &amp; 2005 &amp; 2006 &amp; 2007 &amp; 2008 &amp; 2009 &amp; 2010 &amp; 2011 &amp; 2012 &amp; 2013 &amp; 2014 &amp; 2015 &amp; 合計 \\ 
+  \hline
+M1100 水泥工業 &amp; 7.00 &amp; 7.00 &amp; 7.00 &amp; 7.00 &amp; 7.00 &amp; 7.00 &amp; 7.00 &amp; 7.00 &amp; 7.00 &amp; 7.00 &amp; 7.00 &amp; 7.00 &amp; 7.00 &amp; 7.00 &amp; 7.00 &amp; 105.00 \\ 
+  M1200 食品工業 &amp; 24.00 &amp; 24.00 &amp; 24.00 &amp; 24.00 &amp; 24.00 &amp; 24.00 &amp; 25.00 &amp; 25.00 &amp; 25.00 &amp; 27.00 &amp; 27.00 &amp; 27.00 &amp; 27.00 &amp; 27.00 &amp; 27.00 &amp; 381.00 \\ 
+  M1300 塑膠工業 &amp; 26.00 &amp; 26.00 &amp; 26.00 &amp; 26.00 &amp; 27.00 &amp; 27.00 &amp; 27.00 &amp; 28.00 &amp; 28.00 &amp; 29.00 &amp; 29.00 &amp; 29.00 &amp; 29.00 &amp; 29.00 &amp; 29.00 &amp; 415.00 \\ 
+  M1400 紡織纖維 &amp; 53.00 &amp; 53.00 &amp; 53.00 &amp; 54.00 &amp; 54.00 &amp; 55.00 &amp; 55.00 &amp; 55.00 &amp; 56.00 &amp; 56.00 &amp; 56.00 &amp; 56.00 &amp; 56.00 &amp; 56.00 &amp; 56.00 &amp; 824.00 \\ 
+  M1500 電機機械 &amp; 69.00 &amp; 70.00 &amp; 72.00 &amp; 72.00 &amp; 74.00 &amp; 76.00 &amp; 79.00 &amp; 82.00 &amp; 82.00 &amp; 85.00 &amp; 88.00 &amp; 89.00 &amp; 90.00 &amp; 90.00 &amp; 90.00 &amp; 1208.00 \\ 
+  M1600 電器電纜 &amp; 15.00 &amp; 15.00 &amp; 15.00 &amp; 15.00 &amp; 15.00 &amp; 15.00 &amp; 15.00 &amp; 17.00 &amp; 17.00 &amp; 17.00 &amp; 17.00 &amp; 17.00 &amp; 17.00 &amp; 17.00 &amp; 17.00 &amp; 241.00 \\ 
+  M1721 化學工業 &amp; 37.00 &amp; 38.00 &amp; 39.00 &amp; 39.00 &amp; 39.00 &amp; 39.00 &amp; 39.00 &amp; 39.00 &amp; 40.00 &amp; 40.00 &amp; 40.00 &amp; 42.00 &amp; 42.00 &amp; 42.00 &amp; 42.00 &amp; 597.00 \\ 
+  M1722 生技醫療 &amp; 53.00 &amp; 53.00 &amp; 58.00 &amp; 61.00 &amp; 65.00 &amp; 72.00 &amp; 78.00 &amp; 85.00 &amp; 87.00 &amp; 91.00 &amp; 97.00 &amp; 97.00 &amp; 97.00 &amp; 97.00 &amp; 97.00 &amp; 1188.00 \\ 
+  M1800 玻璃陶瓷 &amp; 0.00 &amp; 0.00 &amp; 0.00 &amp; 0.00 &amp; 0.00 &amp; 5.00 &amp; 5.00 &amp; 5.00 &amp; 5.00 &amp; 5.00 &amp; 5.00 &amp; 5.00 &amp; 5.00 &amp; 5.00 &amp; 5.00 &amp; 50.00 \\ 
+  M1900 造紙工業 &amp; 7.00 &amp; 7.00 &amp; 7.00 &amp; 7.00 &amp; 7.00 &amp; 7.00 &amp; 7.00 &amp; 7.00 &amp; 7.00 &amp; 7.00 &amp; 7.00 &amp; 7.00 &amp; 7.00 &amp; 7.00 &amp; 7.00 &amp; 105.00 \\ 
+  M2000 鋼鐵工業 &amp; 39.00 &amp; 39.00 &amp; 40.00 &amp; 40.00 &amp; 40.00 &amp; 41.00 &amp; 41.00 &amp; 41.00 &amp; 41.00 &amp; 42.00 &amp; 43.00 &amp; 43.00 &amp; 43.00 &amp; 43.00 &amp; 43.00 &amp; 619.00 \\ 
+  M2100 橡膠工業 &amp; 11.00 &amp; 11.00 &amp; 11.00 &amp; 11.00 &amp; 11.00 &amp; 11.00 &amp; 11.00 &amp; 11.00 &amp; 11.00 &amp; 12.00 &amp; 12.00 &amp; 12.00 &amp; 12.00 &amp; 12.00 &amp; 12.00 &amp; 171.00 \\ 
+  M2200 汽車工業 &amp; 0.00 &amp; 5.00 &amp; 5.00 &amp; 5.00 &amp; 5.00 &amp; 5.00 &amp; 6.00 &amp; 6.00 &amp; 6.00 &amp; 6.00 &amp; 6.00 &amp; 7.00 &amp; 7.00 &amp; 7.00 &amp; 7.00 &amp; 83.00 \\ 
+  M2324 半導體 &amp; 106.00 &amp; 115.00 &amp; 117.00 &amp; 121.00 &amp; 124.00 &amp; 127.00 &amp; 130.00 &amp; 134.00 &amp; 136.00 &amp; 138.00 &amp; 145.00 &amp; 147.00 &amp; 147.00 &amp; 148.00 &amp; 148.00 &amp; 1983.00 \\ 
+  M2325 電腦及週邊 &amp; 89.00 &amp; 93.00 &amp; 93.00 &amp; 97.00 &amp; 98.00 &amp; 100.00 &amp; 104.00 &amp; 105.00 &amp; 107.00 &amp; 107.00 &amp; 107.00 &amp; 107.00 &amp; 108.00 &amp; 108.00 &amp; 108.00 &amp; 1531.00 \\ 
+  M2326 光電業 &amp; 79.00 &amp; 83.00 &amp; 89.00 &amp; 93.00 &amp; 103.00 &amp; 111.00 &amp; 113.00 &amp; 118.00 &amp; 118.00 &amp; 121.00 &amp; 124.00 &amp; 125.00 &amp; 125.00 &amp; 125.00 &amp; 125.00 &amp; 1652.00 \\ 
+  M2327 通信網路業 &amp; 67.00 &amp; 69.00 &amp; 72.00 &amp; 73.00 &amp; 76.00 &amp; 78.00 &amp; 80.00 &amp; 81.00 &amp; 81.00 &amp; 84.00 &amp; 87.00 &amp; 88.00 &amp; 88.00 &amp; 88.00 &amp; 88.00 &amp; 1200.00 \\ 
+  M2328 電子零組件 &amp; 173.00 &amp; 180.00 &amp; 186.00 &amp; 188.00 &amp; 191.00 &amp; 194.00 &amp; 200.00 &amp; 201.00 &amp; 201.00 &amp; 205.00 &amp; 206.00 &amp; 206.00 &amp; 206.00 &amp; 206.00 &amp; 206.00 &amp; 2949.00 \\ 
+  M2329 電子通路業 &amp; 35.00 &amp; 35.00 &amp; 35.00 &amp; 35.00 &amp; 36.00 &amp; 36.00 &amp; 36.00 &amp; 36.00 &amp; 36.00 &amp; 36.00 &amp; 36.00 &amp; 36.00 &amp; 36.00 &amp; 36.00 &amp; 36.00 &amp; 536.00 \\ 
+  M2330 資訊服務業 &amp; 28.00 &amp; 29.00 &amp; 29.00 &amp; 29.00 &amp; 31.00 &amp; 31.00 &amp; 32.00 &amp; 33.00 &amp; 34.00 &amp; 35.00 &amp; 36.00 &amp; 36.00 &amp; 36.00 &amp; 36.00 &amp; 36.00 &amp; 491.00 \\ 
+  M2500 建材營造 &amp; 68.00 &amp; 69.00 &amp; 68.00 &amp; 68.00 &amp; 68.00 &amp; 68.00 &amp; 69.00 &amp; 70.00 &amp; 70.00 &amp; 71.00 &amp; 71.00 &amp; 72.00 &amp; 72.00 &amp; 72.00 &amp; 72.00 &amp; 1048.00 \\ 
+  M2600 航運業 &amp; 23.00 &amp; 23.00 &amp; 23.00 &amp; 23.00 &amp; 23.00 &amp; 24.00 &amp; 26.00 &amp; 26.00 &amp; 26.00 &amp; 27.00 &amp; 27.00 &amp; 27.00 &amp; 27.00 &amp; 27.00 &amp; 27.00 &amp; 379.00 \\ 
+  M2700 觀光事業 &amp; 17.00 &amp; 17.00 &amp; 18.00 &amp; 19.00 &amp; 20.00 &amp; 21.00 &amp; 24.00 &amp; 25.00 &amp; 27.00 &amp; 30.00 &amp; 34.00 &amp; 34.00 &amp; 34.00 &amp; 34.00 &amp; 34.00 &amp; 388.00 \\ 
+  M2900 貿易百貨 &amp; 22.00 &amp; 22.00 &amp; 22.00 &amp; 22.00 &amp; 22.00 &amp; 22.00 &amp; 23.00 &amp; 26.00 &amp; 28.00 &amp; 30.00 &amp; 30.00 &amp; 30.00 &amp; 30.00 &amp; 30.00 &amp; 30.00 &amp; 389.00 \\ 
+  M3200 文化創意業 &amp; 12.00 &amp; 12.00 &amp; 13.00 &amp; 14.00 &amp; 14.00 &amp; 16.00 &amp; 18.00 &amp; 19.00 &amp; 19.00 &amp; 20.00 &amp; 20.00 &amp; 22.00 &amp; 22.00 &amp; 22.00 &amp; 22.00 &amp; 265.00 \\ 
+  M9700 油電燃氣業 &amp; 12.00 &amp; 12.00 &amp; 12.00 &amp; 12.00 &amp; 12.00 &amp; 12.00 &amp; 12.00 &amp; 12.00 &amp; 12.00 &amp; 12.00 &amp; 12.00 &amp; 12.00 &amp; 12.00 &amp; 12.00 &amp; 12.00 &amp; 180.00 \\ 
+  總計 &amp; 1072.00 &amp; 1107.00 &amp; 1134.00 &amp; 1155.00 &amp; 1186.00 &amp; 1224.00 &amp; 1262.00 &amp; 1294.00 &amp; 1307.00 &amp; 1340.00 &amp; 1369.00 &amp; 1380.00 &amp; 1382.00 &amp; 1383.00 &amp; 1383.00 &amp; 18978.00 \\ 
+   \hline
+\end{tabular}
+\end{table}
 </div>
 <div class="section level1">
 <h1>表三、各變數之敘述統計量</h1>

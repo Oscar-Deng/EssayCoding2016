@@ -24,6 +24,9 @@ require(foreign)
 require(rgl)
 require(stargazer)
 require(rmarkdown)
+require(taRifx)
+require(kable)
+require(xtable)
 TEJ <- read.csv("D:\\Documents\\Dropbox\\MyEssay\\Rcoding\\TEJout.csv", row.names = 1, sep=",", header = TRUE)
 TEJ101 <- read.csv("D:\\Documents\\Dropbox\\MyEssay\\Rcoding\\TEJ101out.csv", row.names = 1, sep=",", header = TRUE)
 TEJ01 <- read.csv("D:\\Documents\\Dropbox\\MyEssay\\Rcoding\\TEJ01out.csv", row.names = 1, sep=",", header = TRUE)
@@ -84,7 +87,10 @@ TEJ01 <- read.csv("D:\\Documents\\Dropbox\\MyEssay\\Rcoding\\TEJ01out.csv", row.
   tbA2 <- rbind(tbA2, '總計'=as.numeric(colSums(tbA2)))
   tbA2 <- cbind(tbA2, '合計'=rowSums(tbA2))
   #'kable(tbA2,format = "html")
-  stargazer(tbA2,type="html",summary = FALSE,title="表二、產業年份分配表")
+  stargazer(tbA2,type="html",title="表二、產業年份分配表",summary = FALSE,column.labels=c("年分"),column.separate=c(16))
+  
+  
+  xtable(tbA2)
 ```
 
 表三、各變數之敘述統計量

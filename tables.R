@@ -22,7 +22,6 @@ nonNAs <- function(x) {
 
 # ----
 plottbA1 <- function(Q){
-  
   x <- nrow(TEJ)
   x1 <- nrow(TEJ[TEJ$TSE_code=='M2800',])
   x2 <- nrow(TEJ[TEJ$TSE_code=='M9900',])

@@ -1,27 +1,98 @@
-# ----
-# set directory to path
-# setwd("D:\\Documents\\Dropbox\\MyEssay\\Rcoding\\")
+#' ---
+#' title: "處理論文統計分析過程說明"
+#' author: "Oscar-Deng"
+#' date: "2016年7月31日"
+#' output: 
+#'   html_document: 
+#'   keep_md: yes
+#' theme: cosmo
+#' toc: yes
+#' toc_depth: 5
+#' ---
 
-# source('run2.R',encoding='utf-8')
-# Clean Console # only available for rstudio.
-cat("\014")
+#' ## 前言
+#' 編輯人：鄧孝航
+#' 聯絡信箱：[402391174@mail.fju.edu.tw](402391174@mail.fju.edu.tw)
+#' 內容如有不當煩請告知，謝謝！
+#' 為了推廣「可重複研究**(Reproducible Research)**」的概念並方便將來再次研究分析，故建立此說明檔解釋相關的R語言函數及數據處理過程。
+#' 有關於可重複研究的概念，可參考維基百科[**(Reproducible Research)**](https://en.wikipedia.org/wiki/Reproducibility#Reproducible_research)。
+#' 
+#' 本分析使用R語言作為統計分析之工具，並搭配R、Rstudio、Excel、TEJ資料庫。
+#' > 
+#' 參考論文： **企業競爭策略與產業競爭程度對避稅行為之影響**
+#' 作者：**史宗玄**
+#' 指導教授：**黃美祝 博士**
+#' <br>
+#' 本文僅供學術研究之用！
+#' <br>
+#' 
+#' ## Ready to run R
+#' 
+#' 欲建立運行環境，請先至[R的網站](https://cran.r-project.org/mirrors.html)下載新版的R安裝。
+#' 
+#' >
+#' 1. 使用<kbd>Ctrl+F</kbd>搜尋**Taiwan**，並任選一鏡像下載點，或直接[點此下載](http://cran.csie.ntu.edu.tw/)。
+#' 2. 請選擇適合自己電腦運行介面的版本，R提供Linux, Mac及Windows三種版本。
+#' 3. R支援多國語言，從哪個鏡像下載不影響安裝。
+#' 4. 建議版本需**3.3.0**以後。
+#' 
+#' 再至[Rstudio官網](https://www.rstudio.com/)下載主程式安裝，或[點此](https://www.rstudio.com/products/rstudio/download/)至下載頁面。
+#' 
+#' Rstudio載點快速連結：(**0.99.902**版，於2016/7/28更新)
+#' 
+#' > 
+#' 1. [Windows Vista/7/8/10](https://download1.rstudio.org/RStudio-0.99.902.exe "RStudio-0.99.902.exe")
+#' 2. [Mac OS X 10.6+ (64-bit)](https://download1.rstudio.org/RStudio-0.99.902.dmg "RStudio-0.99.902.dmg")
+#' 3. [Ubuntu 12.04+/Debian 8+ (64-bit)](https://download1.rstudio.org/rstudio-0.99.902-amd64.deb "rstudio-0.99.902-amd64.deb")
+#' 
+#' 安裝完成後，請確認Rstudio或RGui之語言及區域(language & locale)設定正確：
 
+#+ locale, eval=FALSE
+# 查看環境設定
+sessionInfo()
+# 查看語言/地區設定
+Sys.getlocale(category = "LC_ALL")
+# 若上述回傳非顯示相同值，請輸入下方設定
+Sys.setlocale("LC_ALL",locale='cht')
 
-# load in all functions
-source('functions.R',encoding='utf-8')
+#' 其他疑難排解，請見[手冊](https://github.com/dspim/R/wiki/R-&-RStudio-Troubleshooting-Guide "R & RStudio Troubleshooting Guide")及[下方](#qa "Q&A")說明
+#' 
+#' 
+#' ##**Empirical Analysis**
+#' 
+#' ### **Coding Process**
+#' 
+#' > 
+#' 1. TEJ資料庫抓取資料建立分析資料庫。**(Getting Data)**
+#' 2. 整理資料至可使用程度(排除不需要的欄位)。**(Preparing Data)**
+#' 3. 產生虛擬變數及可供分析建模的變數。**(Produce Variables)**
+#' 4. 以線性多變量回歸模型分析資料，並製作相關分析表。**(Analyze)**
+#' 5. 產生報表。**(Produce reports and graphs)**
+#' 6. 解釋分析結果。**(Explain)**
+#' 
+#' 
+#' ### **Getting Data**
+#' > 
+#'  1. 開啟Excel，使用TEJ的Excel增益集。 [(如何開啟TEJ增益集?)](#如何開啟tej增益集)
+#'  2. 讀入記錄檔.dat，可以得到本分析資料庫的原始設定。
+#'  3. 運行RStudio
+#' 
+#' ### **Preparation for RStudio**
+#+ setwd, 
+#' 設定工作資料夾(EX: D:\Documents\Dropbox\MyEssay\Rcoding)
+setwd("D:\\Documents\\Dropbox\\MyEssay\\Rcoding\\")
+#' 清除環境清單
+rm(list=ls())
+#' # 跑全部檔案分析
+#' `source('run2.R',encoding='utf-8')`
+#' # 設定語言、區域
+sessionInfo() # get R version
+Sys.getlocale(category = "LC_ALL") # get locale
+Sys.setlocale("LC_ALL",locale='cht') # set R locale to chinese traditional
+#' # other trouble shooting please read:
+#' [Rstudio guide](https://github.com/dspim/R/wiki/R-&-RStudio-Troubleshooting-Guide "R-&-RStudio-Troubleshooting-Guide")
 
-##watch R version
-#sessionInfo() 
-
-#Sys.getlocale(category = "LC_ALL")
-
-#Sys.setlocale("LC_ALL",locale='cht')
-
-## other trouble shooting please read:
-# https://github.com/dspim/R/wiki/R-&-RStudio-Troubleshooting-Guide
-
-
-# ----
+#' 讀入函數設定
 # Functions
 # install all packages and load.
 packtogo <- c("readxl","xlsx","plyr","dplyr","knitr", "data.table", #"dtplyr"
@@ -222,28 +293,44 @@ winsamp2 <- function(x = 'TEJ82', col=c('ETR','CETR','ROA','SIZE','LEV','INTANG'
   eval(base::parse(text=x1))
   eval(base::parse(text=x2))
   return(DB1)}
-
 # Function Ends.
 # ----
 
-
-
-
-# ----
+#' 安裝所有未安裝之套件
 Install.pack()
-# http://stackoverflow.com/questions/7019912/using-the-rjava-package-on-win7-64-bit-with-r
+
+#' 讀入所有需要之套件
 Load.pack()
+
+#' 擷取工作表路徑
 wd <- getwd()
+
+#' 讀入TEJ資料表，設定擷取活頁名：TEJ，資料表屬性：TEJ_attr
 TEJ <- readDB(fil = "DB2.xlsx", attr_sht = "TEJ_attr", xls_sht = "TEJ")
+
+#' 應用函數：篩選資料表，使用函數DBfilter，指派已篩選的資料表為TEJ01，被篩去的為TEJ02
 TEJ01 <- DBfilter(x = TEJ,filt = 'filtered')
 TEJ02 <- DBfilter(x = TEJ,filt = 'dropped')
+
+#' 將特定欄位之變數缺漏值設為0
 TEJ1 <- NAto0(x ='TEJ01',col=c('OERD','OEPRO','Land','LandR','CTP_IFRS_CFI','CTP_IFRS_CFO','CTP_IFRS_CFF','CTP_GAAP'))
+
+#' 加入控制變數：
 TEJ2 <- control_var(x=TEJ1)
+
+#' 準備解釋變數欄位：
 TEJ3 <- exp_var_STR(x=TEJ2)
+
+#' 加入應變數：
 TEJ4 <- dep_var(TEJ3,k=5)
+
+#' 加入解釋變數1：「企業競爭策略變數」
 TEJ5 <- STR(TEJ4)
+#' 將「企業競爭策略變數」以五分位法評分
 TEJ6 <- STRrank(TEJ5)
 TEJ7 <- fnHHI(TEJ6)
+C:
+#' 
 TEJ81 <- TEJ7
 TEJ81 <- winsamp1(x='TEJ81',col=c('ETR','CETR','ROA','SIZE','LEV','INTANG','QUICK','EQINC','OUTINSTI','RELATIN','RELATOUT')
                   ,prob=0.01,na.rm=TRUE)
@@ -260,6 +347,16 @@ MNCattr <- read_excel("MNC.xlsx", sheet='MNC_attr', col_names = TRUE,col_types =
 MNC <- read_excel("MNC.xlsx", sheet='MNC', col_names = TRUE)
 setnames(MNC,old=as.character(MNCattr$old), new=as.character(MNCattr$new))
 MNC$year <- year(MNC$date)
+
+#' 
+#' 
+#' 
+#' 
+#' 
+#' 
+
+
+
 
 
 # ----

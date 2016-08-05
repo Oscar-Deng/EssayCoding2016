@@ -4154,8 +4154,8 @@ summary(TEJ102)
 ## 
 ```
 
-#####MNC
-
+#####設定MNC函數
+來源檔：TEJ
 
 
 ```r
@@ -4168,11 +4168,39 @@ readMNC <- function(x="MNC.xlsx",DB='MNC',attr='MNC_attr'){
   }
 ```
 
-
+運行MNC函數
 
 
 ```r
 MNC <- readMNC()
+summary(MNC)
+```
+
+```
+##    company               date                     related_company   
+##  Length:60000       Min.   :2012-12-28 00:00:00   Length:60000      
+##  Class :character   1st Qu.:2013-12-31 00:00:00   Class :character  
+##  Mode  :character   Median :2014-12-31 00:00:00   Mode  :character  
+##                     Mean   :2014-11-29 05:12:27                     
+##                     3rd Qu.:2015-12-31 00:00:00                     
+##                     Max.   :2015-12-31 00:00:00                     
+##                                                                     
+##     layer             investor            inv_rate        relation        
+##  Length:60000       Length:60000       Min.   :  0.00   Length:60000      
+##  Class :character   Class :character   1st Qu.: 98.65   Class :character  
+##  Mode  :character   Mode  :character   Median :100.00   Mode  :character  
+##                                        Mean   : 87.89                     
+##                                        3rd Qu.:100.00                     
+##                                        Max.   :999.00                     
+##                                        NA's   :2055                       
+##     nation               year     
+##  Length:60000       Min.   :2012  
+##  Class :character   1st Qu.:2013  
+##  Mode  :character   Median :2014  
+##                     Mean   :2014  
+##                     3rd Qu.:2015  
+##                     Max.   :2015  
+## 
 ```
 
 ###報表輸出
@@ -4232,7 +4260,7 @@ plottbA1 <- function(Q){
 }
 ```
 
-
+運行plottbA1
 
 
 ```r
@@ -4242,7 +4270,7 @@ tbA1 <- plottbA1()
 ![](R_code_withRMD_files/figure-html/load_plottbA1-1.png)<!-- -->
 
 #####表X、
-
+plottbA2
 
 
 ```r
@@ -4257,7 +4285,7 @@ plottbA2 <- function(Q){
 }
 ```
 
-
+運行plottbA2
 
 
 ```r
@@ -4268,7 +4296,7 @@ tbA2 <- plottbA2()
 
 ####二、敘述統計表
 #####表X、
-
+plottbA3
 
 
 ```r
@@ -4278,7 +4306,7 @@ plottbA3 <- function(){
 }
 ```
 
-
+運行plottbA3
 
 
 ```r
@@ -4309,14 +4337,14 @@ tbA3 <- plottbA3()
 ```
 
 #####表X、
-
+plottbA4
 
 
 ```r
 plottbA4 <- function(){}
 ```
 
-
+運行plottbA4
 
 
 ```r
@@ -4324,14 +4352,14 @@ tbA4 <- plottbA4()
 ```
 
 #####表X、
-
+plottbA5
 
 
 ```r
 plottbA5 <- function(){}
 ```
 
-
+運行plottbA5
 
 
 ```r
@@ -4339,18 +4367,46 @@ tbA5 <- plottbA5()
 ```
 
 ####三、相關係數分析
+#####plot
+#####plot
+#####plot
+#####plot
 ####四、實證分析表
+#####plot
+#####plot
+#####plot
+#####plot
 ####五、敏感性分析
+#####plot
 #####1.百分位等級分數來衡量企業競爭策略
+#####plot
+#####plot
+#####plot
 #####2.前四大廠商市場占有率來衡量產業競爭程度
+#####plot
+#####plot
+#####plot
 #####3.財稅差異來衡量企業從事避稅行為的程度
+#####plot
+#####plot
+#####plot
 ####六、其他分析
+#####plot
+#####plot
 ##結論
+#####plot
+#####plot
 ##參考文獻
+table:
+<br>
+<br>
+<br>
 ----------------本文章到此！----------------
+script to output this markdown file:
+`rmarkdown::render('R_code_withRMD.R', encoding = 'UTF-8')`
 
 ---
 title: "R_code_withRMD.R"
 author: "OOSKA"
-date: "Fri Aug 05 04:10:41 2016"
+date: "Fri Aug 05 04:25:38 2016"
 ---

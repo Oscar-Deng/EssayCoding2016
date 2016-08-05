@@ -56,8 +56,9 @@
 sessionInfo()
 # 查看語言/地區設定
 Sys.getlocale(category = "LC_ALL")
-# 若上述回傳非顯示相同值，請輸入下方設定
+# 若上述回傳非顯示相同值，請輸入下方設定 [正在解決這塊的問題]
 Sys.setlocale("LC_ALL",locale='cht')
+Sys.setlocale("LC_ALL",locale='English_United States.1252')
 
 #' 其他疑難排解，請見[手冊](https://github.com/dspim/R/wiki/R-&-RStudio-Troubleshooting-Guide "R & RStudio Troubleshooting Guide")及[下方](#qa "Q&A")說明
 #' <br>
@@ -91,8 +92,9 @@ setwd("D:\\Documents\\Dropbox\\MyEssay\\Rcoding\\")
 wd <- getwd()
 # 清除環境清單
 rm(list=ls())
-# 執行R統計編程
-source('run2.R',encoding='utf-8')
+#' 執行R統計編程
+#' `source('run2.R',encoding='UTF-8')`
+
 
 #' ##### 讀入函數設定
 #+ setup, echo=TRUE
@@ -109,12 +111,13 @@ Install.pack <- function(list = packtogo){
 Load.pack <- function(list=as.list(packtogo)){lapply(list, require, character.only = TRUE)}
 
 #' 使用函數
-#+ load_setup, echo=FALSE
+#+ load_setup, echo=FALSE, eval=TRUE, results="hide"
 # 安裝所有未安裝之套件
 Install.pack()
 # 讀入所有需要之套件
 # 注意，需所有回應皆顯示"TRUE"才能繼續往下，若Load.pack()回應出現FALSE，請至下方[Q&A](#qa)排除問題。
 Load.pack()
+options(encoding = "UTF-8")
 
 #' ##### 設定讀入資料庫函數
 #+ function_readDB
@@ -255,7 +258,7 @@ TEJ4 <- dep_var(TEJ3,k=5)
 head(TEJ4,10)
 summary(TEJ4)
 
-#' #####
+#' #####設定STR函數
 #+ function_STR
 STR <- function(x=TEJ4) {
   x <- x[order(x$company,x$year),]
@@ -269,7 +272,6 @@ STR <- function(x=TEJ4) {
     if(i==2){cat("width <- list(numeric(0),-1",')',sep="",fill=TRUE)}
     if(i==1){cat("width <- numeric(0)",sep="",fill=TRUE)}
     cat('DB',i,'<-transform(DB',i, 
-        #cat(
         ",STR_RD_mean = ave(STR_RD, company, FUN=rollmn),STR_EMP_mean = ave(STR_EMP, company, FUN=rollmn),STR_MB_mean = ave(STR_MB, company, FUN=rollmn),STR_MARKET_mean = ave(STR_MARKET, company, FUN=rollmn),STR_PPE_mean = ave(STR_PPE, company, FUN=rollmn))",sep="",fill=TRUE)
   })
   eval(base::parse(text=mkdt))
@@ -292,7 +294,7 @@ TEJ5 <- STR(TEJ4)
 head(TEJ5,10)
 summary(TEJ5)
 
-#' #####
+#' #####設定STR排名函數
 #+ function_STRrank
 STRrank <- function(x=TEJ5){
   prank<-function(x) {ifelse(is.na(x),NA,rank(x,ties.method = 'min')/sum(!is.na(x)))} # STRATEGY ranktile.
@@ -450,8 +452,8 @@ summary(TEJ101)
 head(TEJ102,30)
 summary(TEJ102)
 
-#' #####MNC
-#' 
+#' #####讀入MNC資料庫(TEJ)
+#' 來源檔：TEJ
 readMNC <- function(x="MNC.xlsx",DB='MNC',attr='MNC_attr'){
   MNCattr <- read_excel(x, sheet=attr, col_names = TRUE,col_types =as.vector(rep("text",3)))
   MNC <- read_excel(x, sheet=DB, col_names = TRUE)
@@ -460,10 +462,33 @@ readMNC <- function(x="MNC.xlsx",DB='MNC',attr='MNC_attr'){
   return(MNC)
   }
 
-#' 
-#+ load_MNC
+#' 運行MNC函數
+#+ load_readMNC
 MNC <- readMNC()
+summary(MNC)
+#' 列出國外營運公司之所在地統計
+table(MNC$nation)
 
+#' #####計算各公司MNC變數
+#' 
+fnMNC <- function(x=TEJ101,y=MNC,feedback=c('x','plot','table')){
+  x <- as.data.table(x)
+  y <- as.data.table(y)
+    y_TW <- plyr::count(y[y$nation %in% '台灣'],vars=c("company","year"))
+    setnames(y_TW,'freq','MNC_TW')
+    y_FOR <- plyr::count(y[!(y$nation %in% '台灣')],vars=c("company","year"))
+    setnames(y_FOR,'freq','MNC_FOREIGN')
+  y_mix <- merge(y_TW,y_FOR,by=c('company','year'),all = TRUE)
+  x <- merge(x,y_mix,by=c('company','year'))
+  # plot <- 
+    
+  ifelse(feedback=="x",return(x),ifelse(feedback=="plot",return(plot)))
+}
+
+#' 
+#+
+TEJ111 <- fnMNC(x=TEJ101,y=MNC,feedback='x')
+TEJ112 <- fnMNC(x=TEJ102,y=MNC,feedback='x')
 #' ###報表輸出
 #' ####一、樣本篩選量表
 #' #####表一、
@@ -510,19 +535,19 @@ plottbA1 <- function(Q){
   
   m <- format(tbA1, digits = 1, scientific=F,big.mark = ",")
   g1 <- tableGrob(m, theme = theme1, rows=NULL)
-# png(filename="table1_樣本篩選表.png",width=125,height = 70,units="mm",res = 500)
+# png(filename="table1.png",width=125,height = 70,units="mm",res = 500)
   grid.draw(g1)
-# dev.off()
-# write.xlsx(tbA1,file="tables.xlsx",sheetName = "table1_樣本篩選表",col.names = TRUE,row.names = FALSE,showNA = FALSE,append = FALSE)
+  dev.off()
+# write.xlsx(tbA1,file="tables.xlsx",sheetName = "table1",col.names = TRUE,row.names = FALSE,showNA = FALSE,append = FALSE)
   return(tbA1)
 }
 
-#'
-#+ load_plottbA1
+#' 運行plottbA1
+#+ load_plottbA1, fig.width=5, fig.height=5, dpi=500
 tbA1 <- plottbA1()
 
 #' #####表X、
-#' 
+#' plottbA2
 #+ function_plottbA2
 plottbA2 <- function(Q){
   TEJ01$TSE <- paste(TEJ01$TSE_code,TEJ01$TSE_name,sep=" ")
@@ -534,49 +559,84 @@ plottbA2 <- function(Q){
   return(tbA2)
 }
 
-#'
-#+ load_plottbA2
+#' 運行plottbA2
+#+ load_plottbA2, fig.width=10, fig.height=10, dpi=500
 tbA2 <- plottbA2()
 
 
 #' ####二、敘述統計表
 #' #####表X、
-#' 
+#' plottbA3
 #+ function_plottbA3
 plottbA3 <- function(){
   #fnmin <- function(x){apply(TEJ101[,6:21,with=FALSE],2,mean(x,na.rm=TRUE))}
   write(stargazer::stargazer(TEJ101,type = "html"),file="table3.html",append = TRUE)
 }
-#'
+#' 運行plottbA3
 #+ load_plottbA3
 tbA3 <- plottbA3()
 
 #' #####表X、
-#' 
+#' plottbA4
 #+ function_plottbA4
 plottbA4 <- function(){}
 
-#'
+#' 運行plottbA4
 #+ load_plottbA4
 tbA4 <- plottbA4()
 
 #' #####表X、
-#' 
+#' plottbA5
 #+ function_plottbA5
 plottbA5 <- function(){}
-#'
+
+#'運行plottbA5
 #+ load_plottbA5
 tbA5 <- plottbA5()
 
 #' ####三、相關係數分析
+#' #####plot
+#' #####plot
+#' #####plot
+#' #####plot
+
 #' ####四、實證分析表
+#' #####plot
+#' #####plot
+#' #####plot
+#' #####plot
+
 #' ####五、敏感性分析
+#' #####plot
+
 #' #####1.百分位等級分數來衡量企業競爭策略
+#' #####plot
+#' #####plot
+#' #####plot
+
 #' #####2.前四大廠商市場占有率來衡量產業競爭程度
+#' #####plot
+#' #####plot
+#' #####plot
+
 #' #####3.財稅差異來衡量企業從事避稅行為的程度
+#' #####plot
+#' #####plot
+#' #####plot
+
 #' ####六、其他分析
+#' #####plot
+#' #####plot
+
 #' ##結論
+#' #####plot
+#' #####plot
+
 #' ##參考文獻
+#' table:
+#' <br>
+#' <br>
+#' <br>
 #' ----------------本文章到此！----------------
 #' script to output this markdown file:
 #' `rmarkdown::render('R_code_withRMD.R', encoding = 'UTF-8')`

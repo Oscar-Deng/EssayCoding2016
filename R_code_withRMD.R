@@ -117,7 +117,7 @@ Install.pack()
 # 讀入所有需要之套件
 # 注意，需所有回應皆顯示"TRUE"才能繼續往下，若Load.pack()回應出現FALSE，請至下方[Q&A](#qa)排除問題。
 Load.pack()
-options(encoding = "UTF-8")
+#options(encoding = "UTF-8")
 
 #' ##### 設定讀入資料庫函數
 #+ function_readDB
